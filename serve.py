@@ -6,6 +6,7 @@ The saved copy stores Next.js optimized images under hashed filenames, so
 Usage: python3 serve.py [port]   (default 8080)
 """
 import os
+import json
 import sys
 import webbrowser
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -14,19 +15,8 @@ from urllib.parse import urlparse, parse_qs
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "site")
 
 # (large front, small front, side) — None falls back to the next available image
-PRODUCTS = {
-    "crimson-memory":    ("image-c6343cb74a71e8", "image-6c2a15e13730c8", "image-4e8640f03d7b6"),
-    "distressed-logo-t": ("image-bb6fb99c4b2508", "image-c1471486a0b8a8", "image-05f55d455bb558"),
-    "its-us-tee-black":  ("image-b4ec065a4e66f8", "image-39f2c686e071e8", "image-b542c1d352ef8"),
-    "jersey-yellow":     ("image-6ae6766896f1d8", "image-a088f00edf1b58", "image-959fe759fcd068"),
-    "silicone-tee":      ("image-ffce5fea8389f8", "image-9f64af5d69fbe", "image-97e6e1449d26b"),
-    "tank-black":        ("image-0af2db7b4647a8", "image-9f9a2a06d674d8", "image-9efcd9db49e648"),
-    "varsity":           ("image-84bdfd6756b51", "image-36c27604289f1", "image-d2f85dbbd1b6c8"),
-    "jersey-blue":       ("image-2406692edfcaf", None, None),
-    "tank-sand":         ("image-246e6ad4aa26a8", None, None),
-    "its-us-tee-yellow": ("image-277d32b1ca5e88", None, None),
-    "its-us-tee-bubblegum": ("image-ad7c33cd14d518", None, None),
-}
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "image-manifest.json"), encoding="utf-8") as manifest:
+    PRODUCTS = json.load(manifest)
 
 
 def resolve_image(url, width):
@@ -46,6 +36,12 @@ def resolve_image(url, width):
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=ROOT, **kwargs)
+
+    def end_headers(self):
+        # Revalidate editable pages and scripts instead of keeping old rack code.
+        if urlparse(self.path).path.endswith((".html", ".js", ".css")) or self.path == "/":
+            self.send_header("Cache-Control", "no-cache")
+        super().end_headers()
 
     def do_GET(self):
         parsed = urlparse(self.path)

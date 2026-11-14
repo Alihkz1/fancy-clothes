@@ -91,3 +91,47 @@ python3 serve.py
 | `serve.py` | A tiny local server that runs the site. Nothing to install: it only needs Python. |
 | `start-mac.command` | Double-click to run on Mac |
 | `start-windows.bat` | Double-click to run on Windows |
+
+
+## Adding products
+
+Run the existing local server, then open **http://localhost:8080/add-product.html**.
+Enter a name and upload front and side images; a back image and colour are optional.
+Use transparent PNG or WebP images showing the garment and hanger, with consistent framing.
+The optional hanger alignment fields control where the image attaches to the rail.
+All uploaded images must be exactly 1086 x 1448 pixels; other sizes are rejected. Each view is
+fitted within the original seven garments' median height and width without stretching, including previously
+saved products. Images are converted to WebP and saved with the product in browser localStorage
+under `fancy-clothes:products:v1`. Products appear on the main rack after opening or refreshing it.
+They are specific to the browser and origin (including port), are not uploaded to a server, and
+will be lost if browser site data is cleared. Storage-full errors preserve existing products.
+The page also lists locally added products and allows deleting them after confirmation.
+
+The main page contains only the animated rack. Product details retain a close control.
+`site/catalog.js` adapts custom products to the saved rack bundle. Since this repository contains
+compiled Next.js files, the rack bundle includes a small catalog integration and its bootstrap
+uses client rendering instead of hydrating the original fixed seven-product HTML snapshot.
+These changes must be retained if replacing the saved bundles.
+
+Rack settings on the add-product page include saved On/Off radios for the seven default items (initially On). Delete all items requires confirmation, removes locally added products, and switches the defaults Off so the rack is empty. The default items can be restored with On. Other applications' localStorage is preserved. Open rack tabs refresh when these settings or products change in another tab.
+
+
+## Deploy to Vercel
+
+The production build is static; Python is only the local development server.
+Run `npm run build` to create `dist/`. The build copies the saved images to real
+WebP paths and updates the saved Next Image loader to use those static files.
+No dependencies or environment variables are needed.
+
+1. Commit and push the project to GitHub. Include package.json, vercel.json,
+   image-manifest.json and scripts/build-static.cjs, as well as the site files.
+2. In Vercel, choose Add New > Project and import the repository.
+3. Use Framework Preset Other, Root Directory ./ (repository root),
+   Build Command npm run build, Output Directory dist.
+4. Deploy. The rack is at / and the editor is at /add-product.html.
+
+Do not select Next.js: this is a saved static copy, not an original Next.js project.
+The seven default garments are included in the deployment. Added products and
+settings remain in browser localStorage and are separate for every origin.
+Localhost uploads do not migrate to the deployed domain, and edits are not shared
+with other visitors. Original missing back images retain their front-image fallback.

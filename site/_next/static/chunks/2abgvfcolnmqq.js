@@ -178,11 +178,10 @@
                     })
                 })
             });
-        "__next_error__" === document.documentElement.id ? s.default.createRoot(N, U).render(f) : c.default.startTransition(() => {
-            s.default.hydrateRoot(N, f, { ...U,
-                formState: O
-            })
-        })
+        // This saved page has browser-local products rather than a live SSR payload.
+        // Mount it on the client so the stale saved markup is never hydrated.
+        s.default.createRoot(N, U).render(f)
+
     }("function" == typeof n.default || "object" == typeof n.default && null !== n.default) && void 0 === n.default.__esModule && (Object.defineProperty(n.default, "__esModule", {
         value: !0
     }), Object.assign(n.default, n), t.exports = n.default)

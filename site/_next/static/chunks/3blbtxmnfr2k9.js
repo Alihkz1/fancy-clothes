@@ -5835,87 +5835,15 @@
         let sZ = "text-[12px] font-medium uppercase tracking-[0.08em] text-ink",
             sJ = "transition-opacity duration-300";
 
-        function sQ({
-            focus: t = !1,
-            onClose: e
-        }) {
-            let i = t ? "pointer-events-none opacity-0" : "opacity-100";
-            return (0, r.jsxs)("header", {
-                className: "absolute inset-x-0 top-0 z-50 grid h-[10.4vh] min-h-[64px] grid-cols-[1fr_auto_1fr] items-center px-[2.2vw]",
-                children: [(0, r.jsx)("a", {
-                    href: "#about",
-                    className: `${sZ} ${sJ} ${i} justify-self-start`,
-                    tabIndex: t ? -1 : void 0,
-                    children: "About"
-                }), (0, r.jsx)(sK.Image, {
-                    src: "/snug-wrld-logo.png",
-                    width: 134,
-                    height: 72,
-                    alt: "Snug Wrld",
-                    preload: !0,
-                    className: `${sJ} ${i}`,
-                    style: {
-                        height: 36,
-                        width: "auto"
-                    }
-                }), (0, r.jsxs)("div", {
-                    className: "relative justify-self-end",
-                    children: [(0, r.jsx)("a", {
-                        href: "#contact",
-                        className: `${sZ} ${sJ} ${i} block`,
-                        tabIndex: t ? -1 : void 0,
-                        children: "Contact"
-                    }), (0, r.jsxs)("button", {
-                        type: "button",
-                        onClick: e,
-                        className: `${sZ} ${sJ} absolute right-0 top-1/2 flex -translate-y-1/2 items-center gap-[10px] whitespace-nowrap ${t?"opacity-100":"pointer-events-none opacity-0"}`,
-                        tabIndex: t ? void 0 : -1,
-                        "aria-hidden": !t,
-                        "aria-label": "Close detail view",
-                        style: {
-                            minHeight: 48,
-                            minWidth: 48,
-                            justifyContent: "flex-end"
-                        },
-                        children: ["Close ", (0, r.jsx)("span", {
-                            "aria-hidden": "true",
-                            className: "text-[13px] font-semibold",
-                            children: "✕"
-                        })]
-                    })]
-                })]
-            })
+        // Header/footer removed; keep an accessible close control in detail view.
+        function sQ({ focus, onClose }) {
+            return focus ? (0, r.jsx)("button", {
+                type: "button", className: "rack-close", onClick: onClose,
+                "aria-label": "Close detail view", children: "\u00d7"
+            }) : null;
         }
-
-        function s0() {
-            let t = "IT'S US, NEVER THEM  •  NEW DROPS  •  LAGOS  •  ".repeat(8);
-            return (0, r.jsx)("div", {
-                className: "absolute inset-x-0 bottom-0 z-30 flex h-[4.3vh] min-h-[32px] items-center overflow-hidden bg-brand text-[14px] font-bold uppercase italic tracking-[0.06em] text-brand-ink",
-                "aria-label": "It's us, never them. New drops. Lagos.",
-                children: (0, r.jsxs)("div", {
-                    className: "marquee-track",
-                    "aria-hidden": "true",
-                    children: [(0, r.jsx)("span", {
-                        children: t
-                    }), (0, r.jsx)("span", {
-                        children: t
-                    })]
-                })
-            })
-        }
-
-        function s1({
-            hidden: t = !1
-        }) {
-            return (0, r.jsx)("a", {
-                href: "https://aradazr.site/",
-                target: "_blank",
-                rel: "noopener",
-                tabIndex: t ? -1 : void 0,
-                className: `absolute left-1/2 top-[90%] z-20 -translate-x-1/2 -translate-y-1/2 rounded-full border border-ink px-[19px] py-[5px] text-[12px] font-medium uppercase tracking-[0.04em] text-ink transition-opacity duration-300 ${t?"pointer-events-none opacity-0":"opacity-100"}`,
-                children: "See Availability"
-            })
-        }
+        function s0() { return null; }
+        function s1() { return null; }
 
         function s5({
             className: t,
@@ -7045,7 +6973,9 @@
                 })]
             })
         }
-        let ox = Math.max(...op.flatMap(t => [t.side, t.front].map(e => {
+        // Extend the original animated rack with products saved by add-product.html.
+        window.extendClothingRack?.(op, or, os);
+        let ox = Math.max(0, ...op.flatMap(t => [t.side, t.front].map(e => {
             let i = or[e],
                 n = (os[e] ?? 1) / i.width,
                 r = (i.loopInnerTopY + i.loopInnerBottomY) / 2,
@@ -8227,8 +8157,8 @@
             })
         }
         let am = t => Math.max(an(t.front), t.back ? an(t.back) : 0),
-            af = Math.max(...op.flatMap(t => (t.colourways ?? [t]).map(am))),
-            ag = Math.max(...op.filter(t => t.colourways).flatMap(t => t.colourways.flatMap(t => [ar(t.front), t.back ? ar(t.back, !0) : 0]))),
+            af = Math.max(1, ...op.flatMap(t => (t.colourways ?? [t]).map(am))),
+            ag = Math.max(0, ...op.filter(t => t.colourways).flatMap(t => t.colourways.flatMap(t => [ar(t.front), t.back ? ar(t.back, !0) : 0]))),
             ay = (0, s.forwardRef)(function({
                 start: t,
                 origin: e,

@@ -6,3 +6,5 @@ site/_next/static/chunks-original/
 .claude/
 .DS_Store
 __pycache__/
+dist/
+.vercel/

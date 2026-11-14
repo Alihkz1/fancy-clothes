@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Add product · Clothing rack</title>
+  <link rel="stylesheet" href="/product-form.css">
+  <script src="/catalog.js?v=4" defer></script>
+  <script src="/product-form.js?v=4" defer></script>
+</head>
+<body>
+  <main class="editor">
+    <a class="back" href="/">← Back to rack</a>
+    <div class="heading"><div><p class="eyebrow">YOUR COLLECTION</p><h1>Add a product</h1></div><span class="badge">Local collection</span></div>
+    <p class="intro">Upload the clothing on a hanger with a transparent background. Front and side views are required; the back is optional.</p>
+    <aside class="image-requirements" id="image-requirements"><strong>Required size: 1086 × 1448 px</strong><p>Every image must be exactly 1086 pixels wide and 1448 pixels tall. Use transparent PNG or WebP, with the whole garment and hanger visible. Keep the hook centred at approximately X: 543, Y: 43, and the neck at Y: 174. Use the same framing for all three views; keep the side profile naturally narrow. The rack fits each view within the existing garments' height and width without stretching it.</p></aside>
+    <form id="product-form">
+      <div class="fields"><label>Product name<input name="name" required maxlength="100" placeholder="e.g. Everyday cotton shirt" autocomplete="off" dir="auto"></label><label>Colour <span>(optional)</span><input name="colour" maxlength="50" placeholder="e.g. Sand" dir="auto"></label></div>
+      <div class="uploads">
+        <label class="upload">Front view <span class="required">Required</span><div class="preview"><img alt="Front preview" hidden><span>Choose image</span></div><input type="file" name="front" accept="image/png,image/webp,image/jpeg" required></label>
+        <label class="upload">Side view <span class="required">Required</span><div class="preview"><img alt="Side preview" hidden><span>Choose image</span></div><input type="file" name="side" accept="image/png,image/webp,image/jpeg" required></label>
+        <label class="upload">Back view <span>Optional</span><div class="preview"><img alt="Back preview" hidden><span>Choose image</span></div><input type="file" name="back" accept="image/png,image/webp,image/jpeg"></label>
+      </div>
+      <details><summary>Hanger alignment</summary><p>Use the same image framing for all views. Values are percentages of the image; adjust these if your hanger does not sit on the rail.</p><div class="alignment"><label>Hook centre X (%)<input name="hookX" type="number" min="0" max="100" value="50" required></label><label>Hook opening Y (%)<input name="hookY" type="number" min="0" max="30" value="3" required></label><label>Neck Y (%)<input name="neckY" type="number" min="1" max="60" value="12" required></label></div></details>
+      <p class="storage-note">Saved in this browser on this address. Other browsers and devices will not share these products. Clearing site data removes them.</p>
+      <div class="actions"><button type="submit">Add to rack <span aria-hidden="true">↗</span></button><a href="/">View rack</a></div>
+      <p id="message" role="status" aria-live="polite"></p>
+    </form>
+    <section class="rack-settings" aria-label="Rack settings">
+      <fieldset><legend>Show the 7 default items</legend><div class="radio-options"><label><input type="radio" name="show-defaults" value="on" checked> On</label><label><input type="radio" name="show-defaults" value="off"> Off</label></div></fieldset>
+      <button class="delete-all" id="delete-all" type="button">Delete all items</button>
+      <p id="settings-message" role="status" aria-live="polite"></p>
+    </section>
+    <section class="saved"><h2>Added products</h2><ul id="saved-products"></ul><p id="empty">No products added yet.</p></section>
+  </main>
+</body>
+</html>
