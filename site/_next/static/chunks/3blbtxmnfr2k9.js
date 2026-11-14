@@ -12,10 +12,12 @@
                 parse: parseFloat,
                 transform: t => t
             },
-            h = { ...u,
+            h = {
+                ...u,
                 transform: t => l(0, 1, t)
             },
-            d = { ...u,
+            d = {
+                ...u,
                 default: 1
             },
             c = t => Math.round(1e5 * t) / 1e5,
@@ -32,7 +34,8 @@
                     alpha: void 0 !== a ? parseFloat(a) : 1
                 }
             },
-            y = { ...u,
+            y = {
+                ...u,
                 transform: t => Math.round(l(0, 255, t))
             },
             v = {
@@ -47,7 +50,7 @@
             },
             x = {
                 test: f("#"),
-                parse: function(t) {
+                parse: function (t) {
                     let e = "",
                         i = "",
                         n = "",
@@ -71,7 +74,8 @@
             k = w("px"),
             S = w("vh"),
             A = w("vw"),
-            P = { ...T,
+            P = {
+                ...T,
                 parse: t => T.parse(t) / 100,
                 transform: t => T.transform(100 * t)
             },
@@ -135,20 +139,20 @@
             }
         }
         let D = {
-                test: function(t) {
-                    return isNaN(t) && "string" == typeof t && (E.test(t) || Y.test(t))
-                },
-                parse: function(t) {
-                    return R(t).values
-                },
-                createTransformer: function(t) {
-                    return X(R(t))
-                },
-                getAnimatableNone: function(t) {
-                    let e = R(t);
-                    return X(e)(e.values.map((t, i) => ((t, e) => "number" == typeof t ? e ?.trim().endsWith("/") ? t : 0 : "number" == typeof t ? 0 : C.test(t) ? C.getAnimatableNone(t) : t)(t, e.split[i])))
-                }
+            test: function (t) {
+                return isNaN(t) && "string" == typeof t && (E.test(t) || Y.test(t))
             },
+            parse: function (t) {
+                return R(t).values
+            },
+            createTransformer: function (t) {
+                return X(R(t))
+            },
+            getAnimatableNone: function (t) {
+                let e = R(t);
+                return X(e)(e.values.map((t, i) => ((t, e) => "number" == typeof t ? e?.trim().endsWith("/") ? t : 0 : "number" == typeof t ? 0 : C.test(t) ? C.getAnimatableNone(t) : t)(t, e.split[i])))
+            }
+        },
             B = new Set(["brightness", "contrast", "saturate", "opacity"]);
 
         function L(t) {
@@ -161,21 +165,25 @@
             return n !== i && (s *= 100), e + "(" + s + r + ")"
         }
         let O = /\b([a-z-]*)\(.*?\)/gu,
-            $ = { ...D,
+            $ = {
+                ...D,
                 getAnimatableNone: t => {
                     let e = t.match(O);
                     return e ? e.map(L).join(" ") : t
                 }
             },
-            F = { ...D,
+            F = {
+                ...D,
                 getAnimatableNone: t => {
                     let e = D.parse(t);
-                    return D.createTransformer(t)(e.map(t => "number" == typeof t ? 0 : "object" == typeof t ? { ...t,
+                    return D.createTransformer(t)(e.map(t => "number" == typeof t ? 0 : "object" == typeof t ? {
+                        ...t,
                         alpha: 1
                     } : t))
                 }
             },
-            N = { ...u,
+            N = {
+                ...u,
                 transform: Math.round
             },
             _ = {
@@ -262,7 +270,8 @@
                 strokeOpacity: h,
                 numOctaves: N
             },
-            W = { ...U,
+            W = {
+                ...U,
                 color: C,
                 backgroundColor: C,
                 outlineColor: C,
@@ -304,8 +313,8 @@
                 parse: t => t
             }],
             tt = t => Q.find(e => e.test(t)),
-            te = () => {},
-            ti = () => {},
+            te = () => { },
+            ti = () => { },
             tn = t => e => "string" == typeof e && e.startsWith(t),
             tr = tn("--"),
             ts = tn("var(--"),
@@ -459,7 +468,7 @@
             let n = !1,
                 r = !0,
                 s = () => n = !0,
-                o = tj.reduce((t, e) => (t[e] = function(t) {
+                o = tj.reduce((t, e) => (t[e] = function (t) {
                     let e = new Set,
                         i = new Set,
                         n = !1,
@@ -522,10 +531,10 @@
             }
         }
         let tI = {
-                delta: 0,
-                timestamp: 0,
-                isProcessing: !1
-            },
+            delta: 0,
+            timestamp: 0,
+            isProcessing: !1
+        },
             {
                 schedule: tR,
                 cancel: tX,
@@ -560,7 +569,7 @@
                     t.render();
                     let e = n.get(t);
                     e && e.forEach(([e, i]) => {
-                        t.getValue(e) ?.set(i)
+                        t.getValue(e)?.set(i)
                     })
                 }), t.forEach(t => t.measureEndState()), t.forEach(t => {
                     void 0 !== t.suspendedScrollY && window.scrollTo(0, t.suspendedScrollY)
@@ -589,11 +598,11 @@
                     motionValue: n
                 } = this;
                 if (null === t[0]) {
-                    let r = n ?.get(),
+                    let r = n?.get(),
                         s = t[t.length - 1];
                     if (void 0 !== r) t[0] = r;
                     else if (i && e) {
-                        let n = function(t, e, i) {
+                        let n = function (t, e, i) {
                             if ("string" == typeof t) {
                                 if (/^-?(?:\d+(?:\.\d+)?|\.\d+)$/u.test(t) || /^0[^.\s]+$/u.test(t)) return parseFloat(t);
                                 if (!D.test(t) && D.test(i)) return td(e, i)
@@ -606,10 +615,10 @@
                 }
                 for (let e = 1; e < t.length; e++) t[e] ?? (t[e] = t[e - 1])
             }
-            setFinalKeyframe() {}
-            measureInitialState() {}
-            renderEndStyles() {}
-            measureEndState() {}
+            setFinalKeyframe() { }
+            measureInitialState() { }
+            renderEndStyles() { }
+            measureEndState() { }
             complete(t = !1) {
                 this.state = "complete", this.onComplete(this.unresolvedKeyframes, this.finalKeyframe, t), tB.delete(this)
             }
@@ -634,8 +643,8 @@
                     unresolvedKeyframes: t,
                     element: e,
                     motionValue: i
-                } = this, n = t[0] ?? i ?.get();
-                if (!e ?.current || void 0 === n) return !1;
+                } = this, n = t[0] ?? i?.get();
+                if (!e?.current || void 0 === n) return !1;
                 for (let e = 0; e < t.length; e++)
                     if (tl(e ? t[e] : n)) return !1;
                 return !0
@@ -653,11 +662,11 @@
                     if ("string" == typeof n && to(n = n.trim())) {
                         let r = function t(e, i, n = 1) {
                             ti(`Max CSS variable fallback depth detected in property "${e}". This may indicate a circular fallback dependency.`);
-                            let [r, s] = function(t) {
+                            let [r, s] = function (t) {
                                 let e = tu.exec(t);
-                                if (!e) return [, ];
+                                if (!e) return [,];
                                 let [, i, n, r] = e;
-                                return [`--${i??n}`, r]
+                                return [`--${i ?? n}`, r]
                             }(e);
                             if (!r) return;
                             let o = window.getComputedStyle(i).getPropertyValue(r);
@@ -691,16 +700,16 @@
                     unresolvedKeyframes: t,
                     name: e
                 } = this, i = [];
-                for (let e = 0; e < t.length; e++)(null === t[e] || function(t) {
+                for (let e = 0; e < t.length; e++)(null === t[e] || function (t) {
                     if ("number" == typeof t) return 0 === t;
                     if (null === t) return !0;
                     return "none" === t || "0" === t || /^0[^.\s]+$/u.test(t)
                 }(t[e])) && i.push(e);
-                i.length && function(t, e, i) {
+                i.length && function (t, e, i) {
                     let n, r = 0;
                     for (; r < t.length && !n;) {
                         let e = t[r];
-                        "string" == typeof e && !tU.has(e) && function(t) {
+                        "string" == typeof e && !tU.has(e) && function (t) {
                             let e = t.toString();
                             return E.test(e) || Y.test(e)
                         }(e) && (n = t[r]), r++
@@ -725,7 +734,7 @@
                 if (!t || !t.current) return;
                 "height" === i && (this.suspendedScrollY = window.pageYOffset), this.measuredOrigin = this.measure(), e[0] = this.measuredOrigin;
                 let n = e[e.length - 1];
-                void 0 !== n && this.motionValue ?.jump(n, !1)
+                void 0 !== n && this.motionValue?.jump(n, !1)
             }
             measureEndState() {
                 let {
@@ -733,10 +742,10 @@
                     unresolvedKeyframes: e
                 } = this;
                 if (!t || !t.current) return;
-                this.motionValue ?.jump(this.measuredOrigin, !1);
+                this.motionValue?.jump(this.measuredOrigin, !1);
                 let i = e.length - 1,
                     n = e[i];
-                e[i] = this.measure(), null !== n && void 0 === this.finalKeyframe && (this.finalKeyframe = n), this.removedTransforms ?.length && this.removedTransforms.forEach(([e, i]) => {
+                e[i] = this.measure(), null !== n && void 0 === this.finalKeyframe && (this.finalKeyframe = n), this.removedTransforms?.length && this.removedTransforms.forEach(([e, i]) => {
                     t.getValue(e).set(i)
                 }), this.resolveNoneKeyframes()
             }
@@ -817,7 +826,7 @@
                 this._finished = this._resolve = void 0, this.isResolved = !1
             }
             notifyFinished() {
-                this.isResolved = !0, this._resolve ?.()
+                this.isResolved = !0, this._resolve?.()
             }
             then(t, e) {
                 return this.finished.then(t, e)
@@ -847,12 +856,14 @@
         function t6(t, e, i) {
             let n = globalThis.__MOTION_INSPECT__;
             if (n) try {
-                n({ ...t8("animation-start", t),
-                    options: i ? { ...e,
+                n({
+                    ...t8("animation-start", t),
+                    options: i ? {
+                        ...e,
                         ...i
                     } : e
                 })
-            } catch {}
+            } catch { }
         }
         let t9 = t => Array.isArray(t) && "number" == typeof t[0],
             t7 = tQ(() => {
@@ -871,7 +882,7 @@
                 let n = "",
                     r = Math.max(Math.round(e / i), 2);
                 for (let e = 0; e < r; e++) n += Math.round(1e4 * t(e / (r - 1))) / 1e4 + ", ";
-                return `linear(${n.substring(0,n.length-2)})`
+                return `linear(${n.substring(0, n.length - 2)})`
             },
             ee = ([t, e, i, n]) => `cubic-bezier(${t}, ${e}, ${i}, ${n})`,
             ei = {
@@ -902,13 +913,13 @@
                     onComplete: a
                 } = t;
                 this.isPseudoElement = !!r, this.allowFlatten = s, this.options = t, ti(t.type);
-                let l = function({
+                let l = function ({
                     type: t,
                     ...e
                 }) {
                     return en(t) && t7() ? t.applyToOptions(e) : (e.duration ?? (e.duration = 300), e.ease ?? (e.ease = "easeOut"), e)
                 }(t);
-                this.animation = function(t, e, i, {
+                this.animation = function (t, e, i, {
                     delay: n = 0,
                     duration: r = 300,
                     repeat: s = 0,
@@ -938,7 +949,7 @@
                         let t = t5(n, this.options, o, this.speed);
                         this.updateMotionValue && this.updateMotionValue(t), tK(e, i, t), this.animation.cancel()
                     }
-                    a ?.(), this.notifyFinished()
+                    a?.(), this.notifyFinished()
                 }, t6(this, t, l)
             }
             play() {
@@ -948,12 +959,12 @@
                 this.animation.pause()
             }
             complete() {
-                this.animation.finish ?.()
+                this.animation.finish?.()
             }
             cancel() {
                 try {
                     this.animation.cancel()
-                } catch (t) {}
+                } catch (t) { }
             }
             stop() {
                 if (this.isStopped) return;
@@ -964,11 +975,11 @@
                 "idle" !== t && "finished" !== t && (this.updateMotionValue ? this.updateMotionValue() : this.commitStyles(), this.isPseudoElement || this.cancel())
             }
             commitStyles() {
-                let t = this.options ?.element;
-                !this.isPseudoElement && t ?.isConnected && this.animation.commitStyles ?.()
+                let t = this.options?.element;
+                !this.isPseudoElement && t?.isConnected && this.animation.commitStyles?.()
             }
             get duration() {
-                return Number(this.animation.effect ?.getComputedTiming ?.().duration || 0) / 1e3
+                return Number(this.animation.effect?.getComputedTiming?.().duration || 0) / 1e3
             }
             get iterationDuration() {
                 let {
@@ -1003,9 +1014,9 @@
                 onAttach: e,
                 observe: i
             }) {
-                return (this.allowFlatten && this.animation.effect ?.updateTiming({
+                return (this.allowFlatten && this.animation.effect?.updateTiming({
                     easing: "linear"
-                }), this.animation.onfinish = null, t && t0()) ? (this.animation.timeline = t, e ?.(this.animation), tE) : i(this)
+                }), this.animation.onfinish = null, t && t0()) ? (this.animation.timeline = t, e?.(this.animation), tE) : i(this)
             }
         }
         let es = new Set(["opacity", "clipPath", "filter", "transform", "backgroundColor"]),
@@ -1043,12 +1054,12 @@
                     events: e
                 } = this;
                 return e.change || this.changeSubscriber ? (e.change || (e.change = new tG, e.change.add(this.changeSubscriber), this.changeSubscriber = void 0), e.change.add(t)) : this.changeSubscriber = t, () => {
-                    this.changeSubscriber === t ? this.changeSubscriber = void 0 : e.change ?.remove(t), this.stopIfUnobserved()
+                    this.changeSubscriber === t ? this.changeSubscriber = void 0 : e.change?.remove(t), this.stopIfUnobserved()
                 }
             }
             stopIfUnobserved() {
                 tR.read(() => {
-                    this.changeSubscriber || this.events.change ?.getSize() || this.stop()
+                    this.changeSubscriber || this.events.change?.getSize() || this.stop()
                 })
             }
             clearListeners() {
@@ -1074,7 +1085,7 @@
                     current: t,
                     changeSubscriber: e
                 } = this;
-                e ? e(t) : this.events.change ?.notify(t)
+                e ? e(t) : this.events.change?.notify(t)
             }
             addDependent(t) {
                 this.dependents || (this.dependents = new Set), this.dependents.add(t)
@@ -1084,7 +1095,7 @@
             }
             get() {
                 eu.current && eu.current.push(this);
-                let t = this.animation ?.liveValue ?.();
+                let t = this.animation?.liveValue?.();
                 return void 0 === t ? this.current : t
             }
             getCurrent() {
@@ -1105,8 +1116,8 @@
                     this.hasAnimated = !0;
                     let n = !1;
                     i = t(() => {
-                        n = !0, this.events.animationComplete ?.notify(), this.animation === i && this.clearAnimation(), e()
-                    }), n || (this.animation = i), this.events.animationStart ?.notify()
+                        n = !0, this.events.animationComplete?.notify(), this.animation === i && this.clearAnimation(), e()
+                    }), n || (this.animation = i), this.events.animationStart?.notify()
                 })
             }
             stop() {
@@ -1119,7 +1130,7 @@
                 this.animation = void 0
             }
             destroy() {
-                this.dependents ?.clear(), this.events.destroy ?.notify(), this.clearListeners(), this.stop(), this.stopPassiveEffect && this.stopPassiveEffect()
+                this.dependents?.clear(), this.events.destroy?.notify(), this.clearListeners(), this.stop(), this.stopPassiveEffect && this.stopPassiveEffect()
             }
         }
 
@@ -1149,8 +1160,8 @@
             return !!(ey(t) || t.variants)
         }
         let ex = {
-                current: null
-            },
+            current: null
+        },
             ew = {
                 current: !1
             },
@@ -1189,8 +1200,10 @@
                     latestValues: l,
                     renderState: u
                 } = o;
-                this.latestValues = l, this.baseTarget = { ...l
-                }, this.initialValues = e.initial ? { ...l
+                this.latestValues = l, this.baseTarget = {
+                    ...l
+                }, this.initialValues = e.initial ? {
+                    ...l
                 } : {}, this.renderState = u, this.parent = t, this.props = e, this.presenceContext = i, this.depth = t ? t.depth + 1 : 0, this.reducedMotionConfig = n, this.skipAnimationsConfig = r, this.options = a, this.blockInitialAnimation = !!s, this.isControllingVariants = ey(e), this.isVariantNode = ev(e), this.isVariantNode && (this.variantChildren = new Set), this.manuallyAnimateOnMount = !!(t && t.current);
                 let {
                     willChange: h,
@@ -1203,7 +1216,7 @@
             }
             mount(t) {
                 if (this.hasBeenMounted)
-                    for (let t in this.initialValues) this.values.get(t) ?.jump(this.initialValues[t]), this.latestValues[t] = this.initialValues[t];
+                    for (let t in this.initialValues) this.values.get(t)?.jump(this.initialValues[t]), this.latestValues[t] = this.initialValues[t];
                 if (this.current = t, ec.set(t, this), this.projection && !this.projection.instance && this.projection.mount(t), this.isVariantNode && !this.isControllingVariants) {
                     let t = this;
                     do t = !1 !== t.props.inherit && t.parent; while (t && !t.isVariantNode) if (t) {
@@ -1213,10 +1226,10 @@
                         e.add(this), this.removeFromVariantTree = () => e.delete(this)
                     }
                 }
-                this.values.forEach((t, e) => this.bindToMotionValue(e, t)), "never" === this.reducedMotionConfig ? this.shouldReduceMotion = !1 : "always" === this.reducedMotionConfig ? this.shouldReduceMotion = !0 : (ew.current || eT(), this.shouldReduceMotion = ex.current), this.shouldSkipAnimations = this.skipAnimationsConfig ?? !1, this.parent ?.addChild(this), this.update(this.props, this.presenceContext), this.hasBeenMounted = !0
+                this.values.forEach((t, e) => this.bindToMotionValue(e, t)), "never" === this.reducedMotionConfig ? this.shouldReduceMotion = !1 : "always" === this.reducedMotionConfig ? this.shouldReduceMotion = !0 : (ew.current || eT(), this.shouldReduceMotion = ex.current), this.shouldSkipAnimations = this.skipAnimationsConfig ?? !1, this.parent?.addChild(this), this.update(this.props, this.presenceContext), this.hasBeenMounted = !0
             }
             unmount() {
-                for (let t in this.projection && this.projection.unmount(), tX(this.notifyUpdate), tX(this.render), this.valueSubscriptions.forEach(t => t()), this.valueSubscriptions.clear(), this.removeFromVariantTree && this.removeFromVariantTree(), this.parent ?.removeChild(this), this.events) this.events[t].clear();
+                for (let t in this.projection && this.projection.unmount(), tX(this.notifyUpdate), tX(this.render), this.valueSubscriptions.forEach(t => t()), this.valueSubscriptions.clear(), this.removeFromVariantTree && this.removeFromVariantTree(), this.parent?.removeChild(this), this.events) this.events[t].clear();
                 for (let t in this.features) {
                     let e = this.features[t];
                     e && (e.unmount(), e.isMounted = !1)
@@ -1254,7 +1267,7 @@
                 let n = a.has(t);
                 n && this.onBindTransform && this.onBindTransform();
                 let r = e.on("change", e => {
-                    this.latestValues[t] = e, this.props.onUpdate && tR.preRender(this.notifyUpdate), n && (this.projection && (this.projection.isTransformDirty = !0), eo.get(this.current) ?.check()), this.scheduleRender()
+                    this.latestValues[t] = e, this.props.onUpdate && tR.preRender(this.notifyUpdate), n && (this.projection && (this.projection.isTransformDirty = !0), eo.get(this.current)?.check()), this.scheduleRender()
                 });
                 "u" > typeof window && window.MotionCheckAppearSync && (i = window.MotionCheckAppearSync(this, t, e)), this.valueSubscriptions.set(t, () => {
                     r(), i && i()
@@ -1295,14 +1308,14 @@
                     transformTemplate: i,
                     onUpdate: n
                 } = this.props;
-                (t.transformTemplate || i) && this.scheduleRender(), (t.transformTemplate && !i || t.onUpdate && !n) && eo.get(this.current) ?.demote(), this.prevProps = this.props, this.props = t, this.prevPresenceContext = this.presenceContext, this.presenceContext = e;
+                (t.transformTemplate || i) && this.scheduleRender(), (t.transformTemplate && !i || t.onUpdate && !n) && eo.get(this.current)?.demote(), this.prevProps = this.props, this.props = t, this.prevPresenceContext = this.presenceContext, this.presenceContext = e;
                 for (let e = 0; e < ek.length; e++) {
                     let i = ek[e];
                     this.propEventSubscriptions[i] && (this.propEventSubscriptions[i](), delete this.propEventSubscriptions[i]);
                     let n = t["on" + i];
                     n && (this.propEventSubscriptions[i] = this.on(i, n))
                 }
-                this.prevMotionValues = function(t, e, i) {
+                this.prevMotionValues = function (t, e, i) {
                     for (let n in e) {
                         let r = e[n],
                             s = i[n];
@@ -1356,7 +1369,7 @@
             getValue(t, e) {
                 if (this.props.values && this.props.values[t]) return this.props.values[t];
                 let i = this.values.get(t);
-                return void 0 === i && void 0 !== e && (i = ed(e ?? this.getDefaultValue ?.(t), {
+                return void 0 === i && void 0 !== e && (i = ed(e ?? this.getDefaultValue?.(t), {
                     owner: this
                 }), this.addValue(t, i)), i
             }
@@ -1445,7 +1458,7 @@
                 }
             }
             let s = t.pathRotation;
-            return s && (r = !1, n += `rotate(${eC(s,U.pathRotation)}) `), n = n.trim(), i ? n = i(e, r ? "" : n) : r && (n = "none"), n
+            return s && (r = !1, n += `rotate(${eC(s, U.pathRotation)}) `), n = n.trim(), i ? n = i(e, r ? "" : n) : r && (n = "none"), n
         }
 
         function eV(t, e, i) {
@@ -1478,9 +1491,9 @@
             }
         }
         let eI = {
-                offset: "stroke-dashoffset",
-                array: "stroke-dasharray"
-            },
+            offset: "stroke-dashoffset",
+            array: "stroke-dasharray"
+        },
             eR = {
                 offset: "strokeDashoffset",
                 array: "strokeDasharray"
@@ -1506,7 +1519,7 @@
                 style: c
             } = t;
             for (let t of eX) void 0 !== d[t] && (c[t] = d[t], delete d[t]);
-            (c.transform || d.transformOrigin) && (c.transformOrigin = d.transformOrigin ?? "50% 50%", delete d.transformOrigin), c.transform && (c.transformBox = h ?.transformBox ?? "fill-box", delete d.transformBox), void 0 !== e && (d.x = e), void 0 !== i && (d.y = i), void 0 !== n && (d.scale = n), void 0 !== r && function(t, e, i = 1, n = 0, r = !0) {
+            (c.transform || d.transformOrigin) && (c.transformOrigin = d.transformOrigin ?? "50% 50%", delete d.transformOrigin), c.transform && (c.transformBox = h?.transformBox ?? "fill-box", delete d.transformBox), void 0 !== e && (d.x = e), void 0 !== i && (d.y = i), void 0 !== n && (d.scale = n), void 0 !== r && function (t, e, i = 1, n = 0, r = !0) {
                 t.pathLength = 1;
                 let s = r ? eI : eR;
                 t[s.offset] = `${-n}`, t[s.array] = `${e} ${i}`
@@ -1521,7 +1534,7 @@
         }, n, r) {
             let s, o = t.style;
             for (s in e) o[s] = e[s];
-            for (s in r ?.applyProjectionStyles(o, n), i) o.setProperty(s, i[s])
+            for (s in r?.applyProjectionStyles(o, n), i) o.setProperty(s, i[s])
         }
         let e$ = {};
 
@@ -1534,10 +1547,10 @@
 
         function eN(t, e, i) {
             let n = t.style,
-                r = e ?.style,
+                r = e?.style,
                 s = {};
             if (!n) return s;
-            for (let e in n)(Z(n[e]) || r && Z(r[e]) || eF(e, t) || i ?.getValue(e) ?.liveStyle !== void 0) && (s[e] = n[e]);
+            for (let e in n) (Z(n[e]) || r && Z(r[e]) || eF(e, t) || i?.getValue(e)?.liveStyle !== void 0) && (s[e] = n[e]);
             return s
         }
 
@@ -1655,12 +1668,12 @@
         }
 
         function e2(t, e) {
-            return eW(function(t, e) {
+            return eW(function (t, e) {
                 if (!e) return t;
                 let i = e({
-                        x: t.left,
-                        y: t.top
-                    }),
+                    x: t.left,
+                    y: t.top
+                }),
                     n = e({
                         x: t.right,
                         y: t.bottom
@@ -1681,7 +1694,7 @@
                 ti(t.style), super.mount(t)
             }
             readValueFromInstance(t, e) {
-                if (a.has(e)) return this.projection ?.isProjecting ? tx(e) : tb(t, e); {
+                if (a.has(e)) return this.projection?.isProjecting ? tx(e) : tb(t, e); {
                     let i = window.getComputedStyle(t),
                         n = (tr(e) ? i.getPropertyValue(e) : i[e]) || 0;
                     return "string" == typeof n ? n.trim() : n
@@ -1730,9 +1743,10 @@
         function is(t, e, i) {
             for (let n in e) Z(e[n]) || eF(n, i) || (t[n] = e[n])
         }
-        let io = () => ({ ...ir(),
-                attrs: {}
-            }),
+        let io = () => ({
+            ...ir(),
+            attrs: {}
+        }),
             ia = new Set(["animate", "exit", "variants", "initial", "style", "values", "transition", "transformTemplate", "custom", "inherit", "onBeforeLayoutMeasure", "onAnimationStart", "onAnimationComplete", "onUpdate", "onDragStart", "onDrag", "onDragEnd", "onMeasureDragConstraints", "onDirectionLock", "onDragTransitionEnd", "_dragX", "_dragY", "onHoverStart", "onHoverEnd", "onViewportEnter", "onViewportLeave", "globalTapTarget", "propagate", "ignoreStrict", "viewport"]);
 
         function il(t) {
@@ -1746,11 +1760,11 @@
         function ih(t, e, i, n) {
             let r = e => {
                 let r;
-                return "function" == typeof e ? e(void 0 !== i ? i : t.custom, ...(r = [{}, {}], n ?.values.forEach((t, e) => {
+                return "function" == typeof e ? e(void 0 !== i ? i : t.custom, ...(r = [{}, {}], n?.values.forEach((t, e) => {
                     r[0][e] = t.get(), r[1][e] = t.getVelocity()
                 }), r)) : e
             };
-            return "string" == typeof(e = r(e)) && (e = t.variants && t.variants[e]), r(e)
+            return "string" == typeof (e = r(e)) && (e = t.variants && t.variants[e]), r(e)
         }
         let id = (0, s.createContext)(null);
 
@@ -1759,53 +1773,53 @@
             return null === e.current && (e.current = t()), e.current
         }
         let ip = t => (e, i) => {
-                let n = (0, s.useContext)(ie),
-                    r = (0, s.useContext)(id),
-                    o = () => (function({
-                        scrapeMotionValuesFromProps: t,
-                        createRenderState: e
-                    }, i, n, r) {
-                        return {
-                            latestValues: function(t, e, i, n) {
-                                let r = {},
-                                    s = n(t, {});
-                                for (let t in s) r[t] = iu(s[t]);
-                                let {
-                                    initial: o,
-                                    animate: a
-                                } = t, l = ey(t), u = ev(t);
-                                e && u && !l && !1 !== t.inherit && (void 0 === o && (o = e.initial), void 0 === a && (a = e.animate));
-                                let h = !!i && !1 === i.initial,
-                                    d = (h = h || !1 === o) ? a : o;
-                                if (d && "boolean" != typeof d && !ep(d)) {
-                                    let e = Array.isArray(d) ? d : [d];
-                                    for (let i = 0; i < e.length; i++) {
-                                        let n = ih(t, e[i]);
-                                        if (n) {
-                                            let {
-                                                transitionEnd: t,
-                                                transition: e,
-                                                ...i
-                                            } = n;
-                                            for (let t in i) {
-                                                let e = i[t];
-                                                if (Array.isArray(e)) {
-                                                    let t = h ? e.length - 1 : 0;
-                                                    e = e[t]
-                                                }
-                                                null !== e && (r[t] = e)
+            let n = (0, s.useContext)(ie),
+                r = (0, s.useContext)(id),
+                o = () => (function ({
+                    scrapeMotionValuesFromProps: t,
+                    createRenderState: e
+                }, i, n, r) {
+                    return {
+                        latestValues: function (t, e, i, n) {
+                            let r = {},
+                                s = n(t, {});
+                            for (let t in s) r[t] = iu(s[t]);
+                            let {
+                                initial: o,
+                                animate: a
+                            } = t, l = ey(t), u = ev(t);
+                            e && u && !l && !1 !== t.inherit && (void 0 === o && (o = e.initial), void 0 === a && (a = e.animate));
+                            let h = !!i && !1 === i.initial,
+                                d = (h = h || !1 === o) ? a : o;
+                            if (d && "boolean" != typeof d && !ep(d)) {
+                                let e = Array.isArray(d) ? d : [d];
+                                for (let i = 0; i < e.length; i++) {
+                                    let n = ih(t, e[i]);
+                                    if (n) {
+                                        let {
+                                            transitionEnd: t,
+                                            transition: e,
+                                            ...i
+                                        } = n;
+                                        for (let t in i) {
+                                            let e = i[t];
+                                            if (Array.isArray(e)) {
+                                                let t = h ? e.length - 1 : 0;
+                                                e = e[t]
                                             }
-                                            for (let e in t) r[e] = t[e]
+                                            null !== e && (r[t] = e)
                                         }
+                                        for (let e in t) r[e] = t[e]
                                     }
                                 }
-                                return r
-                            }(i, n, r, t),
-                            renderState: e()
-                        }
-                    })(t, e, n, r);
-                return i ? o() : ic(o)
-            },
+                            }
+                            return r
+                        }(i, n, r, t),
+                        renderState: e()
+                    }
+                })(t, e, n, r);
+            return i ? o() : ic(o)
+        },
             im = ip({
                 scrapeMotionValuesFromProps: eN,
                 createRenderState: ir
@@ -1828,7 +1842,7 @@
             iv = !1;
 
         function ix() {
-            return ! function() {
+            return ! function () {
                 if (iv) return;
                 let t = {};
                 for (let e in iy) t[e] = {
@@ -1850,9 +1864,10 @@
             forwardMotionProps: e = !1,
             type: i
         } = {}, n, o) {
-            n && function(t) {
+            n && function (t) {
                 let e = ix();
-                for (let i in t) e[i] = { ...e[i],
+                for (let i in t) e[i] = {
+                    ...e[i],
                     ...t[i]
                 };
                 eS = e
@@ -1862,24 +1877,25 @@
 
             function u(i, n) {
                 var u;
-                let h, d, c, p = { ...(0, s.useContext)(it),
-                        ...i,
-                        layoutId: function({
-                            layoutId: t
-                        }) {
-                            let e = (0, s.useContext)(e9).id;
-                            return e && void 0 !== t ? e + "-" + t : t
-                        }(i)
-                    },
+                let h, d, c, p = {
+                    ...(0, s.useContext)(it),
+                    ...i,
+                    layoutId: function ({
+                        layoutId: t
+                    }) {
+                        let e = (0, s.useContext)(e9).id;
+                        return e && void 0 !== t ? e + "-" + t : t
+                    }(i)
+                },
                     {
                         isStatic: m,
                         isValidProp: f
                     } = p,
-                    g = function(t) {
+                    g = function (t) {
                         let {
                             initial: e,
                             animate: i
-                        } = function(t, e) {
+                        } = function (t, e) {
                             if (ey(t)) {
                                 let {
                                     initial: e,
@@ -1900,21 +1916,22 @@
                     y = l(i, m);
                 if (!m && "u" > typeof window) {
                     (0, s.useContext)(e7).strict;
-                    let e = function(t) {
+                    let e = function (t) {
                         let {
                             drag: e,
                             layout: i
                         } = ix();
                         if (!e && !i) return {};
-                        let n = { ...e,
+                        let n = {
+                            ...e,
                             ...i
                         };
                         return {
-                            MeasureLayout: e ?.isEnabled(t) || i ?.isEnabled(t) ? n.MeasureLayout : void 0,
+                            MeasureLayout: e?.isEnabled(t) || i?.isEnabled(t) ? n.MeasureLayout : void 0,
                             ProjectionNode: n.ProjectionNode
                         }
                     }(p);
-                    h = e.MeasureLayout, g.visualElement = function(t, e, i, n, r, o) {
+                    h = e.MeasureLayout, g.visualElement = function (t, e, i, n, r, o) {
                         let {
                             visualElement: a
                         } = (0, s.useContext)(ie), l = (0, s.useContext)(e7), u = (0, s.useContext)(id), h = (0, s.useContext)(it), d = h.reducedMotion, c = h.skipAnimations, p = (0, s.useRef)(null), m = (0, s.useRef)(!1);
@@ -1930,7 +1947,7 @@
                         }), m.current && p.current && (p.current.manuallyAnimateOnMount = !0));
                         let f = p.current,
                             g = (0, s.useContext)(iT);
-                        f && !f.projection && r && ("html" === f.type || "svg" === f.type) && function(t, e, i, n) {
+                        f && !f.projection && r && ("html" === f.type || "svg" === f.type) && function (t, e, i, n) {
                             let {
                                 layoutId: r,
                                 layout: s,
@@ -1961,14 +1978,14 @@
                             f && y.current && f.update(i, u)
                         });
                         let v = i[ib],
-                            x = (0, s.useRef)(!!v && "u" > typeof window && !window.MotionHandoffIsComplete ?.(v) && window.MotionHasOptimisedAnimation ?.(v));
+                            x = (0, s.useRef)(!!v && "u" > typeof window && !window.MotionHandoffIsComplete?.(v) && window.MotionHasOptimisedAnimation?.(v));
                         return iS(() => {
-                            m.current && f && (f.animationState ?.animateChanges(), f.enteringChildren = void 0)
+                            m.current && f && (f.animationState?.animateChanges(), f.enteringChildren = void 0)
                         }, []), iS(() => {
                             m.current = !0, f && (y.current = !0, window.MotionIsMounted = !0, f.updateFeatures(), f.scheduleRenderMicrotask(), x.current && f.animationState && f.animationState.animateChanges())
                         }), (0, s.useEffect)(() => {
                             f && (!x.current && f.animationState && f.animationState.animateChanges(), x.current && (queueMicrotask(() => {
-                                window.MotionHandoffMarkAsComplete ?.(v)
+                                window.MotionHandoffMarkAsComplete?.(v)
                             }), x.current = !1), f.enteringChildren = void 0)
                         }), f
                     }(t, y, p, o, e.ProjectionNode, a)
@@ -1978,42 +1995,46 @@
                     children: [h && g.visualElement ? (0, r.jsx)(h, {
                         visualElement: g.visualElement,
                         ...p
-                    }) : null, function(t, e, i, {
+                    }) : null, function (t, e, i, {
                         latestValues: n
                     }, r, o = !1, a, l) {
-                        let u = (a ?? e6(t) ? function(t, e, i, n) {
-                                let r = (0, s.useMemo)(() => {
-                                    let i = io();
-                                    return eD(i, e, eL(n), t.transformTemplate, t.style), { ...i.attrs,
-                                        style: { ...i.style
-                                        }
-                                    }
-                                }, [e]);
-                                if (t.style) {
-                                    let e = {};
-                                    is(e, t.style, t), r.style = { ...e,
-                                        ...r.style
+                        let u = (a ?? e6(t) ? function (t, e, i, n) {
+                            let r = (0, s.useMemo)(() => {
+                                let i = io();
+                                return eD(i, e, eL(n), t.transformTemplate, t.style), {
+                                    ...i.attrs,
+                                    style: {
+                                        ...i.style
                                     }
                                 }
-                                return r
-                            } : function(t, e) {
-                                let i, n, r = {},
-                                    o = (i = t.style || {}, is(n = {}, i, t), Object.assign(n, function({
-                                        transformTemplate: t
-                                    }, e) {
-                                        return (0, s.useMemo)(() => {
-                                            let i = ir();
-                                            return eV(i, e, t), Object.assign({}, i.vars, i.style)
-                                        }, [e])
-                                    }(t, e)), n);
-                                return t.drag && !1 !== t.dragListener && (r.draggable = !1, o.userSelect = o.WebkitUserSelect = o.WebkitTouchCallout = "none", o.touchAction = !0 === t.drag ? "none" : `pan-${"x"===t.drag?"y":"x"}`), void 0 === t.tabIndex && (t.onTap || t.onTapStart || t.whileTap) && (r.tabIndex = 0), r.style = o, r
-                            })(e, n, r, t),
-                            h = function(t, e, i, n) {
+                            }, [e]);
+                            if (t.style) {
+                                let e = {};
+                                is(e, t.style, t), r.style = {
+                                    ...e,
+                                    ...r.style
+                                }
+                            }
+                            return r
+                        } : function (t, e) {
+                            let i, n, r = {},
+                                o = (i = t.style || {}, is(n = {}, i, t), Object.assign(n, function ({
+                                    transformTemplate: t
+                                }, e) {
+                                    return (0, s.useMemo)(() => {
+                                        let i = ir();
+                                        return eV(i, e, t), Object.assign({}, i.vars, i.style)
+                                    }, [e])
+                                }(t, e)), n);
+                            return t.drag && !1 !== t.dragListener && (r.draggable = !1, o.userSelect = o.WebkitUserSelect = o.WebkitTouchCallout = "none", o.touchAction = !0 === t.drag ? "none" : `pan-${"x" === t.drag ? "y" : "x"}`), void 0 === t.tabIndex && (t.onTap || t.onTapStart || t.whileTap) && (r.tabIndex = 0), r.style = o, r
+                        })(e, n, r, t),
+                            h = function (t, e, i, n) {
                                 let r = {};
-                                for (let s in t)("values" !== s || "object" != typeof t.values) && !Z(t[s]) && ((s.startsWith("on") ? !il(s) : n ?.(s) ?? !il(s)) || !0 === i && il(s) || !e && !il(s) || t.draggable && s.startsWith("onDrag")) && (r[s] = t[s]);
+                                for (let s in t) ("values" !== s || "object" != typeof t.values) && !Z(t[s]) && ((s.startsWith("on") ? !il(s) : n?.(s) ?? !il(s)) || !0 === i && il(s) || !e && !il(s) || t.draggable && s.startsWith("onDrag")) && (r[s] = t[s]);
                                 return r
                             }(e, "string" == typeof t, o, l),
-                            d = t !== s.Fragment ? { ...h,
+                            d = t !== s.Fragment ? {
+                                ...h,
                                 ...u,
                                 ref: i
                             } : {},
@@ -2021,13 +2042,14 @@
                                 children: c
                             } = e,
                             p = (0, s.useMemo)(() => Z(c) ? c.get() : c, [c]);
-                        return (0, s.createElement)(t, { ...d,
+                        return (0, s.createElement)(t, {
+                            ...d,
                             children: p
                         })
                     }(t, i, (u = g.visualElement, d = (0, s.useRef)(n), (0, s.useInsertionEffect)(() => {
                         d.current = n
                     }), c = (0, s.useRef)(null), (0, s.useCallback)(t => {
-                        t && y.onMount ?.(t), u && (t ? u.mount(t) : u.unmount());
+                        t && y.onMount?.(t), u && (t ? u.mount(t) : u.unmount());
                         let e = d.current;
                         if ("function" == typeof e)
                             if (t) {
@@ -2038,7 +2060,7 @@
                     }, [u])), y, m, e, a, f)]
                 })
             }
-            u.displayName = `motion.${"string"==typeof t?t:`create(${t.displayName??t.name??""})`}`;
+            u.displayName = `motion.${"string" == typeof t ? t : `create(${t.displayName ?? t.name ?? ""})`}`;
             let h = (0, s.forwardRef)(u);
             return h[iw] = t, h
         }
@@ -2046,21 +2068,22 @@
             constructor(t) {
                 this.isMounted = !1, this.node = t
             }
-            update() {}
+            update() { }
         }
 
         function iM(t, e, i) {
             return ih(t.getProps(), e, i, t)
         }
-        let iC = (t, e) => "exit" === e ? t.presenceContext ?.custom : void 0;
+        let iC = (t, e) => "exit" === e ? t.presenceContext?.custom : void 0;
 
         function iE(t, e) {
-            if (t ?.inherit && e) {
+            if (t?.inherit && e) {
                 let {
                     inherit: i,
                     ...n
                 } = t;
-                return { ...e,
+                return {
+                    ...e,
                     ...n
                 }
             }
@@ -2068,7 +2091,7 @@
         }
 
         function iY(t, e) {
-            let i = t ?.[e] ?? t ?.default ?? t;
+            let i = t?.[e] ?? t?.default ?? t;
             return i !== t ? iE(i, t) : i
         }
 
@@ -2090,17 +2113,17 @@
             return i => i > 0 ? e : t
         }
         let iX = (t, e, i) => {
-                let n = t * t,
-                    r = i * (e * e - n) + n;
-                return r < 0 ? 0 : Math.sqrt(r)
-            },
+            let n = t * t,
+                r = i * (e * e - n) + n;
+            return r < 0 ? 0 : Math.sqrt(r)
+        },
             iD = [x, v, M];
 
         function iB(t) {
             let e = iD.find(e => e.test(t));
             if (!e) return te(`'${t}' is not an animatable color. Use the equivalent color code instead.`), !1;
             let i = e.parse(t);
-            return e === M && (i = function({
+            return e === M && (i = function ({
                 hue: t,
                 saturation: e,
                 lightness: i,
@@ -2124,13 +2147,14 @@
             }(i)), i
         }
         let iL = (t, e) => {
-                let i = iB(t),
-                    n = iB(e);
-                if (!i || !n) return iR(t, e);
-                let r = { ...i
-                };
-                return t => (r.red = iX(i.red, n.red, t), r.green = iX(i.green, n.green, t), r.blue = iX(i.blue, n.blue, t), r.alpha = ez(i.alpha, n.alpha, t), v.transform(r))
-            },
+            let i = iB(t),
+                n = iB(e);
+            if (!i || !n) return iR(t, e);
+            let r = {
+                ...i
+            };
+            return t => (r.red = iX(i.red, n.red, t), r.green = iX(i.green, n.green, t), r.blue = iX(i.blue, n.blue, t), r.alpha = ez(i.alpha, n.alpha, t), v.transform(r))
+        },
             iO = new Set(["none", "hidden"]);
 
         function i$(t, e) {
@@ -2152,9 +2176,10 @@
         }
 
         function i_(t, e) {
-            let i = { ...t,
-                    ...e
-                },
+            let i = {
+                ...t,
+                ...e
+            },
                 n = {};
             for (let r in i) void 0 !== t[r] && void 0 !== e[r] && (n[r] = iF(t[r])(t[r], e[r]));
             return t => {
@@ -2163,33 +2188,33 @@
             }
         }
         let iU = (t, e) => {
-                let i = D.createTransformer(e),
-                    n = R(t),
-                    r = R(e);
-                if (!(n.indexes.var.length === r.indexes.var.length && n.indexes.color.length === r.indexes.color.length && n.indexes.number.length >= r.indexes.number.length)) return te(`Complex values '${t}' and '${e}' too different to mix. Ensure all colors are of the same type, and that each contains the same quantity of number and color values. Falling back to instant transition.`), iR(t, e);
-                if (iO.has(t) && !r.values.length || iO.has(e) && !n.values.length) return iO.has(t) ? i => i <= 0 ? t : e : i => i >= 1 ? e : t;
-                return iV(iN(function(t, e) {
-                    let i = [],
-                        n = {
-                            color: 0,
-                            var: 0,
-                            number: 0
-                        };
-                    for (let r = 0; r < e.values.length; r++) {
-                        let s = e.types[r],
-                            o = t.indexes[s][n[s]],
-                            a = t.values[o] ?? 0;
-                        i[r] = a, n[s]++
-                    }
-                    return i
-                }(n, r), r.values), i)
-            },
+            let i = D.createTransformer(e),
+                n = R(t),
+                r = R(e);
+            if (!(n.indexes.var.length === r.indexes.var.length && n.indexes.color.length === r.indexes.color.length && n.indexes.number.length >= r.indexes.number.length)) return te(`Complex values '${t}' and '${e}' too different to mix. Ensure all colors are of the same type, and that each contains the same quantity of number and color values. Falling back to instant transition.`), iR(t, e);
+            if (iO.has(t) && !r.values.length || iO.has(e) && !n.values.length) return iO.has(t) ? i => i <= 0 ? t : e : i => i >= 1 ? e : t;
+            return iV(iN(function (t, e) {
+                let i = [],
+                    n = {
+                        color: 0,
+                        var: 0,
+                        number: 0
+                    };
+                for (let r = 0; r < e.values.length; r++) {
+                    let s = e.types[r],
+                        o = t.indexes[s][n[s]],
+                        a = t.values[o] ?? 0;
+                    i[r] = a, n[s]++
+                }
+                return i
+            }(n, r), r.values), i)
+        },
             iW = /^(-?(?:\d+(?:\.\d*)?|\.\d+))([a-z%]*)$/iu;
 
         function iz(t, e, i) {
             if ("number" == typeof t && "number" == typeof e && "number" == typeof i) return ez(t, e, i);
             if ("string" == typeof t && "string" == typeof e) {
-                let i = function(t, e) {
+                let i = function (t, e) {
                     let i = iW.exec(t);
                     if (!i) return;
                     let n = iW.exec(e);
@@ -2217,7 +2242,7 @@
         function iq(t, e = 50, i = 2e4, n) {
             let r = 0,
                 s = t.next(r);
-            for (n ?.push(s.value); !s.done && r < i;) r += e, s = t.next(r), n ?.push(s.value);
+            for (n?.push(s.value); !s.done && r < i;) r += e, s = t.next(r), n?.push(s.value);
             return r >= i ? 1 / 0 : r
         }
 
@@ -2225,7 +2250,8 @@
             let {
                 keyframes: n,
                 velocity: r
-            } = t, s = n && n[n.length - 1] - n[0], o = i({ ...t,
+            } = t, s = n && n[n.length - 1] - n[0], o = i({
+                ...t,
                 velocity: r && s ? r * e / s : r,
                 keyframes: [0, e]
             }), a = Math.min(iq(o), 2e4);
@@ -2267,10 +2293,10 @@
 
         function i8(t = .3, e = .3) {
             let i, n, r, s = "object" != typeof t ? {
-                    visualDuration: t,
-                    keyframes: [0, 1],
-                    bounce: e
-                } : t,
+                visualDuration: t,
+                keyframes: [0, 1],
+                bounce: e
+            } : t,
                 o = s.keyframes[0],
                 a = s.keyframes[s.keyframes.length - 1],
                 u = {
@@ -2284,11 +2310,12 @@
                     duration: p,
                     isResolvedFromDuration: m,
                     isTimeDefined: f
-                } = function(t) {
+                } = function (t) {
                     let e = i4(t.stiffness),
                         i = i4(t.damping, !0),
                         n = i4(t.mass),
-                        r = { ...t,
+                        r = {
+                            ...t,
                             stiffness: e ?? 100,
                             damping: i ?? 10,
                             mass: n ?? 1,
@@ -2300,7 +2327,7 @@
                             let e = i0(t.bounce || 0),
                                 i = 2 * Math.PI / (1.2 * t.visualDuration) * i1(e, 2 * Math.PI / 1.2);
                             r.stiffness = i * i, r.damping = 2 * e * Math.sqrt(r.stiffness)
-                        } else Object.assign(r, function({
+                        } else Object.assign(r, function ({
                             duration: t = 800,
                             bounce: e = .3
                         }) {
@@ -2330,7 +2357,8 @@
                         i2(r.stiffness) && i2(r.damping, !0) || (r.stiffness = 100, r.damping = 10)
                     }
                     return r
-                }({ ...s
+                }({
+                    ...s
                 }),
                 g = t => f ? 0 : -(t / 1e3),
                 y = d / (2 * Math.sqrt(h * c)),
@@ -2405,7 +2433,7 @@
                             e = et(e => k.next(t * e).value, t, 30);
                         return t + "ms " + e
                     },
-                    toTransition: () => {}
+                    toTransition: () => { }
                 };
             return k
         }
@@ -2470,7 +2498,7 @@
                 let s = 0,
                     o = 1,
                     a = r;
-                for (let e = 0;; e++) {
+                for (let e = 0; ; e++) {
                     a >= s && a <= o || (a = (s + o) / 2);
                     let n = i9(a, t, i) - r;
                     if (n * n < 1e-28 || 40 === e) break;
@@ -2528,16 +2556,16 @@
             if (2 === s && e[0] === e[1]) return () => e[1];
             let o = t[0] === t[1];
             t[0] > t[s - 1] && (t = [...t].reverse(), e = [...e].reverse());
-            let a = function(t, e, i) {
-                    let n = [],
-                        r = i || tY.mix || iz,
-                        s = t.length - 1;
-                    for (let i = 0; i < s; i++) {
-                        let s = r(t[i], t[i + 1]);
-                        e && (s = iV(Array.isArray(e) ? e[i] || tE : e, s)), n.push(s)
-                    }
-                    return n
-                }(e, n, r),
+            let a = function (t, e, i) {
+                let n = [],
+                    r = i || tY.mix || iz,
+                    s = t.length - 1;
+                for (let i = 0; i < s; i++) {
+                    let s = r(t[i], t[i + 1]);
+                    e && (s = iV(Array.isArray(e) ? e[i] || tE : e, s)), n.push(s)
+                }
+                return n
+            }(e, n, r),
                 u = a.length,
                 h = i => {
                     if (o && i < t[0]) return e[0];
@@ -2619,7 +2647,7 @@
                     let {
                         motionValue: t
                     } = this.options;
-                    t && t.updatedAt !== t4.now() && this.tick(t4.now()), this.isStopped = !0, "idle" !== this.state && (this.teardown(), this.options.onStop ?.())
+                    t && t.updatedAt !== t4.now() && this.tick(t4.now()), this.isStopped = !0, "idle" !== this.state && (this.teardown(), this.options.onStop?.())
                 }, this.options = t, this.initAnimation(), this.play(), !1 === t.autoplay && this.pause(), t6(this, this.options)
             }
             initAnimation() {
@@ -2637,10 +2665,12 @@
                     keyframes: o
                 } = t, a = e || nx;
                 a !== nx && "number" != typeof o[0] && (this.mixKeyframes = iV(nS, iz(o[0], o[1])), o = [0, 100]);
-                let l = a(o === t.keyframes ? t : { ...t,
+                let l = a(o === t.keyframes ? t : {
+                    ...t,
                     keyframes: o
                 });
-                "mirror" === r && (this.mirroredGenerator = a({ ...t,
+                "mirror" === r && (this.mirroredGenerator = a({
+                    ...t,
                     keyframes: [...o].reverse(),
                     velocity: -s
                 })), null === l.calculatedDuration && (l.calculatedDuration = iq(l));
@@ -2691,12 +2721,12 @@
             }
             generate(t, e) {
                 let i, {
-                        generator: n,
-                        totalDuration: r,
-                        mixKeyframes: s,
-                        mirroredGenerator: o,
-                        resolvedDuration: a
-                    } = this,
+                    generator: n,
+                    totalDuration: r,
+                    mixKeyframes: s,
+                    mirroredGenerator: o,
+                    resolvedDuration: a
+                } = this,
                     {
                         keyframes: u,
                         repeat: h,
@@ -2747,7 +2777,7 @@
                     driver: t = iH,
                     startTime: e
                 } = this.options;
-                this.driver || (this.driver = t(t => this.tick(t))), this.options.onPlay ?.();
+                this.driver || (this.driver = t(t => this.tick(t))), this.options.onPlay?.();
                 let i = this.driver.now();
                 "finished" === this.state ? (this.updateFinished(), this.startTime = i) : null !== this.holdTime ? this.startTime = i - this.holdTime / (this.playbackSpeed || 1) : this.startTime || (this.startTime = e ?? (this.pendingStartTime = i)), "finished" === this.state && this.speed < 0 && (this.startTime += this.calculatedDuration), this.holdTime = null, this.state = "running", this.driver.start()
             }
@@ -2758,10 +2788,10 @@
                 "running" !== this.state && this.play(), this.state = "finished", this.holdTime = null
             }
             finish() {
-                this.notifyFinished(), this.teardown(), this.state = "finished", this.options.onComplete ?.()
+                this.notifyFinished(), this.teardown(), this.state = "finished", this.options.onComplete?.()
             }
             cancel() {
-                this.holdTime = null, this.startTime = 0, this.tick(0), this.teardown(), this.options.onCancel ?.()
+                this.holdTime = null, this.startTime = 0, this.tick(0), this.teardown(), this.options.onCancel?.()
             }
             teardown() {
                 this.state = "idle", this.stopDriver(), this.startTime = this.holdTime = null
@@ -2773,7 +2803,7 @@
                 return this.startTime = 0, this.tick(t, !0)
             }
             attachTimeline(t) {
-                return this.options.allowFlatten && (this.options.type = "keyframes", this.options.ease = "linear", this.initAnimation()), this.driver ?.stop(), t.observe(this)
+                return this.options.allowFlatten && (this.options.type = "keyframes", this.options.ease = "linear", this.initAnimation()), this.driver?.stop(), t.observe(this)
             }
         }
         let nM = {
@@ -2799,7 +2829,8 @@
                         element: s,
                         ...o
                     } = this.options;
-                    this.sampler = new nP({ ...o,
+                    this.sampler = new nP({
+                        ...o,
                         autoplay: !1
                     }), this.sampler.stop()
                 }
@@ -2839,20 +2870,20 @@
                 for (let r = 0; r <= i; r++) n.push(ez(t, e, r / i));
                 return n
             },
-            nD = (t, e) => t.latestValues ? t.latestValues[e] : t.getValue(e) ?.get();
+            nD = (t, e) => t.latestValues ? t.latestValues[e] : t.getValue(e)?.get();
         class nB extends nP {
             constructor(t) {
                 let e = t.motionValue.owner.current,
                     {
                         driver: i = iH
                     } = t,
-                    n = function(t) {
+                    n = function (t) {
                         let e = t.motionValue.owner,
                             {
                                 onUpdate: i,
                                 transformTemplate: n
                             } = e.getProps();
-                        return !t.isHandoff && !i && !t.hasOnUpdate && !n && "inertia" !== t.type && "none" === (nD(e, "transform") || "none") && !nD(e, "pathRotation") && !e.projection ?.isProjecting()
+                        return !t.isHandoff && !i && !t.hasOnUpdate && !n && "inertia" !== t.type && "none" === (nD(e, "transform") || "none") && !nD(e, "pathRotation") && !e.projection?.isProjecting()
                     }(t);
                 t.driver = t => {
                     let n = i(t);
@@ -2866,7 +2897,7 @@
                         stop: () => {
                             n.stop();
                             let t = eo.get(e);
-                            t ?.schedule(!t.isFinishing)
+                            t?.schedule(!t.isFinishing)
                         }
                     }
                 }, super(t), this.canAccelerate = n;
@@ -2882,7 +2913,7 @@
                 return t = this.options.motionValue.owner.current, eo.get(t)
             }
             get js() {
-                return this.driver ?.js
+                return this.driver?.js
             }
             get name() {
                 return this.options.name
@@ -2903,7 +2934,7 @@
                     group: t,
                     state: e
                 } = this;
-                return t ?.tracks.has(this) && !t.isJS && this.canAccelerate && ("running" === e || "paused" === e)
+                return t?.tracks.has(this) && !t.isJS && this.canAccelerate && ("running" === e || "paused" === e)
             }
             liveValue() {
                 return this.isAccelerated() ? this.sampleAt(t4.now()) : void 0
@@ -3043,126 +3074,127 @@
                         d = {
                             transform: h
                         };
-                    return l || (d.offset = u.map(t => nf(i, n, t))), h.every(t => t === h[0]) && (f(m(i, s)), d = null), e.animate(d, { ...r,
+                    return l || (d.offset = u.map(t => nf(i, n, t))), h.every(t => t === h[0]) && (f(m(i, s)), d = null), e.animate(d, {
+                        ...r,
                         duration: n - i,
                         easing: l || "linear"
                     })
                 }, w = () => {
                     let p = t4.now();
                     if (b.isJS || (b.isFinishing = !0, i.forEach(e => {
-                            let [i, n] = e.timing();
-                            "running" === e.state && e.speed > 0 && !n && i <= p + 1 && (e.complete(), r[e.name] = nD(t, e.name), a.has(e) || (u = !0))
-                        }), b.isFinishing = !1), h = !1, i.forEach(({
-                            state: t
-                        }, e) => {
-                            ("idle" === t || "finished" === t) && i.delete(e)
-                        }), !i.size) {
+                        let [i, n] = e.timing();
+                        "running" === e.state && e.speed > 0 && !n && i <= p + 1 && (e.complete(), r[e.name] = nD(t, e.name), a.has(e) || (u = !0))
+                    }), b.isFinishing = !1), h = !1, i.forEach(({
+                        state: t
+                    }, e) => {
+                        ("idle" === t || "finished" === t) && i.delete(e)
+                    }), !i.size) {
                         eo.delete(e), b.isJS || g();
                         return
                     }
                     for (let t of i)
                         if (!t.canAccelerate) return b.demote(!0);
-                    b.isJS && (b.isJS = !1, u = !0, i.forEach(t => t.js ?.stop()));
+                    b.isJS && (b.isJS = !1, u = !0, i.forEach(t => t.js?.stop()));
                     let m = u,
                         f = d;
                     if (u = d = !1, m || !(t => {
-                            let e, n = 0;
-                            for (let r of i) {
-                                let i = a.get(r);
-                                if (!i) return !1;
-                                let [s, o, l] = i, u = r.at(t), h = 1 / 0 === r.timing()[0];
-                                if (l) {
-                                    if (h && u === s) continue;
-                                    return !1
-                                }
-                                let d = (u - s) / o,
-                                    c = h ? 0 : r.speed / o;
-                                if (void 0 === e) e = d, n = c;
-                                else if (Math.abs(d - e) > 1 || c !== n) return !1
+                        let e, n = 0;
+                        for (let r of i) {
+                            let i = a.get(r);
+                            if (!i) return !1;
+                            let [s, o, l] = i, u = r.at(t), h = 1 / 0 === r.timing()[0];
+                            if (l) {
+                                if (h && u === s) continue;
+                                return !1
                             }
-                            if (void 0 === e) return !0;
-                            if (!l.length) return !1;
-                            for (let {
-                                    offset: t,
-                                    end: i,
-                                    isDone: n
-                                } of l) {
-                                let r = e - t;
-                                if (i < 1 / 0 && (n ? r < i - 1 : r < 0 || r >= i)) return !1
-                            }
-                            for (let {
-                                    animation: i,
-                                    offset: r,
-                                    isDone: s
-                                } of l) {
-                                if (s) continue;
-                                let o = e - r;
-                                n ? (i.playbackRate = n, i.startTime = t - o / n) : (i.pause(), i.currentTime = o)
-                            }
-                            return !0
-                        })(p)) {
+                            let d = (u - s) / o,
+                                c = h ? 0 : r.speed / o;
+                            if (void 0 === e) e = d, n = c;
+                            else if (Math.abs(d - e) > 1 || c !== n) return !1
+                        }
+                        if (void 0 === e) return !0;
+                        if (!l.length) return !1;
+                        for (let {
+                            offset: t,
+                            end: i,
+                            isDone: n
+                        } of l) {
+                            let r = e - t;
+                            if (i < 1 / 0 && (n ? r < i - 1 : r < 0 || r >= i)) return !1
+                        }
+                        for (let {
+                            animation: i,
+                            offset: r,
+                            isDone: s
+                        } of l) {
+                            if (s) continue;
+                            let o = e - r;
+                            n ? (i.playbackRate = n, i.startTime = t - o / n) : (i.pause(), i.currentTime = o)
+                        }
+                        return !0
+                    })(p)) {
                         if (f) {
                             if (p - c < 100) return b.demote();
                             c = p
                         }
                         if (!(u => {
-                                let h = u,
-                                    d = 0,
-                                    c = 0,
-                                    p = [],
-                                    m = [],
-                                    f = new Set;
-                                for (let t of (n.clear(), a = new Map, i)) {
-                                    n.set(t.name, t);
-                                    let [e, i] = t.timing(), r = 1 / 0 === e;
-                                    if (a.set(t, [t.at(u), t.speed, r]), r) {
-                                        t.sync();
-                                        continue
-                                    }
-                                    if (t.speed < 0) return;
-                                    if (i) {
-                                        if (d) {
-                                            let t = (e - c) / i;
-                                            if (Math.abs(i - d) > 1 || Math.abs(t - Math.round(t)) * d > 1) return
-                                        } else d = i, c = e;
-                                        m.push(t)
-                                    } else f.add(e);
-                                    p.push(t), h = Math.max(h, e)
+                            let h = u,
+                                d = 0,
+                                c = 0,
+                                p = [],
+                                m = [],
+                                f = new Set;
+                            for (let t of (n.clear(), a = new Map, i)) {
+                                n.set(t.name, t);
+                                let [e, i] = t.timing(), r = 1 / 0 === e;
+                                if (a.set(t, [t.at(u), t.speed, r]), r) {
+                                    t.sync();
+                                    continue
                                 }
-                                r = {}, s = o.filter(e => {
-                                    if (n.has(e)) return !0;
-                                    let i = r[e] = nD(t, e);
-                                    return void 0 !== i && parseFloat(i) !== +!!e.startsWith("scale")
-                                }), g(!1);
-                                let v = !d && (t => {
-                                    let e;
-                                    for (let i of t) {
-                                        let t = i.tween();
-                                        if (!t || e ?.some((e, i) => i < 2 ? Math.abs(t[i] - e) > 1 : t[i] !== e)) return;
-                                        e = t
-                                    }
-                                    return e
-                                })(p);
-                                try {
-                                    if (v && v[1] > u) {
-                                        let [t, e, i] = v;
-                                        y(x(p, t, e, void 0, void 0, i), t - u, e - t)
-                                    } else h > u && (y(x(p, u, h), 0, h - u), f.forEach(t => t < h - 1 && y(e.animate(null, {
-                                        duration: t - u
-                                    }), 0, t - u)));
+                                if (t.speed < 0) return;
+                                if (i) {
                                     if (d) {
-                                        let t = c + Math.floor((h - c) / d) * d;
-                                        y(x(m, t, t + d, {
-                                            iterations: 1 / 0,
-                                            iterationStart: (h - t) / d,
-                                            fill: "forwards"
-                                        }, h), h - u)
-                                    }
-                                } catch {
-                                    return
+                                        let t = (e - c) / i;
+                                        if (Math.abs(i - d) > 1 || Math.abs(t - Math.round(t)) * d > 1) return
+                                    } else d = i, c = e;
+                                    m.push(t)
+                                } else f.add(e);
+                                p.push(t), h = Math.max(h, e)
+                            }
+                            r = {}, s = o.filter(e => {
+                                if (n.has(e)) return !0;
+                                let i = r[e] = nD(t, e);
+                                return void 0 !== i && parseFloat(i) !== +!!e.startsWith("scale")
+                            }), g(!1);
+                            let v = !d && (t => {
+                                let e;
+                                for (let i of t) {
+                                    let t = i.tween();
+                                    if (!t || e?.some((e, i) => i < 2 ? Math.abs(t[i] - e) > 1 : t[i] !== e)) return;
+                                    e = t
                                 }
-                                return l.length || g(), !0
-                            })(p)) return b.demote()
+                                return e
+                            })(p);
+                            try {
+                                if (v && v[1] > u) {
+                                    let [t, e, i] = v;
+                                    y(x(p, t, e, void 0, void 0, i), t - u, e - t)
+                                } else h > u && (y(x(p, u, h), 0, h - u), f.forEach(t => t < h - 1 && y(e.animate(null, {
+                                    duration: t - u
+                                }), 0, t - u)));
+                                if (d) {
+                                    let t = c + Math.floor((h - c) / d) * d;
+                                    y(x(m, t, t + d, {
+                                        iterations: 1 / 0,
+                                        iterationStart: (h - t) / d,
+                                        fill: "forwards"
+                                    }, h), h - u)
+                                }
+                            } catch {
+                                return
+                            }
+                            return l.length || g(), !0
+                        })(p)) return b.demote()
                     }
                 }, b = {
                     tracks: i,
@@ -3180,7 +3212,7 @@
                     demote(t) {
                         b.isJS || (i.forEach(e => {
                             e.isAccelerated() && e.sync(), t || (e.canAccelerate = !1)
-                        }), b.isJS = !0, a = new Map, g(), i.forEach(t => "running" === t.state && t.js ?.start()))
+                        }), b.isJS = !0, a = new Map, g(), i.forEach(t => "running" === t.state && t.js?.start()))
                     }
                 }, eo.set(e, b), b)).tracks.add(this), super.play())
             }
@@ -3201,13 +3233,13 @@
                 super.time = t
             }
             attachTimeline(t) {
-                return this.canAccelerate = !1, this.group ?.demote(!0), super.attachTimeline(t)
+                return this.canAccelerate = !1, this.group?.demote(!0), super.attachTimeline(t)
             }
         }
         class nL extends t3 {
             constructor(t) {
                 super(), this.stop = () => {
-                    this._animation && (this._animation.stop(), this.stopTimeline ?.()), this.keyframeResolver ?.cancel()
+                    this._animation && (this._animation.stop(), this.stopTimeline?.()), this.keyframeResolver?.cancel()
                 }, this.createdAt = t4.now();
                 let {
                     keyframes: e,
@@ -3216,8 +3248,8 @@
                     element: r
                 } = t;
                 t.autoplay ?? (t.autoplay = !0), t.delay ?? (t.delay = 0), t.type ?? (t.type = "keyframes"), t.repeat ?? (t.repeat = 0), t.repeatDelay ?? (t.repeatDelay = 0), t.repeatType ?? (t.repeatType = "loop");
-                let s = r ?.KeyframeResolver || t_;
-                this.keyframeResolver = new s(e, (e, i, n) => this.onKeyframesResolved(e, i, t, !n), i, n, r), this.keyframeResolver ?.scheduleResolve()
+                let s = r?.KeyframeResolver || t_;
+                this.keyframeResolver = new s(e, (e, i, n) => this.onKeyframesResolved(e, i, t, !n), i, n, r), this.keyframeResolver?.scheduleResolve()
             }
             onKeyframesResolved(t, e, i, n) {
                 let r;
@@ -3232,55 +3264,55 @@
                 } = i;
                 this.resolvedAt = t4.now();
                 let c = !0;
-                ! function(t, e, i, n) {
+                ! function (t, e, i, n) {
                     let r = t[0];
                     if (null === r) return !1;
                     if ("display" === e || "visibility" === e) return !0;
                     let s = t[t.length - 1],
                         o = nE(r, e),
                         a = nE(s, e);
-                    return o && a ? function(t) {
+                    return o && a ? function (t) {
                         let e = t[0];
                         if (1 === t.length) return !0;
                         for (let i = 0; i < t.length; i++)
                             if (t[i] !== e) return !0
-                    }(t) || ("spring" === i || en(i)) && n : (o !== a && te(`You are trying to animate ${e} from "${r}" to "${s}". "${o?s:r}" is not an animatable value.`), !1)
-                }(t, s, a, l) && (c = !1, (tY.instantAnimations || !u) && d ?.(t5(t, i, e)), t[0] = t[t.length - 1], nY(i), i.repeat = 0);
+                    }(t) || ("spring" === i || en(i)) && n : (o !== a && te(`You are trying to animate ${e} from "${r}" to "${s}". "${o ? s : r}" is not an animatable value.`), !1)
+                }(t, s, a, l) && (c = !1, (tY.instantAnimations || !u) && d?.(t5(t, i, e)), t[0] = t[t.length - 1], nY(i), i.repeat = 0);
                 let {
                     onComplete: p
                 } = i;
                 i.finalKeyframe = e, i.keyframes = t, i.onComplete = () => {
-                    p ?.(), this.notifyFinished()
+                    p?.(), this.notifyFinished()
                 };
-                let m = c && !h && function(t) {
-                        let {
-                            motionValue: e,
-                            name: i,
-                            repeatDelay: n,
-                            repeatType: r,
-                            damping: s,
-                            type: o,
-                            keyframes: a
-                        } = t;
-                        if (!i || !(es.has(i) || nV.has(i))) return !1;
-                        let l = e ?.owner ?.current;
-                        if (!(l instanceof HTMLElement) && !(l instanceof SVGElement)) return !1;
-                        let {
-                            onUpdate: u,
-                            transformTemplate: h
-                        } = e.owner.getProps();
-                        return nI() && (es.has(i) || nV.has(i) && function(t) {
-                            for (let e = 0; e < t.length; e++)
-                                if ("string" == typeof t[e] && nj.test(t[e])) return !0;
-                            return !1
-                        }(a)) && ("transform" !== i || !h) && !u && !n && "mirror" !== r && 0 !== s && "inertia" !== o
-                    }(i),
+                let m = c && !h && function (t) {
+                    let {
+                        motionValue: e,
+                        name: i,
+                        repeatDelay: n,
+                        repeatType: r,
+                        damping: s,
+                        type: o,
+                        keyframes: a
+                    } = t;
+                    if (!i || !(es.has(i) || nV.has(i))) return !1;
+                    let l = e?.owner?.current;
+                    if (!(l instanceof HTMLElement) && !(l instanceof SVGElement)) return !1;
+                    let {
+                        onUpdate: u,
+                        transformTemplate: h
+                    } = e.owner.getProps();
+                    return nI() && (es.has(i) || nV.has(i) && function (t) {
+                        for (let e = 0; e < t.length; e++)
+                            if ("string" == typeof t[e] && nj.test(t[e])) return !0;
+                        return !1
+                    }(a)) && ("transform" !== i || !h) && !u && !n && "mirror" !== r && 0 !== s && "inertia" !== o
+                }(i),
                     f = !m && (({
                         name: t,
                         motionValue: e
-                    }) => t && o.includes(t) && e ?.owner ?.current instanceof HTMLElement && nI() && t7())(i);
+                    }) => t && o.includes(t) && e?.owner?.current instanceof HTMLElement && nI() && t7())(i);
                 if (n && (m || f || this.resolvedAt !== this.createdAt) && (i.startTime ?? (i.startTime = nk(this.createdAt, this.resolvedAt))), m) {
-                    i.element = i.motionValue ?.owner ?.current;
+                    i.element = i.motionValue?.owner?.current;
                     try {
                         r = new nC(i)
                     } catch {
@@ -3293,13 +3325,13 @@
                 return this._animation ? this._animation.finished : super.finished
             }
             then(t, e) {
-                return this.finished.finally(t).then(() => {})
+                return this.finished.finally(t).then(() => { })
             }
             liveValue() {
-                return this._animation ?.liveValue ?.()
+                return this._animation?.liveValue?.()
             }
             get animation() {
-                return this._animation || (this.keyframeResolver ?.resume(), t$ = !0, tN(), tF(), t$ = !1), this._animation
+                return this._animation || (this.keyframeResolver?.resume(), t$ = !0, tN(), tF(), t$ = !1), this._animation
             }
             get duration() {
                 return this.animation.duration
@@ -3338,15 +3370,15 @@
                 this.animation.complete()
             }
             cancel() {
-                this._animation && this.animation.cancel(), this.keyframeResolver ?.cancel()
+                this._animation && this.animation.cancel(), this.keyframeResolver?.cancel()
             }
         }
         let nO = {
-                type: "spring",
-                stiffness: 500,
-                damping: 25,
-                restSpeed: 10
-            },
+            type: "spring",
+            stiffness: 500,
+            damping: 25,
+            restSpeed: 10
+        },
             n$ = {
                 type: "keyframes",
                 duration: .8
@@ -3381,7 +3413,7 @@
                     element: s ? void 0 : r,
                     hasOnUpdate: !!l.onUpdate
                 };
-                ! function(t) {
+                ! function (t) {
                     for (let e in t)
                         if (!nN.has(e)) return !0;
                     return !1
@@ -3394,7 +3426,7 @@
                     restSpeed: 10
                 } : nO : nF)(t, d)), d.duration && (d.duration = tz(d.duration)), d.repeatDelay && (d.repeatDelay = tz(d.repeatDelay)), void 0 !== d.from && (d.keyframes[0] = d.from);
                 let c = !1;
-                if (!1 !== d.type && (0 !== d.duration || d.repeatDelay) || (nY(d), 0 === d.delay && (c = !0)), (tY.instantAnimations || tY.skipAnimations || r ?.shouldSkipAnimations || l.skipAnimations) && (c = !0, nY(d), d.delay = 0), d.allowFlatten = !l.type && !l.ease, c && !s && void 0 !== e.get()) {
+                if (!1 !== d.type && (0 !== d.duration || d.repeatDelay) || (nY(d), 0 === d.delay && (c = !0)), (tY.instantAnimations || tY.skipAnimations || r?.shouldSkipAnimations || l.skipAnimations) && (c = !0, nY(d), d.delay = 0), d.allowFlatten = !l.type && !l.ease, c && !s && void 0 !== e.get()) {
                     let t = t5(d.keyframes, l);
                     if (void 0 !== t) return void tR.update(() => {
                         d.onUpdate(t), d.onComplete()
@@ -3415,22 +3447,22 @@
                 ...a
             } = e, l = t.getDefaultTransition();
             s = s ? iE(s, l) : l;
-            let u = s ?.reduceMotion,
-                h = s ?.skipAnimations;
+            let u = s?.reduceMotion,
+                h = s?.skipAnimations;
             n && (s = n);
             let d = [],
-                c = r && t.animationState ?.getState()[r],
-                p = s ?.path;
+                c = r && t.animationState?.getState()[r],
+                p = s?.path;
             for (let e in p && p.animateVisualElement(t, a, s, i, d), a) {
                 let n = t.getValue(e, t.latestValues[e] ?? null),
                     r = a[e];
-                if (void 0 === r || c && function({
-                        protectedKeys: t,
-                        needsAnimating: e
-                    }, i) {
-                        let n = i in t && !e[i];
-                        return e[i] = !1, n
-                    }(c, e)) continue;
+                if (void 0 === r || c && function ({
+                    protectedKeys: t,
+                    needsAnimating: e
+                }, i) {
+                    let n = i in t && !e[i];
+                    return e[i] = !1, n
+                }(c, e)) continue;
                 let o = {
                     delay: i,
                     ...iY(s || {}, e)
@@ -3459,15 +3491,16 @@
             }
             if (o) {
                 let e = () => tR.update(() => {
-                    o && function(t, e) {
+                    o && function (t, e) {
                         let {
                             transitionEnd: i = {},
                             transition: n = {},
                             ...r
                         } = iM(t, e) || {};
-                        for (let e in r = { ...r,
-                                ...i
-                            }) {
+                        for (let e in r = {
+                            ...r,
+                            ...i
+                        }) {
                             var s;
                             let i = Array.isArray(s = r[e]) ? s[s.length - 1] || 0 : s;
                             t.hasValue(e) ? t.getValue(e).set(i) : t.addValue(e, ed(i))
@@ -3488,7 +3521,7 @@
 
         function nH(t, e, i = {}) {
             let n = iM(t, e, iC(t, i.type)),
-                r = i.transitionOverride || (n ?.transition ?? (t.getDefaultTransition() || {})),
+                r = i.transitionOverride || (n?.transition ?? (t.getDefaultTransition() || {})),
                 s = () => Promise.all(n ? nW(t, n, i) : []),
                 o = (n = 0) => {
                     let {
@@ -3498,8 +3531,9 @@
                         staggerChildren: a,
                         staggerDirection: l
                     } = r, u = [];
-                    return s ?.forEach(t => {
-                        t.notify("AnimationStart", e), u.push(nH(t, e, { ...i,
+                    return s?.forEach(t => {
+                        t.notify("AnimationStart", e), u.push(nH(t, e, {
+                            ...i,
                             delay: n + ("function" == typeof o ? 0 : o) + nz(s, t, o, a, l)
                         }).then(() => t.notify("AnimationComplete", e)))
                     }), Promise.all(u)
@@ -3568,7 +3602,7 @@
         }
 
         function n8(t, e, i, n) {
-            n4(t.x, e.x, i.x, n ?.x), n4(t.y, e.y, i.y, n ?.y)
+            n4(t.x, e.x, i.x, n?.x), n4(t.y, e.y, i.y, n?.y)
         }
         let n6 = t => "object" == typeof t && null !== t;
 
@@ -3582,7 +3616,7 @@
             if ("string" == typeof t) {
                 let n = document;
                 e && (n = e.current);
-                let r = i ?.[t] ?? n.querySelectorAll(t);
+                let r = i?.[t] ?? n.querySelectorAll(t);
                 return r ? Array.from(r) : []
             }
             return Array.from(t).filter(t => null != t)
@@ -3596,7 +3630,7 @@
             target: t,
             borderBoxSize: e
         }) {
-            rt.get(t) ?.forEach(i => {
+            rt.get(t)?.forEach(i => {
                 i(t, {
                     get width() {
                         return ri(t, e)
@@ -3629,11 +3663,11 @@
                 ro.delete(t), ro.size || "function" != typeof n || (window.removeEventListener("resize", n), n = void 0)
             }) : (!i && "u" > typeof ResizeObserver && (i = new ResizeObserver(rs)), (r = n7(t)).forEach(t => {
                 let n = rt.get(t);
-                n || (n = new Set, rt.set(t, n)), n.add(e), i ?.observe(t)
+                n || (n = new Set, rt.set(t, n)), n.add(e), i?.observe(t)
             }), () => {
                 r.forEach(t => {
                     let n = rt.get(t);
-                    n ?.delete(e), n ?.size || i ?.unobserve(t)
+                    n?.delete(e), n?.size || i?.unobserve(t)
                 })
             })
         }
@@ -3654,8 +3688,8 @@
             return nQ(t, e, t => rh(t) && i(t, rd(t)), n)
         }
         let rp = ({
-                current: t
-            }) => t ? t.ownerDocument.defaultView : null,
+            current: t
+        }) => t ? t.ownerDocument.defaultView : null,
             rm = (t, e) => Math.abs(t - e),
             rf = new Set(["auto", "scroll"]);
         class rg {
@@ -3667,44 +3701,45 @@
                 element: o
             } = {}) {
                 if (this.startEvent = null, this.lastMoveEvent = null, this.lastMoveEventInfo = null, this.lastRawMoveEventInfo = null, this.handlers = {}, this.contextWindow = window, this.scrollPositions = new Map, this.removeScrollListeners = null, this.onElementScroll = t => {
-                        this.handleScroll(t.target)
-                    }, this.onWindowScroll = () => {
-                        this.handleScroll(window)
-                    }, this.updatePoint = () => {
-                        var t, e;
-                        if (!(this.lastMoveEvent && this.lastMoveEventInfo)) return;
-                        this.hasPendingMove = !1, this.lastRawMoveEventInfo && (this.lastMoveEventInfo = ry(this.lastRawMoveEventInfo, this.transformPagePoint));
-                        let i = rx(this.lastMoveEventInfo, this.history),
-                            n = null !== this.startEvent,
-                            r = (t = i.offset, e = {
-                                x: 0,
-                                y: 0
-                            }, Math.sqrt(rm(t.x, e.x) ** 2 + rm(t.y, e.y) ** 2) >= this.distanceThreshold);
-                        if (!n && !r) return;
-                        let {
-                            point: s
-                        } = i;
-                        this.history.push({ ...s,
-                            timestamp: t4.now()
-                        });
-                        let {
-                            onStart: o,
-                            onMove: a
-                        } = this.handlers;
-                        n || (o && o(this.lastMoveEvent, i), this.startEvent = this.lastMoveEvent), a && a(this.lastMoveEvent, i)
-                    }, this.handlePointerMove = (t, e) => {
-                        this.lastMoveEvent = t, this.lastRawMoveEventInfo = e, this.lastMoveEventInfo = ry(e, this.transformPagePoint), this.hasPendingMove = !0, tR.update(this.updatePoint, !0)
-                    }, this.handlePointerUp = (t, e) => {
-                        this.hasPendingMove && this.updatePoint(), this.end();
-                        let {
-                            onEnd: i,
-                            onSessionEnd: n,
-                            resumeAnimation: r
-                        } = this.handlers;
-                        if ((this.dragSnapToOrigin || !this.startEvent) && r && r(), !(this.lastMoveEvent && this.lastMoveEventInfo)) return;
-                        let s = rx("pointercancel" === t.type ? this.lastMoveEventInfo : ry(e, this.transformPagePoint), this.history);
-                        this.startEvent && i && i(t, s), n && n(t, s)
-                    }, !rh(t)) return;
+                    this.handleScroll(t.target)
+                }, this.onWindowScroll = () => {
+                    this.handleScroll(window)
+                }, this.updatePoint = () => {
+                    var t, e;
+                    if (!(this.lastMoveEvent && this.lastMoveEventInfo)) return;
+                    this.hasPendingMove = !1, this.lastRawMoveEventInfo && (this.lastMoveEventInfo = ry(this.lastRawMoveEventInfo, this.transformPagePoint));
+                    let i = rx(this.lastMoveEventInfo, this.history),
+                        n = null !== this.startEvent,
+                        r = (t = i.offset, e = {
+                            x: 0,
+                            y: 0
+                        }, Math.sqrt(rm(t.x, e.x) ** 2 + rm(t.y, e.y) ** 2) >= this.distanceThreshold);
+                    if (!n && !r) return;
+                    let {
+                        point: s
+                    } = i;
+                    this.history.push({
+                        ...s,
+                        timestamp: t4.now()
+                    });
+                    let {
+                        onStart: o,
+                        onMove: a
+                    } = this.handlers;
+                    n || (o && o(this.lastMoveEvent, i), this.startEvent = this.lastMoveEvent), a && a(this.lastMoveEvent, i)
+                }, this.handlePointerMove = (t, e) => {
+                    this.lastMoveEvent = t, this.lastRawMoveEventInfo = e, this.lastMoveEventInfo = ry(e, this.transformPagePoint), this.hasPendingMove = !0, tR.update(this.updatePoint, !0)
+                }, this.handlePointerUp = (t, e) => {
+                    this.hasPendingMove && this.updatePoint(), this.end();
+                    let {
+                        onEnd: i,
+                        onSessionEnd: n,
+                        resumeAnimation: r
+                    } = this.handlers;
+                    if ((this.dragSnapToOrigin || !this.startEvent) && r && r(), !(this.lastMoveEvent && this.lastMoveEventInfo)) return;
+                    let s = rx("pointercancel" === t.type ? this.lastMoveEventInfo : ry(e, this.transformPagePoint), this.history);
+                    this.startEvent && i && i(t, s), n && n(t, s)
+                }, !rh(t)) return;
                 this.dragSnapToOrigin = r, this.handlers = e, this.transformPagePoint = i, this.distanceThreshold = s, this.contextWindow = n || window;
                 let a = ry(rd(t), this.transformPagePoint),
                     {
@@ -3713,7 +3748,8 @@
                     {
                         timestamp: u
                     } = tI;
-                this.history = [{ ...l,
+                this.history = [{
+                    ...l,
                     timestamp: u
                 }];
                 let {
@@ -3791,7 +3827,7 @@
                 point: t,
                 delta: rv(t, rw(e)),
                 offset: rv(t, e[0]),
-                velocity: function(t) {
+                velocity: function (t) {
                     if (t.length < 2) return {
                         x: 0,
                         y: 0
@@ -3866,24 +3902,24 @@
                 } = this.visualElement;
                 if (n && !1 === n.isPresent) return;
                 let r = t => {
-                        e && this.snapToCursor(t), this.stopAnimation()
-                    },
+                    e && this.snapToCursor(t), this.stopAnimation()
+                },
                     s = (t, e) => {
                         let {
                             drag: i,
                             dragPropagation: n,
                             onDragStart: r
                         } = this.getProps();
-                        if (i && !n && (this.openDragLock && this.openDragLock(), this.openDragLock = function(t) {
-                                if ("x" === t || "y" === t)
-                                    if (n0[t]) return null;
-                                    else return n0[t] = !0, () => {
-                                        n0[t] = !1
-                                    };
-                                return n0.x || n0.y ? null : (n0.x = n0.y = !0, () => {
-                                    n0.x = n0.y = !1
-                                })
-                            }(i), !this.openDragLock)) return;
+                        if (i && !n && (this.openDragLock && this.openDragLock(), this.openDragLock = function (t) {
+                            if ("x" === t || "y" === t)
+                                if (n0[t]) return null;
+                                else return n0[t] = !0, () => {
+                                    n0[t] = !1
+                                };
+                            return n0.x || n0.y ? null : (n0.x = n0.y = !0, () => {
+                                n0.x = n0.y = !1
+                            })
+                        }(i), !this.openDragLock)) return;
                         this.latestPointerEvent = t, this.latestPanInfo = e, this.isDragging = !0, this.currentDirection = null, this.resolveConstraints(), this.visualElement.projection && (this.visualElement.projection.isAnimationBlocked = !0, this.visualElement.projection.target = void 0), nJ(t => {
                             let e = this.getAxisMotionValue(t).get() || 0;
                             if (T.test(e)) {
@@ -3915,7 +3951,7 @@
                             offset: o
                         } = e;
                         if (n && null === this.currentDirection) {
-                            this.currentDirection = function(t, e = 10) {
+                            this.currentDirection = function (t, e = 10) {
                                 let i = null;
                                 return Math.abs(t.y) > e ? i = "y" : Math.abs(t.x) > e && (i = "x"), i
                             }(o), null !== this.currentDirection && r && r(this.currentDirection);
@@ -3988,7 +4024,7 @@
                 if (!i || !rC(t, n, this.currentDirection)) return;
                 let r = this.getAxisMotionValue(t),
                     s = this.originPoint[t] + i[t];
-                this.constraints && this.constraints[t] && (s = function(t, {
+                this.constraints && this.constraints[t] && (s = function (t, {
                     min: e,
                     max: i
                 }, n) {
@@ -3999,8 +4035,8 @@
                 let {
                     dragConstraints: t,
                     dragElastic: e
-                } = this.getProps(), i = this.visualElement.projection && !this.visualElement.projection.layout ? this.visualElement.projection.measure(!1) : this.visualElement.projection ?.layout, n = this.constraints;
-                t && ik(t) ? this.constraints || (this.constraints = this.resolveRefConstraints()) : t && i ? this.constraints = function(t, {
+                } = this.getProps(), i = this.visualElement.projection && !this.visualElement.projection.layout ? this.visualElement.projection.measure(!1) : this.visualElement.projection?.layout, n = this.constraints;
+                t && ik(t) ? this.constraints || (this.constraints = this.resolveRefConstraints()) : t && i ? this.constraints = function (t, {
                     top: e,
                     left: i,
                     bottom: n,
@@ -4010,7 +4046,7 @@
                         x: rb(t.x, i, r),
                         y: rb(t.y, e, n)
                     }
-                }(i.layoutBox, t) : this.constraints = !1, this.elastic = function(t = .35) {
+                }(i.layoutBox, t) : this.constraints = !1, this.elastic = function (t = .35) {
                     return !1 === t ? t = 0 : !0 === t && (t = .35), {
                         x: rk(t, "left", "right"),
                         y: rk(t, "top", "bottom")
@@ -4035,19 +4071,19 @@
                 } = this.visualElement;
                 if (!r || !r.layout) return !1;
                 r.root && (r.root.scroll = void 0, r.root.updateScroll());
-                let s = function(t, e, i) {
-                        let n = e2(t, i),
-                            {
-                                scroll: r
-                            } = e;
-                        return r && (e0(n.x, r.offset.x), e0(n.y, r.offset.y)), n
-                    }(n, r.root, this.visualElement.getTransformPagePoint()),
+                let s = function (t, e, i) {
+                    let n = e2(t, i),
+                        {
+                            scroll: r
+                        } = e;
+                    return r && (e0(n.x, r.offset.x), e0(n.y, r.offset.y)), n
+                }(n, r.root, this.visualElement.getTransformPagePoint()),
                     o = (t = r.layout.layoutBox, {
                         x: rT(t.x, s.x),
                         y: rT(t.y, s.y)
                     });
                 if (i) {
-                    let t = i(function({
+                    let t = i(function ({
                         x: t,
                         y: e
                     }) {
@@ -4112,7 +4148,7 @@
                 } = this.getProps(), n = {
                     x: t,
                     y: e
-                }, r = this.visualElement.getTransformPagePoint() ?.(n) || n, s = this.visualElement.measureViewportBox();
+                }, r = this.visualElement.getTransformPagePoint()?.(n) || n, s = this.visualElement.measureViewportBox();
                 nJ(t => {
                     if (!rC(t, i, this.currentDirection)) return;
                     let e = this.getAxisMotionValue(t),
@@ -4209,7 +4245,8 @@
                         dragElastic: s = .35,
                         dragMomentum: o = !0
                     } = t;
-                return { ...t,
+                return {
+                    ...t,
                     drag: e,
                     dragDirectionLock: i,
                     dragPropagation: n,
@@ -4235,8 +4272,8 @@
             return (!0 === e || e === t) && (null === i || i === t)
         }
         let rE = t => (e, i) => {
-                t && tR.update(() => t(e, i), !1, !0)
-            },
+            t && tR.update(() => t(e, i), !1, !0)
+        },
             rY = {
                 hasAnimatedSinceResize: !0,
                 hasEverUpdated: !1
@@ -4255,7 +4292,8 @@
                 } = t;
                 r && (e.group && e.group.add(r), i && i.register && n && i.register(r), rV && r.root.didUpdate(), r.addEventListener("animationComplete", () => {
                     this.safeToRemove()
-                }), r.setOptions({ ...r.options,
+                }), r.setOptions({
+                    ...r.options,
                     layoutDependency: this.props.layoutDependency,
                     onExitComplete: () => this.safeToRemove()
                 })), rY.hasEverUpdated = !0
@@ -4269,7 +4307,8 @@
                 } = this.props, {
                     projection: s
                 } = i;
-                return s && (s.isPresent = r, t.layoutDependency !== e && s.setOptions({ ...s.options,
+                return s && (s.isPresent = r, t.layoutDependency !== e && s.setOptions({
+                    ...s.options,
                     layoutDependency: e
                 }), rV = !0, n || t.layoutDependency !== e || void 0 === e || t.isPresent !== r ? s.willUpdate() : this.safeToRemove(), t.isPresent !== r && (r ? s.promote() : s.relegate() || tR.postRender(() => {
                     let t = s.getStack();
@@ -4309,7 +4348,7 @@
         }
 
         function rR(t) {
-            let [e, i] = function(t = !0) {
+            let [e, i] = function (t = !0) {
                 let e = (0, s.useContext)(id);
                 if (null === e) return [!0, null];
                 let {
@@ -4323,7 +4362,8 @@
                 let a = (0, s.useCallback)(() => t && n && n(o), [o, n, t]);
                 return !i && n ? [!1, a] : [!0]
             }(), n = (0, rj.useContext)(e9);
-            return (0, r.jsx)(rI, { ...t,
+            return (0, r.jsx)(rI, {
+                ...t,
                 layoutGroup: n,
                 switchLayoutGroup: (0, rj.useContext)(iT),
                 isPresent: e,
@@ -4367,7 +4407,7 @@
         }
 
         function rq(t, e, [i, n, r], s, o) {
-            ! function(t, e = 0, i = 1, n = .5, r, s = t, o = t) {
+            ! function (t, e = 0, i = 1, n = .5, r, s = t, o = t) {
                 if (T.test(e) && (e = parseFloat(e), e = ez(o.min, o.max, e / 100) - o.min), "number" != typeof e) return;
                 let a = ez(s.min, s.max, n);
                 t === s && (a -= e), t.min = rH(t.min, e, i, a, r), t.max = rH(t.max, e, i, a, r)
@@ -4430,7 +4470,7 @@
             relegate(t) {
                 for (let e = this.members.indexOf(t) - 1; e >= 0; e--) {
                     let t = this.members[e];
-                    if (!1 !== t.isPresent && t.instance ?.isConnected !== !1) return this.promote(t), !0
+                    if (!1 !== t.isPresent && t.instance?.isConnected !== !1) return this.promote(t), !0
                 }
                 return !1
             }
@@ -4443,19 +4483,19 @@
                     } = i.options, {
                         layoutDependency: r
                     } = t.options;
-                    (void 0 === n || n !== r) && (t.resumeFrom = i, e && (i.preserveOpacity = !0), i.snapshot && (t.snapshot = i.snapshot, t.snapshot.latestValues = i.animationValues || i.latestValues), t.root ?.isUpdating && (t.isLayoutDirty = !0)), !1 === t.options.crossfade && i.hide()
+                    (void 0 === n || n !== r) && (t.resumeFrom = i, e && (i.preserveOpacity = !0), i.snapshot && (t.snapshot = i.snapshot, t.snapshot.latestValues = i.animationValues || i.latestValues), t.root?.isUpdating && (t.isLayoutDirty = !0)), !1 === t.options.crossfade && i.hide()
                 }
             }
             exitAnimationComplete() {
                 this.members.forEach(t => {
-                    t.options.onExitComplete ?.(), t.resumingFrom ?.options.onExitComplete ?.()
+                    t.options.onExitComplete?.(), t.resumingFrom?.options.onExitComplete?.()
                 })
             }
             scheduleRender() {
                 this.members.forEach(t => t.instance && t.scheduleRender(!1))
             }
             removeLeadSnapshot() {
-                this.lead ?.snapshot && (this.lead.snapshot = void 0)
+                this.lead?.snapshot && (this.lead.snapshot = void 0)
             }
         }
 
@@ -4463,18 +4503,19 @@
             return e.max === e.min ? 0 : t / (e.max - e.min) * 100
         }
         let r6 = {
-                correct: (t, e) => {
-                    if (!e.target) return t;
-                    if ("string" == typeof t)
-                        if (!k.test(t)) return t;
-                        else t = parseFloat(t);
-                    let i = r8(t, e.target.x),
-                        n = r8(t, e.target.y);
-                    return `${i}% ${n}%`
-                }
-            },
+            correct: (t, e) => {
+                if (!e.target) return t;
+                if ("string" == typeof t)
+                    if (!k.test(t)) return t;
+                    else t = parseFloat(t);
+                let i = r8(t, e.target.x),
+                    n = r8(t, e.target.y);
+                return `${i}% ${n}%`
+            }
+        },
             r9 = {
-                borderRadius: { ...r6,
+                borderRadius: {
+                    ...r6,
                     applyTo: [...rD]
                 },
                 borderTopLeftRadius: r6,
@@ -4513,7 +4554,8 @@
                 this.isDirty && this.children.sort(r7), this.isDirty = !1, this.children.forEach(t)
             }
         }
-        Object.assign(e$, { ...r9,
+        Object.assign(e$, {
+            ...r9,
             ...e$
         });
         let se = ["", "X", "Y", "Z"],
@@ -4527,7 +4569,7 @@
         }
         let sr = ({
             instance: t
-        }) => t && eo.get(t) ?.demote();
+        }) => t && eo.get(t)?.demote();
 
         function ss({
             attachResizeListener: t,
@@ -4537,7 +4579,7 @@
             resetTransform: r
         }) {
             return class {
-                constructor(t = {}, i = e ?.()) {
+                constructor(t = {}, i = e?.()) {
                     this.id = si++, this.animationId = 0, this.animationCommitId = 0, this.children = new Set, this.options = {}, this.isTreeAnimating = !1, this.isAnimationBlocked = !1, this.isLayoutDirty = !1, this.isProjectionDirty = !1, this.isSharedProjectionDirty = !1, this.isTransformDirty = !1, this.updateManuallyBlocked = !1, this.updateBlockedByResize = !1, this.isUpdating = !1, this.isSVG = !1, this.needsReset = !1, this.shouldResetTransform = !1, this.hasCheckedOptimisedAppear = !1, this.treeScale = {
                         x: 1,
                         y: 1
@@ -4604,7 +4646,8 @@
                             u = !e && i;
                         if (this.options.layoutRoot || this.resumeFrom || u || e && (l || !this.currentAnimation)) {
                             this.resumeFrom && (this.resumingFrom = this.resumeFrom, this.resumingFrom.resumingFrom = void 0);
-                            let e = { ...iY(s, "layout"),
+                            let e = {
+                                ...iY(s, "layout"),
                                 onPlay: o,
                                 onComplete: a
                             };
@@ -4642,24 +4685,24 @@
                         return
                     }
                     if (window.MotionCancelOptimisedAnimation && !this.hasCheckedOptimisedAppear && function t(e) {
-                            if (e.hasCheckedOptimisedAppear = !0, e.root === e) return;
+                        if (e.hasCheckedOptimisedAppear = !0, e.root === e) return;
+                        let {
+                            visualElement: i
+                        } = e.options;
+                        if (!i) return;
+                        let n = i.props[ib];
+                        if (window.MotionHasOptimisedAnimation(n, "transform")) {
                             let {
-                                visualElement: i
+                                layout: t,
+                                layoutId: i
                             } = e.options;
-                            if (!i) return;
-                            let n = i.props[ib];
-                            if (window.MotionHasOptimisedAnimation(n, "transform")) {
-                                let {
-                                    layout: t,
-                                    layoutId: i
-                                } = e.options;
-                                window.MotionCancelOptimisedAnimation(n, "transform", tR, !(t || i))
-                            }
-                            let {
-                                parent: r
-                            } = e;
-                            r && !r.hasCheckedOptimisedAppear && t(r)
-                        }(this), this.root.isUpdating || this.root.startUpdate(), this.isLayoutDirty) return;
+                            window.MotionCancelOptimisedAnimation(n, "transform", tR, !(t || i))
+                        }
+                        let {
+                            parent: r
+                        } = e;
+                        r && !r.hasCheckedOptimisedAppear && t(r)
+                    }(this), this.root.isUpdating || this.root.startUpdate(), this.isLayoutDirty) return;
                     sr(this), this.isLayoutDirty = !0;
                     for (let t = 0; t < this.path.length; t++) {
                         let e = this.path[t];
@@ -4753,7 +4796,7 @@
                     } = this.options;
                     if (!t) return K();
                     let e = t.measureViewportBox();
-                    if (!(this.scroll ?.wasRoot || this.path.some(sY))) {
+                    if (!(this.scroll?.wasRoot || this.path.some(sY))) {
                         let {
                             scroll: t
                         } = this.root;
@@ -4763,7 +4806,7 @@
                 }
                 removeElementScroll(t) {
                     let e = K();
-                    if (rW(e, t), this.scroll ?.wasRoot) return e;
+                    if (rW(e, t), this.scroll?.wasRoot) return e;
                     for (let i = 0; i < this.path.length; i++) {
                         let n = this.path[i],
                             {
@@ -4779,16 +4822,16 @@
                     rW(n, t);
                     for (let t = 0; t < this.path.length; t++) {
                         let i = this.path[t];
-                        !e && i.options.layoutScroll && i.scroll && i !== i.root && (e0(n.x, -i.scroll.offset.x), e0(n.y, -i.scroll.offset.y)), eG(i.latestValues) && e3(n, i.latestValues, i.layout ?.layoutBox)
+                        !e && i.options.layoutScroll && i.scroll && i !== i.root && (e0(n.x, -i.scroll.offset.x), e0(n.y, -i.scroll.offset.y)), eG(i.latestValues) && e3(n, i.latestValues, i.layout?.layoutBox)
                     }
-                    return eG(this.latestValues) && e3(n, this.latestValues, this.layout ?.layoutBox), n
+                    return eG(this.latestValues) && e3(n, this.latestValues, this.layout?.layoutBox), n
                 }
                 removeTransform(t) {
                     let e = K();
                     rW(e, t);
                     for (let t = 0; t < this.path.length; t++) {
                         let i, n = this.path[t];
-                        eG(n.latestValues) && (n.instance && (eq(n.latestValues) && n.updateSnapshot(), rW(i = K(), n.measurePageBox())), rZ(e, n.latestValues, n.snapshot ?.layoutBox, i))
+                        eG(n.latestValues) && (n.instance && (eq(n.latestValues) && n.updateSnapshot(), rW(i = K(), n.measurePageBox())), rZ(e, n.latestValues, n.snapshot?.layoutBox, i))
                     }
                     return eG(this.latestValues) && rZ(e, this.latestValues), e
                 }
@@ -4796,7 +4839,8 @@
                     this.targetDelta = t, this.root.scheduleUpdateProjection(), this.isProjectionDirty = !0
                 }
                 setOptions(t) {
-                    this.options = { ...this.options,
+                    this.options = {
+                        ...this.options,
                         ...t,
                         crossfade: void 0 === t.crossfade || t.crossfade
                     }
@@ -4811,7 +4855,7 @@
                     let e = this.getLead();
                     this.isProjectionDirty || (this.isProjectionDirty = e.isProjectionDirty), this.isTransformDirty || (this.isTransformDirty = e.isTransformDirty), this.isSharedProjectionDirty || (this.isSharedProjectionDirty = e.isSharedProjectionDirty);
                     let i = !!this.resumingFrom || this !== e;
-                    if (!(t || i && this.isSharedProjectionDirty || this.isProjectionDirty || this.parent ?.isProjectionDirty || this.attemptToResolveRelativeTarget || this.root.updateBlockedByResize)) return;
+                    if (!(t || i && this.isSharedProjectionDirty || this.isProjectionDirty || this.parent?.isProjectionDirty || this.attemptToResolveRelativeTarget || this.root.updateBlockedByResize)) return;
                     let {
                         layout: n,
                         layoutId: r
@@ -4822,7 +4866,7 @@
                     if (this.targetDelta || this.relativeTarget || (!1 !== this.options.layoutAnchor && s && s.layout ? this.createRelativeTarget(s, this.layout.layoutBox, s.layout.layoutBox) : this.removeRelativeTarget()), this.relativeTarget || this.targetDelta) {
                         if (this.target || (this.target = K(), this.targetWithTransforms = K()), this.relativeTarget && this.relativeTargetOrigin && this.relativeParent && this.relativeParent.target) {
                             var o, a, l, u;
-                            this.forceRelativeParentToResolveTarget(), o = this.target, a = this.relativeTarget, l = this.relativeParent.target, u = this.options.layoutAnchor || void 0, n2(o.x, a.x, l.x, u ?.x), n2(o.y, a.y, l.y, u ?.y)
+                            this.forceRelativeParentToResolveTarget(), o = this.target, a = this.relativeTarget, l = this.relativeParent.target, u = this.options.layoutAnchor || void 0, n2(o.x, a.x, l.x, u?.x), n2(o.y, a.y, l.y, u?.y)
                         } else this.targetDelta ? (this.resumingFrom ? this.applyTransform(this.layout.layoutBox, !1, this.target) : rW(this.target, this.layout.layoutBox), eQ(this.target, this.targetDelta)) : rW(this.target, this.layout.layoutBox);
                         this.attemptToResolveRelativeTarget && (this.attemptToResolveRelativeTarget = !1, !1 !== this.options.layoutAnchor && s && !!s.resumingFrom == !!this.resumingFrom && !s.options.layoutScroll && s.target && 1 !== this.animationProgress ? this.createRelativeTarget(s, this.target, s.target) : this.relativeParent = this.relativeTarget = void 0)
                     }
@@ -4845,7 +4889,7 @@
                     let t = this.getLead(),
                         e = !!this.resumingFrom || this !== t,
                         i = !0;
-                    if ((this.isProjectionDirty || this.parent ?.isProjectionDirty) && (i = !1), e && (this.isSharedProjectionDirty || this.isTransformDirty) && (i = !1), this.resolvedRelativeTargetAt === tI.timestamp && (i = !1), i) return;
+                    if ((this.isProjectionDirty || this.parent?.isProjectionDirty) && (i = !1), e && (this.isSharedProjectionDirty || this.isTransformDirty) && (i = !1), this.resolvedRelativeTargetAt === tI.timestamp && (i = !1), i) return;
                     let {
                         layout: n,
                         layoutId: r
@@ -4854,7 +4898,7 @@
                     rW(this.layoutCorrected, this.layout.layoutBox);
                     let s = this.treeScale.x,
                         o = this.treeScale.y;
-                    ! function(t, e, i, n = !1) {
+                    ! function (t, e, i, n = !1) {
                         let r, s, o = i.length;
                         if (o) {
                             e.x = e.y = 1;
@@ -4863,7 +4907,7 @@
                                 let {
                                     visualElement: o
                                 } = r.options;
-                                (!o || !o.props.style || "contents" !== o.props.style.display) && (n && r.options.layoutScroll && r.scroll && r !== r.root && (e0(t.x, -r.scroll.offset.x), e0(t.y, -r.scroll.offset.y)), s && (e.x *= s.x.scale, e.y *= s.y.scale, eQ(t, s)), n && eG(r.latestValues) && e3(t, r.latestValues, r.layout ?.layoutBox))
+                                (!o || !o.props.style || "contents" !== o.props.style.display) && (n && r.options.layoutScroll && r.scroll && r !== r.root && (e0(t.x, -r.scroll.offset.x), e0(t.y, -r.scroll.offset.y)), s && (e.x *= s.x.scale, e.y *= s.y.scale, eQ(t, s)), n && eG(r.latestValues) && e3(t, r.latestValues, r.layout?.layoutBox))
                             }
                             e.x < 1.0000000000001 && e.x > .999999999999 && (e.x = 1), e.y < 1.0000000000001 && e.y > .999999999999 && (e.y = 1)
                         }
@@ -4884,7 +4928,7 @@
                     this.isVisible = !0
                 }
                 scheduleRender(t = !0) {
-                    if (this.options.visualElement ?.scheduleRender(), t) {
+                    if (this.options.visualElement?.scheduleRender(), t) {
                         let t = this.getStack();
                         t && t.scheduleRender()
                     }
@@ -4896,7 +4940,8 @@
                 setAnimationOrigin(t, e = !1, i) {
                     let n, r = this.snapshot,
                         s = r ? r.latestValues : {},
-                        o = { ...this.latestValues
+                        o = {
+                            ...this.latestValues
                         },
                         a = q();
                     this.relativeParent && this.relativeParent.options.layoutRoot || (this.relativeTarget = this.relativeTargetOrigin = void 0), this.attemptToResolveRelativeTarget = !e;
@@ -4906,44 +4951,46 @@
                         d = !h || h.members.length <= 1,
                         c = !!(u && !d && !0 === this.options.crossfade && !this.path.some(sS));
                     this.animationProgress = 0;
-                    let p = i ?.interpolateProjection(t);
+                    let p = i?.interpolateProjection(t);
                     this.mixTargetDelta = e => {
                         let i = e / 1e3,
-                            r = p ?.(i);
+                            r = p?.(i);
                         if (r ? (a.x.translate = r.x, a.x.scale = ez(t.x.scale, 1, i), a.x.origin = t.x.origin, a.x.originPoint = t.x.originPoint, a.y.translate = r.y, a.y.scale = ez(t.y.scale, 1, i), a.y.origin = t.y.origin, a.y.originPoint = t.y.originPoint) : (sT(a.x, t.x, i), sT(a.y, t.y, i)), this.setTargetDelta(a), this.relativeTarget && this.relativeTargetOrigin && this.layout && this.relativeParent && this.relativeParent.layout) {
                             var h, m, f, g, y, v;
                             n8(l, this.layout.layoutBox, this.relativeParent.layout.layoutBox, this.options.layoutAnchor || void 0), f = this.relativeTarget, g = this.relativeTargetOrigin, y = l, v = i, sk(f.x, g.x, y.x, v), sk(f.y, g.y, y.y, v), n && (h = this.relativeTarget, m = n, r0(h.x, m.x) && r0(h.y, m.y)) && (this.isProjectionDirty = !1), n || (n = K()), rW(n, this.relativeTarget)
                         }
-                        u && (this.animationValues = o, function(t, e, i, n, r, s) {
+                        u && (this.animationValues = o, function (t, e, i, n, r, s) {
                             r ? (t.opacity = ez(0, i.opacity ?? 1, rF(n)), t.opacityExit = ez(e.opacity ?? 1, 0, rN(n))) : s && (t.opacity = ez(e.opacity ?? 1, i.opacity ?? 1, n));
                             for (let r = 0; r < rL; r++) {
                                 let s = rD[r],
                                     o = r$(e, s),
                                     a = r$(i, s);
                                 (void 0 !== o || void 0 !== a) && (o || (o = 0), a || (a = 0), 0 === o || 0 === a || rO(o) === rO(a) ? (t[s] = Math.max(ez(rB(o), rB(a), n), 0), (T.test(a) || T.test(o)) && (t[s] += "%")) : t[s] = a)
-                            }(e.rotate || i.rotate) && (t.rotate = ez(e.rotate || 0, i.rotate || 0, n))
+                            } (e.rotate || i.rotate) && (t.rotate = ez(e.rotate || 0, i.rotate || 0, n))
                         }(o, s, this.latestValues, i, c, d)), r && void 0 !== r.rotate && (this.animationValues || (this.animationValues = o), this.animationValues.pathRotation = r.rotate), this.root.scheduleUpdateProjection(), this.scheduleRender(), this.animationProgress = i
                     }, this.mixTargetDelta(1e3 * !!this.options.layoutRoot)
                 }
                 startAnimation(t) {
-                    this.notifyListeners("animationStart"), this.currentAnimation ?.stop(), this.resumingFrom ?.currentAnimation ?.stop(), this.pendingAnimation && (tX(this.pendingAnimation), this.pendingAnimation = void 0), this.pendingAnimation = tR.update(() => {
-                        rY.hasAnimatedSinceResize = !0, this.motionValue || (this.motionValue = ed(0)), this.motionValue.jump(0, !1), this.currentAnimation = rX(this.motionValue, [0, 1e3], { ...t,
-                                velocity: 0,
-                                isSync: !0,
-                                onUpdate: e => {
-                                    this.mixTargetDelta(e), t.onUpdate && t.onUpdate(e)
-                                },
-                                onComplete: () => {
-                                    t.onComplete && t.onComplete(), this.completeAnimation()
-                                }
-                            }),
-                            function(t, e) {
+                    this.notifyListeners("animationStart"), this.currentAnimation?.stop(), this.resumingFrom?.currentAnimation?.stop(), this.pendingAnimation && (tX(this.pendingAnimation), this.pendingAnimation = void 0), this.pendingAnimation = tR.update(() => {
+                        rY.hasAnimatedSinceResize = !0, this.motionValue || (this.motionValue = ed(0)), this.motionValue.jump(0, !1), this.currentAnimation = rX(this.motionValue, [0, 1e3], {
+                            ...t,
+                            velocity: 0,
+                            isSync: !0,
+                            onUpdate: e => {
+                                this.mixTargetDelta(e), t.onUpdate && t.onUpdate(e)
+                            },
+                            onComplete: () => {
+                                t.onComplete && t.onComplete(), this.completeAnimation()
+                            }
+                        }),
+                            function (t, e) {
                                 let i = globalThis.__MOTION_INSPECT__;
                                 if (i) try {
-                                    i({ ...t8("layout-animation-start", t),
+                                    i({
+                                        ...t8("layout-animation-start", t),
                                         node: e
                                     })
-                                } catch {}
+                                } catch { }
                             }(this.currentAnimation, this), this.resumingFrom && (this.resumingFrom.currentAnimation = this.currentAnimation), this.pendingAnimation = void 0
                     })
                 }
@@ -4992,13 +5039,13 @@
                     let {
                         layoutId: t
                     } = this.options;
-                    return t && this.getStack() ?.lead || this
+                    return t && this.getStack()?.lead || this
                 }
                 getPrevLead() {
                     let {
                         layoutId: t
                     } = this.options;
-                    return t ? this.getStack() ?.prevLead : void 0
+                    return t ? this.getStack()?.prevLead : void 0
                 }
                 getStack() {
                     let {
@@ -5044,23 +5091,23 @@
                     }
                     let i = this.getTransformTemplate();
                     if (this.needsReset) {
-                        this.needsReset = !1, t.visibility = "", t.opacity = "", t.pointerEvents = iu(e ?.pointerEvents) || "", t.transform = i ? i(this.latestValues, "") : "none";
+                        this.needsReset = !1, t.visibility = "", t.opacity = "", t.pointerEvents = iu(e?.pointerEvents) || "", t.transform = i ? i(this.latestValues, "") : "none";
                         return
                     }
                     let n = this.getLead();
                     if (!this.projectionDelta || !this.layout || !n.target) {
-                        this.options.layoutId && (t.opacity = void 0 !== this.latestValues.opacity ? this.latestValues.opacity : 1, t.pointerEvents = iu(e ?.pointerEvents) || ""), this.hasProjected && !eG(this.latestValues) && (t.transform = i ? i({}, "") : "none", this.hasProjected = !1);
+                        this.options.layoutId && (t.opacity = void 0 !== this.latestValues.opacity ? this.latestValues.opacity : 1, t.pointerEvents = iu(e?.pointerEvents) || ""), this.hasProjected && !eG(this.latestValues) && (t.transform = i ? i({}, "") : "none", this.hasProjected = !1);
                         return
                     }
                     t.visibility = "";
                     let r = n.animationValues || n.latestValues;
                     this.applyTransformsToTarget();
-                    let s = function(t, e, i) {
+                    let s = function (t, e, i) {
                         let n = "",
                             r = t.x.translate / e.x,
                             s = t.y.translate / e.y,
-                            o = i ?.z || 0;
-                        if ((r || s || o) && (n = `translate3d(${r}px, ${s}px, ${o}px) `), (1 !== e.x || 1 !== e.y) && (n += `scale(${1/e.x}, ${1/e.y}) `), i) {
+                            o = i?.z || 0;
+                        if ((r || s || o) && (n = `translate3d(${r}px, ${s}px, ${o}px) `), (1 !== e.x || 1 !== e.y) && (n += `scale(${1 / e.x}, ${1 / e.y}) `), i) {
                             let {
                                 transformPerspective: t,
                                 rotate: e,
@@ -5081,7 +5128,7 @@
                         x: o,
                         y: a
                     } = this.projectionDelta;
-                    for (let e in t.transformOrigin = `${100*o.origin}% ${100*a.origin}% 0`, n.animationValues ? t.opacity = n === this ? r.opacity ?? this.latestValues.opacity ?? 1 : this.preserveOpacity ? this.latestValues.opacity : r.opacityExit : t.opacity = n === this ? void 0 !== r.opacity ? r.opacity : "" : void 0 !== r.opacityExit ? r.opacityExit : 0, e$) {
+                    for (let e in t.transformOrigin = `${100 * o.origin}% ${100 * a.origin}% 0`, n.animationValues ? t.opacity = n === this ? r.opacity ?? this.latestValues.opacity ?? 1 : this.preserveOpacity ? this.latestValues.opacity : r.opacityExit : t.opacity = n === this ? void 0 !== r.opacity ? r.opacity : "" : void 0 !== r.opacityExit ? r.opacityExit : 0, e$) {
                         if (void 0 === r[e]) continue;
                         let {
                             correct: i,
@@ -5093,24 +5140,24 @@
                             for (let i = 0; i < e; i++) t[o[i]] = l
                         } else a ? this.options.visualElement.renderState.vars[e] = l : t[e] = l
                     }
-                    this.options.layoutId && (t.pointerEvents = n === this ? iu(e ?.pointerEvents) || "" : "none")
+                    this.options.layoutId && (t.pointerEvents = n === this ? iu(e?.pointerEvents) || "" : "none")
                 }
                 clearSnapshot() {
                     this.resumeFrom = this.snapshot = this.dragSnapshot = this.dragAncestor = void 0
                 }
                 resetTree() {
-                    this.root.nodes.forEach(t => t.currentAnimation ?.stop()), this.root.nodes.forEach(sd), this.root.sharedNodes.clear()
+                    this.root.nodes.forEach(t => t.currentAnimation?.stop()), this.root.nodes.forEach(sd), this.root.sharedNodes.clear()
                 }
             }
         }
 
         function so(t) {
             t.updateLayout(),
-                function(t) {
+                function (t) {
                     let {
                         snapshot: e,
                         dragAncestor: i
-                    } = t, n = i ?.layout;
+                    } = t, n = i?.layout;
                     if (!e || !n || t.resumeFrom || t.isAnimationBlocked) return;
                     let r = i.dragSnapshot;
                     nJ(t => e0(e.layoutBox[t], n.layoutBox[t].min - r.layoutBox[t].min))
@@ -5118,7 +5165,7 @@
         }
 
         function sa(t) {
-            let e = t.resumeFrom ?.snapshot || t.snapshot;
+            let e = t.resumeFrom?.snapshot || t.snapshot;
             if (t.isLead() && t.layout && e && t.hasListeners("didUpdate")) {
                 let {
                     layoutBox: i,
@@ -5207,7 +5254,7 @@
         }
 
         function sf(t) {
-            t.relativeTarget && t.relativeParent ?.isLayoutDirty && (t.currentAnimation ? t.isLayoutDirty = !0 : (t.targetDelta = void 0, t.removeRelativeTarget()))
+            t.relativeTarget && t.relativeParent?.isLayoutDirty && (t.currentAnimation ? t.isLayoutDirty = !0 : (t.targetDelta = void 0, t.removeRelativeTarget()))
         }
 
         function sg(t) {
@@ -5249,9 +5296,9 @@
             return t.animationValues && void 0 !== t.animationValues.opacityExit
         }
         let sA = {
-                duration: .45,
-                ease: [.4, 0, .1, 1]
-            },
+            duration: .45,
+            ease: [.4, 0, .1, 1]
+        },
             sP = t => "u" > typeof navigator && navigator.userAgent && navigator.userAgent.toLowerCase().includes(t),
             sM = sP("applewebkit/") && !sP("chrome/") ? Math.round : tE;
 
@@ -5264,16 +5311,16 @@
         }
 
         function sY(t) {
-            return t !== t.root && t.scroll ?.wasRoot
+            return t !== t.root && t.scroll?.wasRoot
         }
         let sj = ss({
-                attachResizeListener: (t, e) => nQ(t, "resize", e),
-                measureScroll: () => ({
-                    x: document.documentElement.scrollLeft || document.body ?.scrollLeft || 0,
-                    y: document.documentElement.scrollTop || document.body ?.scrollTop || 0
-                }),
-                checkIsScrollRoot: () => !0
+            attachResizeListener: (t, e) => nQ(t, "resize", e),
+            measureScroll: () => ({
+                x: document.documentElement.scrollLeft || document.body?.scrollLeft || 0,
+                y: document.documentElement.scrollTop || document.body?.scrollTop || 0
             }),
+            checkIsScrollRoot: () => !0
+        }),
             sV = {
                 current: void 0
             },
@@ -5362,7 +5409,7 @@
                 some: 0,
                 all: 1
             },
-            sG = function(t, e) {
+            sG = function (t, e) {
                 if ("u" < typeof Proxy) return iA;
                 let i = new Map,
                     n = (i, n) => iA(i, n, t, e);
@@ -5373,15 +5420,15 @@
                 animation: {
                     Feature: class extends iP {
                         constructor(t) {
-                            super(t), t.animationState || (t.animationState = function(t) {
+                            super(t), t.animationState || (t.animationState = function (t) {
                                 let e = e => Promise.all(e.map(({
-                                        animation: e,
-                                        options: i
-                                    }) => (function(t, e, i = {}) {
-                                        return t.notify("AnimationStart", e), (Array.isArray(e) ? Promise.all(e.map(e => nH(t, e, i))) : "string" == typeof e ? nH(t, e, i) : Promise.all(nW(t, iM(t, e, i.custom), i))).then(() => {
-                                            t.notify("AnimationComplete", e)
-                                        })
-                                    })(t, e, i))),
+                                    animation: e,
+                                    options: i
+                                }) => (function (t, e, i = {}) {
+                                    return t.notify("AnimationStart", e), (Array.isArray(e) ? Promise.all(e.map(e => nH(t, e, i))) : "string" == typeof e ? nH(t, e, i) : Promise.all(nW(t, iM(t, e, i.custom), i))).then(() => {
+                                        t.notify("AnimationComplete", e)
+                                    })
+                                })(t, e, i))),
                                     i = nK(),
                                     n = !0,
                                     r = !1;
@@ -5393,77 +5440,82 @@
                                         manuallyAnimateOnMount: l
                                     } = t, u = n || r, h = [], d = new Set, c = {}, p = 1 / 0, m = t;
                                     do m = !1 !== m.props.inherit && m.parent; while (m && !m.isControllingVariants) if (nG.forEach((e, n) => {
-                                            var r, f;
-                                            let g = i[e],
-                                                y = o[e],
-                                                v = m && m.props[e],
-                                                x = void 0 !== y ? y : em(v) || !1 === v ? v : void 0,
-                                                w = em(x),
-                                                b = e === s ? g.isActive : null;
-                                            !1 === b && (p = n);
-                                            let T = w && void 0 === y && !(u && l);
-                                            if (g.protectedKeys = { ...c
-                                                }, !g.isActive && null === b || !x && !g.prevProp || ep(x) || "boolean" == typeof x) return;
-                                            if ("exit" === e && g.isActive && !0 !== b) {
-                                                c = { ...c,
-                                                    ...g.prevResolvedValues
+                                        var r, f;
+                                        let g = i[e],
+                                            y = o[e],
+                                            v = m && m.props[e],
+                                            x = void 0 !== y ? y : em(v) || !1 === v ? v : void 0,
+                                            w = em(x),
+                                            b = e === s ? g.isActive : null;
+                                        !1 === b && (p = n);
+                                        let T = w && void 0 === y && !(u && l);
+                                        if (g.protectedKeys = {
+                                            ...c
+                                        }, !g.isActive && null === b || !x && !g.prevProp || ep(x) || "boolean" == typeof x) return;
+                                        if ("exit" === e && g.isActive && !0 !== b) {
+                                            c = {
+                                                ...c,
+                                                ...g.prevResolvedValues
+                                            };
+                                            return
+                                        }
+                                        let k = (r = g.prevProp, "string" == typeof (f = x) ? f !== r : !!Array.isArray(f) && !nq(f, r)),
+                                            S = k || w && (b && !T || n > p),
+                                            A = !1,
+                                            P = Array.isArray(x) ? x : [x],
+                                            M = {};
+                                        if (!1 !== b)
+                                            for (let i of P) {
+                                                let {
+                                                    transition: n,
+                                                    transitionEnd: r,
+                                                    ...s
+                                                } = iM(t, i, iC(t, e)) || {};
+                                                M = {
+                                                    ...M,
+                                                    ...s,
+                                                    ...r
+                                                }
+                                            }
+                                        let {
+                                            prevResolvedValues: C
+                                        } = g;
+                                        for (let e in {
+                                            ...C,
+                                            ...M
+                                        }) {
+                                            if (e in c) continue;
+                                            let i = M[e],
+                                                n = C[e],
+                                                r = Array.isArray(i) && Array.isArray(n) ? !nq(i, n) || k : i !== n;
+                                            if (r && null == i) d.add(e);
+                                            else if (r || void 0 !== i && d.has(e)) {
+                                                S = !0, d.delete(e) && (A = !0), g.needsAnimating[e] = !0;
+                                                let i = t.getValue(e);
+                                                i && (i.liveStyle = !1)
+                                            } else g.protectedKeys[e] = !0
+                                        }
+                                        if (g.prevProp = x, g.prevResolvedValues = M, g.isActive && (c = {
+                                            ...c,
+                                            ...M
+                                        }), S && (!(T && k) || A))
+                                            for (let i of P) {
+                                                let n = {
+                                                    type: e
                                                 };
-                                                return
-                                            }
-                                            let k = (r = g.prevProp, "string" == typeof(f = x) ? f !== r : !!Array.isArray(f) && !nq(f, r)),
-                                                S = k || w && (b && !T || n > p),
-                                                A = !1,
-                                                P = Array.isArray(x) ? x : [x],
-                                                M = {};
-                                            if (!1 !== b)
-                                                for (let i of P) {
-                                                    let {
-                                                        transition: n,
-                                                        transitionEnd: r,
-                                                        ...s
-                                                    } = iM(t, i, iC(t, e)) || {};
-                                                    M = { ...M,
-                                                        ...s,
-                                                        ...r
-                                                    }
+                                                if ("string" == typeof i && u && l && a?.enteringChildren) {
+                                                    let e = iM(a, i)?.transition?.delayChildren;
+                                                    n.delay = nz(a.enteringChildren, t, e)
                                                 }
-                                            let {
-                                                prevResolvedValues: C
-                                            } = g;
-                                            for (let e in { ...C,
-                                                    ...M
-                                                }) {
-                                                if (e in c) continue;
-                                                let i = M[e],
-                                                    n = C[e],
-                                                    r = Array.isArray(i) && Array.isArray(n) ? !nq(i, n) || k : i !== n;
-                                                if (r && null == i) d.add(e);
-                                                else if (r || void 0 !== i && d.has(e)) {
-                                                    S = !0, d.delete(e) && (A = !0), g.needsAnimating[e] = !0;
-                                                    let i = t.getValue(e);
-                                                    i && (i.liveStyle = !1)
-                                                } else g.protectedKeys[e] = !0
+                                                h.push({
+                                                    animation: i,
+                                                    options: n
+                                                })
                                             }
-                                            if (g.prevProp = x, g.prevResolvedValues = M, g.isActive && (c = { ...c,
-                                                    ...M
-                                                }), S && (!(T && k) || A))
-                                                for (let i of P) {
-                                                    let n = {
-                                                        type: e
-                                                    };
-                                                    if ("string" == typeof i && u && l && a ?.enteringChildren) {
-                                                        let e = iM(a, i) ?.transition ?.delayChildren;
-                                                        n.delay = nz(a.enteringChildren, t, e)
-                                                    }
-                                                    h.push({
-                                                        animation: i,
-                                                        options: n
-                                                    })
-                                                }
-                                        }), d.size) {
+                                    }), d.size) {
                                         let {
                                             initial: e
-                                        } = o, i = {}, n = "boolean" != typeof e && iM(t, Array.isArray(e) ? e[0] : e, t.presenceContext ?.custom);
+                                        } = o, i = {}, n = "boolean" != typeof e && iM(t, Array.isArray(e) ? e[0] : e, t.presenceContext?.custom);
                                         n && n.transition && (i.transition = n.transition), d.forEach(r => {
                                             let s = t.getValue(r);
                                             s && (s.liveStyle = !0);
@@ -5479,9 +5531,9 @@
                                 }
                                 return {
                                     animateChanges: s,
-                                    setActive: function(e, n) {
+                                    setActive: function (e, n) {
                                         if (i[e].isActive === n) return Promise.resolve();
-                                        t.variantChildren ?.forEach(t => t.animationState ?.setActive(e, n)), i[e].isActive = n;
+                                        t.variantChildren?.forEach(t => t.animationState?.setActive(e, n)), i[e].isActive = n;
                                         let r = s(e);
                                         for (let t in i) i[t].protectedKeys = {};
                                         return r
@@ -5514,7 +5566,7 @@
                             t !== e && this.updateAnimationControlsSubscription()
                         }
                         unmount() {
-                            this.node.animationState.reset(), this.unmountControls ?.()
+                            this.node.animationState.reset(), this.unmountControls?.()
                         }
                     }
                 },
@@ -5533,7 +5585,7 @@
                             let {
                                 isPresent: n,
                                 onExitComplete: r
-                            } = t, s = e ?.isPresent;
+                            } = t, s = e?.isPresent;
                             if (n === s) return;
                             if (n && !1 === s) {
                                 if (!0 === this.exit) {
@@ -5546,7 +5598,7 @@
                                             transitionEnd: i,
                                             ...n
                                         } = iM(this.node, t) || {};
-                                        for (let t in n) this.node.getValue(t) ?.jump(n[t])
+                                        for (let t in n) this.node.getValue(t)?.jump(n[t])
                                     }
                                     this.node.blockInitialAnimation = !1, i.reset(), i.animateChanges()
                                 } else i.setActive("exit", !1);
@@ -5565,7 +5617,7 @@
                             } = this.node.presenceContext || {};
                             e && e(this.id), t && (this.unmount = t(this.id))
                         }
-                        unmount() {}
+                        unmount() { }
                     }
                 },
                 inView: {
@@ -5576,7 +5628,7 @@
                         startObserver() {
                             var t;
                             let e;
-                            this.stopObserver ?.();
+                            this.stopObserver?.();
                             let {
                                 viewport: i = {}
                             } = this.node.getProps(), {
@@ -5600,7 +5652,7 @@
                                 } = this.node.getProps(), r = e ? i : n;
                                 r && r(t)
                             };
-                            this.stopObserver = (t = this.node.current, e = function({
+                            this.stopObserver = (t = this.node.current, e = function ({
                                 root: t,
                                 ...e
                             }) {
@@ -5625,7 +5677,7 @@
                                 props: t,
                                 prevProps: e
                             } = this.node;
-                            ["amount", "margin", "root"].some(function({
+                            ["amount", "margin", "root"].some(function ({
                                 viewport: t = {}
                             }, {
                                 viewport: e = {}
@@ -5634,7 +5686,7 @@
                             }(t, e)) && this.startObserver()
                         }
                         unmount() {
-                            this.stopObserver ?.(), this.hasEnteredView = !1, this.isInView = !1
+                            this.stopObserver?.(), this.hasEnteredView = !1, this.isInView = !1
                         }
                     }
                 },
@@ -5649,13 +5701,14 @@
                                 globalTapTarget: e,
                                 propagate: i
                             } = this.node.props;
-                            this.unmount = function(t, e, i = {}) {
+                            this.unmount = function (t, e, i = {}) {
                                 let [n, r, s] = sR(t, i), o = t => {
                                     let n = t.currentTarget;
                                     if (!sF(t) || sN.has(t)) return;
                                     sL.add(n), i.stopPropagation && sN.add(t);
                                     let s = e(n, t),
-                                        o = { ...r,
+                                        o = {
+                                            ...r,
                                             capture: !0
                                         },
                                         a = (t, e) => {
@@ -5690,10 +5743,10 @@
                                 success: e
                             }) => s_(this.node, t, e ? "End" : "Cancel")), {
                                 useGlobalTarget: e,
-                                stopPropagation: i ?.tap === !1
+                                stopPropagation: i?.tap === !1
                             })
                         }
-                        unmount() {}
+                        unmount() { }
                     }
                 },
                 focus: {
@@ -5716,7 +5769,7 @@
                         mount() {
                             this.unmount = iV(nQ(this.node.current, "focus", () => this.onFocus()), nQ(this.node.current, "blur", () => this.onBlur()))
                         }
-                        unmount() {}
+                        unmount() { }
                     }
                 },
                 hover: {
@@ -5725,7 +5778,7 @@
                             let {
                                 current: t
                             } = this.node;
-                            t && (this.unmount = function(t, e, i = {}) {
+                            t && (this.unmount = function (t, e, i = {}) {
                                 let [n, r, s] = sR(t, i);
                                 return n.forEach(t => {
                                     let i, n = !1,
@@ -5756,7 +5809,7 @@
                                 }), s
                             }(t, (t, e) => (sX(this.node, e, "Start"), t => sX(this.node, t, "End"))))
                         }
-                        unmount() {}
+                        unmount() { }
                     }
                 },
                 pan: {
@@ -5850,7 +5903,7 @@
             style: e
         }) {
             return (0, r.jsxs)("div", {
-                className: `rail ${t??""}`,
+                className: `rail ${t ?? ""}`,
                 style: e,
                 "aria-hidden": "true",
                 children: [(0, r.jsx)("div", {
@@ -5899,7 +5952,7 @@
 
         function s4(t, ...e) {
             let i = t.length;
-            return s2(e.filter(Z), function() {
+            return s2(e.filter(Z), function () {
                 let n = "";
                 for (let r = 0; r < i; r++) {
                     n += t[r];
@@ -5924,7 +5977,7 @@
         class s7 extends t3 {
             constructor(t) {
                 super(), this.state = "idle", this.startTime = 0, this.currentTime = 0, this.started = !1, this.hasNextTarget = !1, this.nextTarget = 0, this.stop = () => {
-                    "idle" !== this.state && (this.teardown(), this.options.onStop ?.())
+                    "idle" !== this.state && (this.teardown(), this.options.onStop?.())
                 }, this.options = t, this.factory = t.type, this.generator = this.factory(t);
                 let {
                     driver: e
@@ -5961,7 +6014,7 @@
                         keyframes: t
                     } = e;
                     t[0] = u, t[1] = this.nextTarget, this.retarget(t, this.nextVelocity ?? this.getGeneratorVelocity())
-                }(i || !this.started) && (this.started = !0, s ?.()), "running" === this.state && (r ?.(u), l.done && o >= 0 && !i && !this.hasNextTarget && "running" === this.state && (this.notifyFinished(), this.teardown(), this.state = "finished", e.onComplete ?.()))
+                } (i || !this.started) && (this.started = !0, s?.()), "running" === this.state && (r?.(u), l.done && o >= 0 && !i && !this.hasNextTarget && "running" === this.state && (this.notifyFinished(), this.teardown(), this.state = "finished", e.onComplete?.()))
             }
             getGeneratorVelocity() {
                 return nw(this.generator, this.currentTime, this.options.velocity)
@@ -5975,36 +6028,37 @@
         }
 
         function ot(t, e, i) {
-            return function(t, e, i) {
+            return function (t, e, i) {
                 let n, r = t.get(),
                     s = null,
                     o = "string" == typeof r ? r.replace(/[\d.-]/g, "") : void 0,
                     a = t => n(o ? t + o : t),
-                    l = () => t.events.animationStart ?.notify(),
+                    l = () => t.events.animationStart?.notify(),
                     u = () => {
                         s && (s.stop(), s = null), t.animation = void 0
                     };
                 if (t.attach((e, r) => {
-                        n = r;
-                        let o = rB(e);
-                        if (s ?.state === "running") return void s.setTarget(o, i.velocity);
-                        let h = rB(t.get()),
-                            d = s ? s.getGeneratorVelocity() : t.getVelocity();
-                        if (u(), h === o) return;
-                        let c = s = new s7({ ...{
-                                keyframes: [h, o],
-                                velocity: d,
-                                restDelta: .001,
-                                restSpeed: .01,
-                                ...i,
-                                onUpdate: a
-                            },
-                            onPlay: l
-                        });
-                        t.animation = c, c.then(() => {
-                            s === c && (s = null, t.animation = void 0, t.events.animationComplete ?.notify())
-                        })
-                    }, u), Z(e)) {
+                    n = r;
+                    let o = rB(e);
+                    if (s?.state === "running") return void s.setTarget(o, i.velocity);
+                    let h = rB(t.get()),
+                        d = s ? s.getGeneratorVelocity() : t.getVelocity();
+                    if (u(), h === o) return;
+                    let c = s = new s7({
+                        ...{
+                            keyframes: [h, o],
+                            velocity: d,
+                            restDelta: .001,
+                            restSpeed: .01,
+                            ...i,
+                            onUpdate: a
+                        },
+                        onPlay: l
+                    });
+                    t.animation = c, c.then(() => {
+                        s === c && (s = null, t.animation = void 0, t.events.animationComplete?.notify())
+                    })
+                }, u), Z(e)) {
                     let n = !0 === i.skipInitialAnimation,
                         r = e => {
                             var i, r, s, a;
@@ -6019,7 +6073,8 @@
                     }
                 }
                 return u
-            }(t, e, { ...i,
+            }(t, e, {
+                ...i,
                 type: i8
             })
         }
@@ -6039,18 +6094,19 @@
                 for (let t of l) u[t] = oe(r, s, o[t], a);
                 return u
             }
-            let l = "function" == typeof e ? e : function(...t) {
-                    let e = !Array.isArray(t[0]),
-                        i = e ? 0 : -1,
-                        n = t[0 + i],
-                        r = ng(t[1 + i], t[2 + i], t[3 + i]);
-                    return e ? r(n) : r
-                }(e, i, n),
+            let l = "function" == typeof e ? e : function (...t) {
+                let e = !Array.isArray(t[0]),
+                    i = e ? 0 : -1,
+                    n = t[0 + i],
+                    r = ng(t[1 + i], t[2 + i], t[3 + i]);
+                return e ? r(n) : r
+            }(e, i, n),
                 u = Array.isArray(t) ? oi(t, l) : oi([t], ([t]) => l(t)),
                 h = Array.isArray(t) ? void 0 : t.accelerate;
-            if (h && !h.isTransformed && "function" != typeof e && Array.isArray(i) && n ?.clamp !== !1) {
-                let t = n ?.ease;
-                u.accelerate = { ...h,
+            if (h && !h.isTransformed && "function" != typeof e && Array.isArray(i) && n?.clamp !== !1) {
+                let t = n?.ease;
+                u.accelerate = {
+                    ...h,
                     times: [0, ...e, 1],
                     keyframes: [i[0], ...i, i[i.length - 1]],
                     isTransformed: !0,
@@ -6073,7 +6129,7 @@
         }
 
         function on(t, e = {}) {
-            return function(t, e, i) {
+            return function (t, e, i) {
                 let {
                     isStatic: n
                 } = (0, s.useContext)(it), r = () => Z(t) ? t.get() : t;
@@ -6084,61 +6140,61 @@
         }
         var sK = sK;
         let or = {
-                "/products/brown-field-jacket-back.png": {
-                    width: 1086,
-                    height: 1448,
-                    hookApexX: 570,
-                    hookApexY: 97,
-                    loopTopY: 97,
-                    loopCenterX: 570,
-                    loopInnerTopY: 113,
-                    loopInnerBottomY: 124,
-                    neckY: 196,
-                    garmentTopY: 97,
-                    garmentBottomY: 1267,
-                    shoulderY: 550,
-                    shoulderX0: 152,
-                    shoulderX1: 948,
-                    garmentX0: 152,
-                    garmentX1: 948
-                },
-                "/products/brown-field-jacket-front.png": {
-                    width: 1086,
-                    height: 1448,
-                    hookApexX: 515,
-                    hookApexY: 89,
-                    loopTopY: 89,
-                    loopCenterX: 515,
-                    loopInnerTopY: 105,
-                    loopInnerBottomY: 116,
-                    neckY: 188,
-                    garmentTopY: 89,
-                    garmentBottomY: 1268,
-                    shoulderY: 550,
-                    shoulderX0: 79,
-                    shoulderX1: 968,
-                    garmentX0: 79,
-                    garmentX1: 968
-                },
-                "/products/brown-field-jacket-side.png": {
-                    width: 1086,
-                    height: 1448,
-                    hookApexX: 488,
-                    hookApexY: 107,
-                    loopTopY: 107,
-                    loopCenterX: 488,
-                    loopInnerTopY: 123,
-                    loopInnerBottomY: 134,
-                    neckY: 206,
-                    garmentTopY: 107,
-                    garmentBottomY: 1315,
-                    shoulderY: 550,
-                    shoulderX0: 341,
-                    shoulderX1: 762,
-                    garmentX0: 341,
-                    garmentX1: 762
-                }
+            "/products/brown-field-jacket-back.png": {
+                width: 1086,
+                height: 1448,
+                hookApexX: 570,
+                hookApexY: 97,
+                loopTopY: 97,
+                loopCenterX: 570,
+                loopInnerTopY: 113,
+                loopInnerBottomY: 124,
+                neckY: 196,
+                garmentTopY: 97,
+                garmentBottomY: 1267,
+                shoulderY: 550,
+                shoulderX0: 152,
+                shoulderX1: 948,
+                garmentX0: 152,
+                garmentX1: 948
             },
+            "/products/brown-field-jacket-front.png": {
+                width: 1086,
+                height: 1448,
+                hookApexX: 515,
+                hookApexY: 89,
+                loopTopY: 89,
+                loopCenterX: 515,
+                loopInnerTopY: 105,
+                loopInnerBottomY: 116,
+                neckY: 188,
+                garmentTopY: 89,
+                garmentBottomY: 1268,
+                shoulderY: 550,
+                shoulderX0: 79,
+                shoulderX1: 968,
+                garmentX0: 79,
+                garmentX1: 968
+            },
+            "/products/brown-field-jacket-side.png": {
+                width: 1086,
+                height: 1448,
+                hookApexX: 488,
+                hookApexY: 107,
+                loopTopY: 107,
+                loopCenterX: 488,
+                loopInnerTopY: 123,
+                loopInnerBottomY: 134,
+                neckY: 206,
+                garmentTopY: 107,
+                garmentBottomY: 1315,
+                shoulderY: 550,
+                shoulderX0: 341,
+                shoulderX1: 762,
+                garmentX0: 341,
+                garmentX1: 762
+            }
+        },
             os = {},
             oo = t => or[t].garmentBottomY - or[t].garmentTopY;
 
@@ -6201,8 +6257,8 @@
         let od = {},
             oc = t => (t.loopInnerTopY + t.loopInnerBottomY) / 2,
             op = [ou("brown-field-jacket", "Brown Field Jacket", "Brown", "#")],
-            om = t => `(var(--iw) * ${os[t]??1})`,
-            of = (t, e, i) => `${om(t)} * ${i/e.width}`;
+            om = t => `(var(--iw) * ${os[t] ?? 1})`,
+            of = (t, e, i) => `${om(t)} * ${i / e.width}`;
 
         function og({
             layers: t,
@@ -6230,8 +6286,8 @@
                         let a = or[t],
                             l = (a.loopInnerTopY + a.loopInnerBottomY) / 2,
                             u = {
-                                left: `calc(-1 * ${om(t)} * ${a.loopCenterX/a.width})`,
-                                top: `calc(var(--rod) / 2 - ${of(t,a,l)})`,
+                                left: `calc(-1 * ${om(t)} * ${a.loopCenterX / a.width})`,
+                                top: `calc(var(--rod) / 2 - ${of(t, a, l)})`,
                                 width: `calc(${om(t)})`,
                                 aspectRatio: `${a.width} / ${a.height}`
                             },
@@ -6246,20 +6302,22 @@
                                 draggable: !1
                             });
                         if ("crest" === s) {
-                            let i = `calc(${of(t,a,l)} - var(--rod) / 2)`;
+                            let i = `calc(${of(t, a, l)} - var(--rod) / 2)`;
                             return (0, r.jsx)(sG.div, {
                                 className: "garment-layer",
-                                style: { ...u,
+                                style: {
+                                    ...u,
                                     opacity: e,
                                     clipPath: `inset(0 0 calc(100% - ${i}) 0)`
                                 },
                                 children: h
                             }, t)
                         }
-                        let d = `${(a.neckY/a.height*100).toFixed(3)}%`;
+                        let d = `${(a.neckY / a.height * 100).toFixed(3)}%`;
                         return (0, r.jsxs)(sG.div, {
                             className: "garment-layer",
-                            style: { ...u,
+                            style: {
+                                ...u,
                                 opacity: e
                             },
                             children: [(0, r.jsx)("div", {
@@ -6300,7 +6358,7 @@
                     cancelAnimationFrame(n.current);
                     let d = ++r.current;
                     if (i) {
-                        t.set(s), e.set(u), o.current = 0, h ?.();
+                        t.set(s), e.set(u), o.current = 0, h?.();
                         return
                     }
                     let c = t.get(),
@@ -6316,7 +6374,7 @@
                                 if (y = void 0, t(), r.current !== d) return
                             }
                             if (.05 > Math.abs(s - c) && .5 > Math.abs(m) && .03 > Math.abs(p - u) && .05 > Math.abs(f)) {
-                                t.set(s), e.set(u), o.current = 0, y ?.();
+                                t.set(s), e.set(u), o.current = 0, y?.();
                                 return
                             }
                             n.current = requestAnimationFrame(v)
@@ -6356,7 +6414,7 @@
                     stiffness: 170,
                     damping: 22
                 }),
-                x = s4 `calc(var(--iw) * ${v}) 0`,
+                x = s4`calc(var(--iw) * ${v}) 0`,
                 w = (0, s.useRef)(!0);
             (0, s.useEffect)(() => {
                 if (w.current) {
@@ -6435,7 +6493,7 @@
 
         function ow(t, e = !1) {
             let i = document.querySelector(".rack"),
-                n = i ?.querySelectorAll(".rack-item")[t];
+                n = i?.querySelectorAll(".rack-item")[t];
             if (!i || !n) return null;
             let r = n.getBoundingClientRect(),
                 s = getComputedStyle(i),
@@ -6506,7 +6564,7 @@
                     index: i,
                     count: n,
                     hovered: l === i,
-                    shift: function(t, e) {
+                    shift: function (t, e) {
                         if (null === e || t === e) return 0;
                         let i = t - e;
                         return .25 * Math.sign(i) * Math.pow(.55, Math.abs(i) - 1)
@@ -6524,7 +6582,7 @@
                             opacity: +(l === e)
                         },
                         "aria-hidden": l !== e,
-                        children: (i = t.colourways ?.[0].label ?? t.colour) ? `${t.name} — ${i}` : t.name
+                        children: (i = t.colourways?.[0].label ?? t.colour) ? `${t.name} — ${i}` : t.name
                     }, t.slug)
                 })]
             })
@@ -6540,7 +6598,7 @@
                 {
                     velocity: s
                 } = i,
-                o = i.reduceMotion ?? n ?.shouldReduceMotion;
+                o = i.reduceMotion ?? n?.shouldReduceMotion;
             for (let a in e) {
                 if ("transition" === a || "transitionEnd" === a) continue;
                 let l = e[a];
@@ -6658,7 +6716,7 @@
         }
         class oC extends oP {
             then(t, e) {
-                return this.finished.finally(t).then(() => {})
+                return this.finished.finally(t).then(() => { })
             }
         }
 
@@ -6705,13 +6763,13 @@
                 }
             }
             set(t, e, i, n) {
-                if (this.values.get(t) ?.onRemove(), n)
+                if (this.values.get(t)?.onRemove(), n)
                     for (let t of this.values.values()) t.value === n && (i = t.render);
                 let r = () => i && this.schedule(i);
                 void 0 !== e.get() && r();
                 let s = e.on("change", r),
                     o = () => {
-                        s(), i && !n && this.cancel(i), this.values.get(t) ?.onRemove === o && this.values.delete(t)
+                        s(), i && !n && this.cancel(i), this.values.get(t)?.onRemove === o && this.values.delete(t)
                     };
                 return this.values.set(t, {
                     value: e,
@@ -6720,7 +6778,7 @@
                 }), o
             }
             get(t) {
-                return this.values.get(t) ?.value
+                return this.values.get(t)?.value
             }
             release() {
                 let t = new Map;
@@ -6767,14 +6825,14 @@
                     for (let t of o) t()
                 }
             }, i, {
-                get: (t, e) => n.get(t) ?.get(e),
-                flush: t => n.get(t) ?.flush(),
+                get: (t, e) => n.get(t)?.get(e),
+                flush: t => n.get(t)?.flush(),
                 state: t => n.get(t)
             })
         }
         let o$ = {},
             oF = new Set(["originX", "originY", "originZ"]),
-            oN = (t, e) => eC(t.get(e) ?.get(), U[e]),
+            oN = (t, e) => eC(t.get(e)?.get(), U[e]),
             o_ = (t, e, i, n) => {
                 let r, s;
                 if (a.has(i)) {
@@ -6783,7 +6841,7 @@
                         (e.transformValues ?? (e.transformValues = {}))[i] = n, t.includes(i) || (t.push(i), t.sort((t, e) => o.indexOf(t) - o.indexOf(e)))
                     }
                     e.get("transform") || (sD(t) || e.get("transformBox") || o_(t, e, "transformBox", new eh("fill-box")), e.set("transform", new eh("none"), () => {
-                        eo.get(t) ?.check(), t.style.transform = function(t) {
+                        eo.get(t)?.check(), t.style.transform = function (t) {
                             let e = "",
                                 {
                                     transformKeys: i = [],
@@ -6794,7 +6852,7 @@
                                     s = n[r].getCurrent();
                                 void 0 !== s && ("number" == typeof s ? s : parseFloat(s)) !== +!!r.startsWith("scale") && (e += (e && " ") + (o$[r] || (o$[r] = (eE[r] || r) + "(")) + eC(s, _[r]) + ")")
                             }
-                            let r = t.get("pathRotation") ?.get();
+                            let r = t.get("pathRotation")?.get();
                             return r && (e += (e && " ") + "rotate(" + eC(r, _.pathRotation) + ")"), e || "none"
                         }(e)
                     })), s = e.get("transform")
@@ -6821,7 +6879,7 @@
                 read: oU
             }),
             oz = (t, e, i, n, r = i) => {
-                let s = function(t, e) {
+                let s = function (t, e) {
                     if (!(e in t)) return !1;
                     let i = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(t), e) || Object.getOwnPropertyDescriptor(t, e);
                     return i && "function" == typeof i.set
@@ -6841,14 +6899,14 @@
                     let e = n.get();
                     t.setAttribute("stroke-dashoffset", `${-e}`)
                 }) : (e.get("stroke-dasharray") || e.set("stroke-dasharray", new eh("1 1"), () => {
-                    let i = e.get("pathLength") ?.get() ?? 1,
-                        n = e.get("pathSpacing") ?.get();
-                    t.setAttribute("stroke-dasharray", `${i} ${n??1-Number(i)}`)
+                    let i = e.get("pathLength")?.get() ?? 1,
+                        n = e.get("pathSpacing")?.get();
+                    t.setAttribute("stroke-dasharray", `${i} ${n ?? 1 - Number(i)}`)
                 }), e.set(i, n, void 0, e.get("stroke-dasharray")));
                 return i.startsWith("attr") ? oz(t, e, i, n, oq(i)) : (a.has(i) || oF.has(i) || i.startsWith("--") || i in t.style ? o_ : oz)(t, e, i, n)
             }, {
                 test: n9,
-                read: (t, e) => a.has(e) ? U[e] ?.default || 0 : e.startsWith("--") || eX.includes(e) ? oU(t, e) || t.getAttribute(eM(e)) || 0 : (e = oq(e), t.getAttribute(eM(e)) ?? t.getAttribute(e) ?? void 0)
+                read: (t, e) => a.has(e) ? U[e]?.default || 0 : e.startsWith("--") || eX.includes(e) ? oU(t, e) || t.getAttribute(eM(e)) || 0 : (e = oq(e), t.getAttribute(eM(e)) ?? t.getAttribute(e) ?? void 0)
             });
 
         function oq(t) {
@@ -6895,26 +6953,27 @@
                 ti();
                 for (let t = 0; t < o; t++) {
                     let n = s[t],
-                        a = { ...i
+                        a = {
+                            ...i
                         };
-                    "delay" in a && "function" == typeof a.delay && (a.delay = a.delay(t, o)), n instanceof Element ? r.push(... function(t, e, i, n) {
+                    "delay" in a && "function" == typeof a.delay && (a.delay = a.delay(t, o)), n instanceof Element ? r.push(... function (t, e, i, n) {
                         if (n) return oS(t => n.getValue(t, null), e, i, n);
                         let r = n9(t) ? oH : oW;
                         return oA(r, t, e, i, new oK(r, t))
-                    }(n, e, a, ec.get(n))) : r.push(...oA(function(t) {
+                    }(n, e, a, ec.get(n))) : r.push(...oA(function (t) {
                         return oT.find(e => e.test(t))
                     }(n) ?? oZ, n, e, a))
                 }
             }
             return r
         }
-        let oQ = Object.assign(function(t = {}) {
+        let oQ = Object.assign(function (t = {}) {
             let {
                 scope: e,
                 reduceMotion: i,
                 skipAnimations: n
             } = t;
-            return function(t, r, s) {
+            return function (t, r, s) {
                 var o;
                 let a, l = [],
                     u = {};
@@ -6923,9 +6982,10 @@
                         onComplete: n,
                         ...s
                     } = r || {};
-                    "function" == typeof n && (a = n), o = { ...u,
+                    "function" == typeof n && (a = n), o = {
+                        ...u,
                         ...s
-                    }, i = [], (function(t, {
+                    }, i = [], (function (t, {
                         defaultTransition: e = {},
                         ...i
                     } = {}, n, r) {
@@ -6968,11 +7028,12 @@
                                         } = i,
                                         T = "function" == typeof h ? h(o, a) : h,
                                         k = u.length,
-                                        S = en(m) ? m : r ?.[m || "keyframes"];
+                                        S = en(m) ? m : r?.[m || "keyframes"];
                                     if (k <= 2 && S) {
                                         let t = 100;
                                         2 === k && oB(u) && (t = Math.abs(u[1] - u[0]));
-                                        let i = { ...e,
+                                        let i = {
+                                            ...e,
                                             ...x
                                         };
                                         void 0 !== b && (i.duration = tz(b));
@@ -7000,13 +7061,13 @@
                                                 c = (a + 1) * (1 + t);
                                             t > 0 && (u.push(u[u.length - 1]), p.push(c), w.push("linear")), u.push(...h);
                                             for (let t = 0; t < h.length; t++) p.push(i[t] + c), w.push(0 === t ? "linear" : oE(d, t - 1))
-                                        }! function(t, e, i = 0) {
+                                        } ! function (t, e, i = 0) {
                                             let n = e + 1 + e * i;
                                             for (let e = 0; e < t.length; e++) t[e] = t[e] / n
                                         }(p, f, t)
                                     }
                                     let M = A + b;
-                                    ! function(t, e, i, n, r, s) {
+                                    ! function (t, e, i, n, r, s) {
                                         for (let e = 0; e < t.length; e++) {
                                             let i = t[e];
                                             i.at > r && i.at < s && (tq(t, i), e--)
@@ -7026,9 +7087,11 @@
                                     let n = oR(t[i], a);
                                     for (let t in g) {
                                         var p, m;
-                                        x(g[t], (p = y, m = t, p && p[m] ? { ...p,
+                                        x(g[t], (p = y, m = t, p && p[m] ? {
+                                            ...p,
                                             ...p[m]
-                                        } : { ...p
+                                        } : {
+                                            ...p
                                         }), oX(t, n), i, e)
                                     }
                                 }
@@ -7060,7 +7123,8 @@
                                     type: d,
                                     ...p
                                 } = e;
-                                h.transition[r] = { ...p,
+                                h.transition[r] = {
+                                    ...p,
                                     duration: c,
                                     ease: u,
                                     times: l,
@@ -7088,7 +7152,8 @@
                         onComplete: i,
                         ...n
                     } = s || {};
-                    "function" == typeof i && (a = i), l = oJ(t, r, { ...u,
+                    "function" == typeof i && (a = i), l = oJ(t, r, {
+                        ...u,
                         ...n
                     }, e)
                 }
@@ -7098,7 +7163,7 @@
                 })), h
             }
         }(), {
-            addEffect: function(t) {
+            addEffect: function (t) {
                 ti("function" == typeof t.test && t.read), ok(t), oT.unshift(t)
             },
             removeEffect: ok
@@ -7111,14 +7176,14 @@
                 a = e / 180,
                 l = n + 60 * s - (n + 200 * s) * o,
                 u = 26 * s * (1 - .6 * o),
-                h = `M0 ${n+10} L0 ${l}`;
-            for (let t = 0; t <= i; t += 25 * s) h += ` L${t.toFixed(1)} ${(l+Math.sin(t/(90*s)+a)*u+Math.sin(t/(37*s)-1.3*a)*u*.35).toFixed(1)}`;
-            for (let t of (h += ` L${i} ${n+10}Z`, r)) {
+                h = `M0 ${n + 10} L0 ${l}`;
+            for (let t = 0; t <= i; t += 25 * s) h += ` L${t.toFixed(1)} ${(l + Math.sin(t / (90 * s) + a) * u + Math.sin(t / (37 * s) - 1.3 * a) * u * .35).toFixed(1)}`;
+            for (let t of (h += ` L${i} ${n + 10}Z`, r)) {
                 let e = Math.max(0, Math.min(1, (o - t.d) * 3)) * (1 - o) * 1.4;
                 if (e <= 0) continue;
                 let i = l - t.h * e,
                     n = t.w / 2;
-                h += ` M${t.x-n} ${l+20*s} L${t.x-n} ${i+n} A${n} ${n} 0 0 1 ${t.x+n} ${i+n} L${t.x+n} ${l+20*s}Z`
+                h += ` M${t.x - n} ${l + 20 * s} L${t.x - n} ${i + n} A${n} ${n} 0 0 1 ${t.x + n} ${i + n} L${t.x + n} ${l + 20 * s}Z`
             }
             return h
         }
@@ -7126,7 +7191,7 @@
         function o1(t, e = "#e9e8e4") {
             let i = [1, 3, 5].map(t => parseInt(e.slice(t, t + 2), 16)),
                 n = [1, 3, 5].map(e => parseInt(t.slice(e, e + 2), 16));
-            return `rgb(${i.map((t,e)=>Math.round(.91*t+.09*n[e])).join(",")})`
+            return `rgb(${i.map((t, e) => Math.round(.91 * t + .09 * n[e])).join(",")})`
         }
         var o5 = t.i(98428);
         let o3 = "(max-width: 640px) 80vw, 50vh";
@@ -7149,7 +7214,7 @@
             if (!e) {
                 let i = o2(t),
                     n = new window.Image;
-                i.sizes && (n.sizes = i.sizes), i.srcSet && (n.srcset = i.srcSet), n.src = i.src, e = n.decode().catch(() => {}).then(() => {
+                i.sizes && (n.sizes = i.sizes), i.srcSet && (n.srcset = i.srcSet), n.src = i.src, e = n.decode().catch(() => { }).then(() => {
                     let e = n.currentSrc || i.src;
                     return o8.set(t, e), e
                 }), o4.set(t, e)
@@ -7188,7 +7253,7 @@
         function ai(t) {
             let e = ae(t),
                 i = or[e.ref],
-                n = `(var(--fiw) * ${os[e.ref]??1} / ${i.width})`,
+                n = `(var(--fiw) * ${os[e.ref] ?? 1} / ${i.width})`,
                 r = e.x - i.loopCenterX,
                 s = e.y - o7(e.ref);
             return {
@@ -7232,9 +7297,9 @@
                     style: l,
                     axisX: u
                 } = ai(t),
-                h = `${(a.neckY/a.height*100).toFixed(3)}%`,
+                h = `${(a.neckY / a.height * 100).toFixed(3)}%`,
                 d = `url(${o2(t).src})`,
-                c = oe(i, t => `linear-gradient(${as(t)>0?"to right":"to left"},rgba(0,0,0,0) 15%,rgba(10,8,6,.75))`),
+                c = oe(i, t => `linear-gradient(${as(t) > 0 ? "to right" : "to left"},rgba(0,0,0,0) 15%,rgba(10,8,6,.75))`),
                 p = oe(i, t => Math.min(1, 1.1 * Math.abs(as(t)))),
                 m = (0, r.jsx)(sK.Image, {
                     src: t,
@@ -7248,7 +7313,8 @@
                 });
             return (0, r.jsxs)(sG.div, {
                 className: "fg-layer fg-face",
-                style: { ...l,
+                style: {
+                    ...l,
                     opacity: e,
                     rotateY: 180 * !!s,
                     originX: u
@@ -7329,7 +7395,7 @@
                         d: .25 * Math.random()
                     }))),
                     n = t => {
-                        c.current ?.setAttribute("d", t), p.current ?.setAttribute("d", t)
+                        c.current?.setAttribute("d", t), p.current?.setAttribute("d", t)
                     },
                     r = performance.now(),
                     s = t => {
@@ -7339,20 +7405,21 @@
                 return n(o0(0, r, l.width, l.height, i)), e = requestAnimationFrame(s), () => cancelAnimationFrame(e)
             }, [l.width, l.height]);
             let w = t => {
-                    let e = ae(t);
-                    return {
-                        x: e.x,
-                        y: e.y,
-                        width: e.w,
-                        height: e.h
-                    }
-                },
-                b = `M0 ${l.height+10}Z`;
+                let e = ae(t);
+                return {
+                    x: e.x,
+                    y: e.y,
+                    width: e.w,
+                    height: e.h
+                }
+            },
+                b = `M0 ${l.height + 10}Z`;
             return (0, r.jsx)("div", {
                 className: "fg-layer fg-face",
-                style: { ...u,
+                style: {
+                    ...u,
                     transform: i ? "rotateY(180deg)" : void 0,
-                    transformOrigin: `${100*h}% 50%`
+                    transformOrigin: `${100 * h}% 50%`
                 },
                 children: (0, r.jsxs)("svg", {
                     className: "fg-dye",
@@ -7395,7 +7462,8 @@
                         ...w(t),
                         preserveAspectRatio: "none",
                         mask: `url(#old-${d})`,
-                        onLoad: () => x(t => ({ ...t,
+                        onLoad: () => x(t => ({
+                            ...t,
                             from: !0
                         }))
                     }), g && (0, r.jsx)("image", {
@@ -7403,7 +7471,8 @@
                         ...w(e),
                         preserveAspectRatio: "none",
                         mask: `url(#new-${d})`,
-                        onLoad: () => x(t => ({ ...t,
+                        onLoad: () => x(t => ({
+                            ...t,
                             to: !0
                         }))
                     })]
@@ -7484,7 +7553,7 @@
                     if (t.style.fontSize = "", !window.matchMedia("(min-width: 641px)").matches) return;
                     let e = t.clientWidth,
                         i = t.scrollWidth;
-                    i > e && (t.style.fontSize = `${Math.max(18,Math.floor(24*e/i))}px`)
+                    i > e && (t.style.fontSize = `${Math.max(18, Math.floor(24 * e / i))}px`)
                 };
                 return e(), window.addEventListener("resize", e), () => window.removeEventListener("resize", e)
             }, [t]), (0, r.jsxs)("div", {
@@ -7494,7 +7563,7 @@
                     ref: u,
                     children: t
                 }), (0, r.jsxs)("div", {
-                    className: `seg${n?" seg-animate":""}`,
+                    className: `seg${n ? " seg-animate" : ""}`,
                     role: "group",
                     "aria-label": "Show front or back",
                     style: o ? void 0 : {
@@ -7521,14 +7590,8 @@
                         tabIndex: o ? void 0 : -1,
                         children: "BACK"
                     })]
-                }), (0, r.jsx)("a", {
-                    className: "info-cta",
-                    href: "https://aradazr.site/",
-                    target: "_blank",
-                    rel: "noopener",
-                    "aria-label": `See availability of ${t} (opens in a new tab)`,
-                    children: "SEE AVAILABILITY ↗"
-                })]
+                })
+                ]
             })
         }
 
@@ -7540,9 +7603,9 @@
             return (0, r.jsx)("div", {
                 className: "tags",
                 children: t.map((t, n) => (0, r.jsxs)("div", {
-                    className: `tagwrap${n===e?" on":""}`,
+                    className: `tagwrap${n === e ? " on" : ""}`,
                     style: {
-                        animationDelay: `${-(1.1*n)}s`
+                        animationDelay: `${-(1.1 * n)}s`
                     },
                     children: [(0, r.jsx)("div", {
                         className: "string",
@@ -7559,7 +7622,7 @@
                             className: "tag",
                             style: {
                                 "--c": t.hex,
-                                "--fgc": function(t) {
+                                "--fgc": function (t) {
                                     let [e, i, n] = [1, 3, 5].map(e => parseInt(t.slice(e, e + 2), 16));
                                     return .299 * e + .587 * i + .114 * n > 150 ? "#151513" : "#ecebe6"
                                 }(t.hex)
@@ -7575,11 +7638,11 @@
             })
         }
         let ad = {
-                type: "spring",
-                stiffness: 70,
-                damping: 15,
-                mass: 1
-            },
+            type: "spring",
+            stiffness: 70,
+            damping: 15,
+            mass: 1
+        },
             ac = {
                 duration: .5,
                 ease: "easeInOut"
@@ -7609,7 +7672,7 @@
         let am = t => Math.max(an(t.front), t.back ? an(t.back) : 0),
             af = Math.max(1, ...op.flatMap(t => (t.colourways ?? [t]).map(am))),
             ag = Math.max(0, ...op.filter(t => t.colourways).flatMap(t => t.colourways.flatMap(t => [ar(t.front), t.back ? ar(t.back, !0) : 0]))),
-            ay = (0, s.forwardRef)(function({
+            ay = (0, s.forwardRef)(function ({
                 start: t,
                 origin: e,
                 getOrigin: i,
@@ -7633,7 +7696,7 @@
                         k.current = t, T(t)
                     },
                     A = op[d],
-                    P = A.colourways ?.[p],
+                    P = A.colourways?.[p],
                     M = P ?? A,
                     C = s3(0),
                     E = s3(0),
@@ -7674,7 +7737,7 @@
                             type: "spring",
                             stiffness: 60,
                             damping: 14
-                        })], Promise.all(F.current.map(t => t.finished)).then(e, () => {})
+                        })], Promise.all(F.current.map(t => t.finished)).then(e, () => { })
                     }, [h, C, E, Y, D, I]),
                     U = (0, s.useRef)(!1);
                 (0, s.useEffect)(() => {
@@ -7698,7 +7761,7 @@
                         phase: 180,
                         body: 1
                     }, () => S("open"))
-                }, []), (0, s.useEffect)(() => n(d), [d, n]), (0, s.useEffect)(() => (function(t, e = !1) {
+                }, []), (0, s.useEffect)(() => n(d), [d, n]), (0, s.useEffect)(() => (function (t, e = !1) {
                     let i = op.length;
                     for (let r of e ? [t, (t + 1) % i, (t - 1 + i) % i] : [t]) {
                         var n;
@@ -7732,39 +7795,39 @@
                     close: W
                 }), [W]);
                 let z = (0, s.useCallback)(t => {
-                        if ("open" !== k.current || $.current) return;
-                        $.current = !0, g(null), v({
-                            face: "front",
-                            animate: !1
-                        });
-                        let e = (d + t + op.length) % op.length;
-                        if (h) return void oQ(V, 0, {
-                            duration: .15
-                        }).finished.then(() => {
-                            c(e), m(0), R.set(0), oQ(V, 1, {
-                                duration: .2
-                            }).finished.then(() => $.current = !1)
-                        });
-                        let i = window.innerWidth;
-                        oQ(j, -t * i * .35, {
-                            type: "spring",
-                            stiffness: 140,
-                            damping: 22
-                        }), B(180 * Math.round(R.get() / 180) + (t > 0 ? -90 : 90), {
-                            eps: 6,
-                            onDone: () => {
-                                c(e), m(0), R.set(t > 0 ? 90 : -90), j.set(t * i * .35), oQ(j, 0, {
-                                    type: "spring",
-                                    stiffness: 140,
-                                    damping: 22
-                                }), B(0, {
-                                    kick: 4 * t,
-                                    eps: 4,
-                                    onDone: () => $.current = !1
-                                })
-                            }
-                        })
-                    }, [d, h, B, R, j, V]),
+                    if ("open" !== k.current || $.current) return;
+                    $.current = !0, g(null), v({
+                        face: "front",
+                        animate: !1
+                    });
+                    let e = (d + t + op.length) % op.length;
+                    if (h) return void oQ(V, 0, {
+                        duration: .15
+                    }).finished.then(() => {
+                        c(e), m(0), R.set(0), oQ(V, 1, {
+                            duration: .2
+                        }).finished.then(() => $.current = !1)
+                    });
+                    let i = window.innerWidth;
+                    oQ(j, -t * i * .35, {
+                        type: "spring",
+                        stiffness: 140,
+                        damping: 22
+                    }), B(180 * Math.round(R.get() / 180) + (t > 0 ? -90 : 90), {
+                        eps: 6,
+                        onDone: () => {
+                            c(e), m(0), R.set(t > 0 ? 90 : -90), j.set(t * i * .35), oQ(j, 0, {
+                                type: "spring",
+                                stiffness: 140,
+                                damping: 22
+                            }), B(0, {
+                                kick: 4 * t,
+                                eps: 4,
+                                onDone: () => $.current = !1
+                            })
+                        }
+                    })
+                }, [d, h, B, R, j, V]),
                     H = (0, s.useCallback)(t => {
                         let e;
                         if (t === ((e = (R.get() % 360 + 360) % 360) > 90 && e < 270)) return Promise.resolve();
@@ -7787,7 +7850,7 @@
                         let e = A.colourways,
                             i = e[t],
                             n = "back" === y.face && !!e[p].back && !!i.back;
-                        (o(o1(i.hex)), h) ? m(t): ($.current = !0, g({
+                        (o(o1(i.hex)), h) ? m(t) : ($.current = !0, g({
                             from: n ? e[p].back : e[p].front,
                             to: n ? i.back : i.front,
                             back: n,
@@ -7936,18 +7999,18 @@
                     })]
                 })
             });
-        t.s(["default", 0, function() {
+        t.s(["default", 0, function () {
             let [t, e] = (0, s.useState)(null), [i, n] = (0, s.useState)(!1), [o, a] = (0, s.useState)(null), [l, u] = (0, s.useState)(null), h = (0, s.useRef)(null);
             (0, s.useEffect)(() => ("complete" === document.readyState ? o9() : window.addEventListener("load", o9, {
                 once: !0
             }), () => window.removeEventListener("load", o9)), []);
             let d = (0, s.useCallback)((t, i) => {
-                    e({
-                        start: t,
-                        origin: i,
-                        key: Date.now()
-                    }), a(t), n(!0)
-                }, []),
+                e({
+                    start: t,
+                    origin: i,
+                    key: Date.now()
+                }), a(t), n(!0)
+            }, []),
                 c = (0, s.useCallback)(t => ow(t), []),
                 p = (0, s.useCallback)(() => n(!1), []),
                 m = (0, s.useCallback)(() => {
@@ -7960,7 +8023,7 @@
                 } : void 0,
                 children: [(0, r.jsx)(sQ, {
                     focus: i,
-                    onClose: () => h.current ?.close()
+                    onClose: () => h.current?.close()
                 }), (0, r.jsxs)("main", {
                     children: [(0, r.jsx)("h1", {
                         className: "sr-only",
@@ -8004,7 +8067,7 @@
             value: !0
         }), Object.defineProperty(i, "Image", {
             enumerable: !0,
-            get: function() {
+            get: function () {
                 return x
             }
         });
@@ -8021,10 +8084,10 @@
             p = t.r(18581);
 
         function m(t, e, i, n, r, s, o) {
-            let a = t ?.src;
-            t && t["data-loaded-src"] !== a && (t["data-loaded-src"] = a, ("decode" in t ? t.decode() : Promise.resolve()).catch(() => {}).then(() => {
+            let a = t?.src;
+            t && t["data-loaded-src"] !== a && (t["data-loaded-src"] = a, ("decode" in t ? t.decode() : Promise.resolve()).catch(() => { }).then(() => {
                 if (t.parentElement && t.isConnected) {
-                    if ("empty" !== e && r(!0), i ?.current) {
+                    if ("empty" !== e && r(!0), i?.current) {
                         let e = new Event("load");
                         Object.defineProperty(e, "target", {
                             writable: !1,
@@ -8032,13 +8095,14 @@
                         });
                         let n = !1,
                             r = !1;
-                        i.current({ ...e,
+                        i.current({
+                            ...e,
                             nativeEvent: e,
                             currentTarget: t,
                             target: t,
                             isDefaultPrevented: () => n,
                             isPropagationStopped: () => r,
-                            persist: () => {},
+                            persist: () => { },
                             preventDefault: () => {
                                 n = !0, e.preventDefault()
                             },
@@ -8047,7 +8111,7 @@
                             }
                         })
                     }
-                    n ?.current && n.current(t)
+                    n?.current && n.current(t)
                 }
             }))
         }
@@ -8095,7 +8159,8 @@
                     t || null === e || (A && (e.src = e.src), e.complete && m(e, d, x, w, b, y, k), C.current = !0)
                 }, [t, d, x, w, A, y, k]);
                 let Y = (0, p.useMergedRef)(M, E);
-                return (0, s.jsx)("img", { ...P,
+                return (0, s.jsx)("img", {
+                    ...P,
                     ...f(h),
                     loading: c,
                     width: r,
@@ -8162,7 +8227,8 @@
                 showAltText: g
             });
             return (0, s.jsxs)(s.Fragment, {
-                children: [(0, s.jsx)(y, { ...w,
+                children: [(0, s.jsx)(y, {
+                    ...w,
                     unoptimized: b.unoptimized,
                     placeholder: b.placeholder,
                     fill: b.fill,
@@ -8186,7 +8252,7 @@
             value: !0
         }), Object.defineProperty(i, "useImageConfig", {
             enumerable: !0,
-            get: function() {
+            get: function () {
                 return a
             }
         });
@@ -8206,7 +8272,7 @@
         function a() {
             let t = (0, n.useContext)(s.ImageConfigContext);
             return (0, r.prepareImageConfig)(o, t)
-        }("function" == typeof i.default || "object" == typeof i.default && null !== i.default) && void 0 === i.default.__esModule && (Object.defineProperty(i.default, "__esModule", {
+        } ("function" == typeof i.default || "object" == typeof i.default && null !== i.default) && void 0 === i.default.__esModule && (Object.defineProperty(i.default, "__esModule", {
             value: !0
         }), Object.assign(i.default, i), e.exports = i.default)
     }, 18581, (t, e, i) => {
@@ -8214,7 +8280,7 @@
             value: !0
         }), Object.defineProperty(i, "useMergedRef", {
             enumerable: !0,
-            get: function() {
+            get: function () {
                 return r
             }
         });
@@ -8240,19 +8306,19 @@
                 let i = t(e);
                 return "function" == typeof i ? i : () => t(null)
             }
-        }("function" == typeof i.default || "object" == typeof i.default && null !== i.default) && void 0 === i.default.__esModule && (Object.defineProperty(i.default, "__esModule", {
+        } ("function" == typeof i.default || "object" == typeof i.default && null !== i.default) && void 0 === i.default.__esModule && (Object.defineProperty(i.default, "__esModule", {
             value: !0
         }), Object.assign(i.default, i), e.exports = i.default)
     }, 70965, (t, e, i) => {
         function n(t, e) {
             let i = t || 75;
-            return e ?.qualities ?.length ? e.qualities.reduce((t, e) => Math.abs(e - i) < Math.abs(t - i) ? e : t, e.qualities[0]) : i
+            return e?.qualities?.length ? e.qualities.reduce((t, e) => Math.abs(e - i) < Math.abs(t - i) ? e : t, e.qualities[0]) : i
         }
         Object.defineProperty(i, "__esModule", {
             value: !0
         }), Object.defineProperty(i, "findClosestQuality", {
             enumerable: !0,
-            get: function() {
+            get: function () {
                 return n
             }
         })
@@ -8261,7 +8327,7 @@
             value: !0
         }), Object.defineProperty(i, "getImgProps", {
             enumerable: !0,
-            get: function() {
+            get: function () {
                 return l
             }
         });
@@ -8340,7 +8406,8 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
                         height: "auto"
                     }
                 }[A];
-                t && (y = { ...y,
+                t && (y = {
+                    ...y,
                     ...t
                 });
                 let i = {
@@ -8383,7 +8450,7 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
                 } : {}, D ? {} : {
                     color: "transparent"
                 }, y),
-                H = B || "empty" === b ? null : "blur" === b ? `url("data:image/svg+xml;charset=utf-8,${(0,r.getImageBlurSvg)({widthInt:N,heightInt:_,blurWidth:I,blurHeight:R,blurDataURL:T||"",objectFit:z.objectFit})}")` : `url("${b}")`,
+                H = B || "empty" === b ? null : "blur" === b ? `url("data:image/svg+xml;charset=utf-8,${(0, r.getImageBlurSvg)({ widthInt: N, heightInt: _, blurWidth: I, blurHeight: R, blurDataURL: T || "", objectFit: z.objectFit })}")` : `url("${b}")`,
                 q = s.includes(z.objectFit) ? "fill" === z.objectFit ? "100% 100%" : "cover" : z.objectFit,
                 G = H ? {
                     backgroundSize: q,
@@ -8391,7 +8458,7 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
                     backgroundRepeat: "no-repeat",
                     backgroundImage: H
                 } : {},
-                K = function({
+                K = function ({
                     config: t,
                     src: e,
                     unoptimized: i,
@@ -8421,7 +8488,7 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
                     let {
                         widths: l,
                         kind: u
-                    } = function({
+                    } = function ({
                         deviceSizes: t,
                         allSizes: e
                     }, i, n) {
@@ -8451,7 +8518,7 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
                     }(t, r, o), h = l.length - 1;
                     return {
                         sizes: o || "w" !== u ? o : "100vw",
-                        srcSet: l.map((i, n) => `${a({config:t,src:e,quality:s,width:i})} ${"w"===u?i:n+1}${u}`).join(", "),
+                        srcSet: l.map((i, n) => `${a({ config: t, src: e, quality: s, width: i })} ${"w" === u ? i : n + 1}${u}`).join(", "),
                         src: a({
                             config: t,
                             src: e,
@@ -8470,14 +8537,16 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
                 }),
                 Z = U ? "lazy" : d;
             return {
-                props: { ...Y,
+                props: {
+                    ...Y,
                     loading: Z,
                     fetchPriority: k,
                     width: N,
                     height: _,
                     decoding: S,
                     className: c,
-                    style: { ...z,
+                    style: {
+                        ...z,
                         ...G
                     },
                     sizes: K.sizes,
@@ -8497,10 +8566,10 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
             value: !0
         });
         var n = {
-            default: function() {
+            default: function () {
                 return f
             },
-            defaultHead: function() {
+            defaultHead: function () {
                 return d
             }
         };
@@ -8564,7 +8633,7 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
                 })
             })
         }
-        let f = function({
+        let f = function ({
             children: t
         }) {
             let e = (0, l.useContext)(h.HeadManagerContext);
@@ -8589,13 +8658,13 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
             let a = i ? 40 * i : t,
                 l = r ? 40 * r : e,
                 u = a && l ? `viewBox='0 0 ${a} ${l}'` : "";
-            return `%3Csvg xmlns='http://www.w3.org/2000/svg' ${u}%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3CfeColorMatrix values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 100 -1' result='s'/%3E%3CfeFlood x='0' y='0' width='100%25' height='100%25'/%3E%3CfeComposite operator='out' in='s'/%3E%3CfeComposite in2='SourceGraphic'/%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Cimage width='100%25' height='100%25' x='0' y='0' preserveAspectRatio='${u?"none":"contain"===o?"xMidYMid":"cover"===o?"xMidYMid slice":"none"}' style='filter: url(%23b);' href='${s}'/%3E%3C/svg%3E`
+            return `%3Csvg xmlns='http://www.w3.org/2000/svg' ${u}%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3CfeColorMatrix values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 100 -1' result='s'/%3E%3CfeFlood x='0' y='0' width='100%25' height='100%25'/%3E%3CfeComposite operator='out' in='s'/%3E%3CfeComposite in2='SourceGraphic'/%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Cimage width='100%25' height='100%25' x='0' y='0' preserveAspectRatio='${u ? "none" : "contain" === o ? "xMidYMid" : "cover" === o ? "xMidYMid slice" : "none"}' style='filter: url(%23b);' href='${s}'/%3E%3C/svg%3E`
         }
         Object.defineProperty(i, "__esModule", {
             value: !0
         }), Object.defineProperty(i, "getImageBlurSvg", {
             enumerable: !0,
-            get: function() {
+            get: function () {
                 return n
             }
         })
@@ -8604,7 +8673,7 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
             value: !0
         }), Object.defineProperty(i, "ImageConfigContext", {
             enumerable: !0,
-            get: function() {
+            get: function () {
                 return s
             }
         });
@@ -8616,13 +8685,13 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
             value: !0
         });
         var n = {
-            VALID_LOADERS: function() {
+            VALID_LOADERS: function () {
                 return s
             },
-            imageConfigDefault: function() {
+            imageConfigDefault: function () {
                 return u
             },
-            prepareImageConfig: function() {
+            prepareImageConfig: function () {
                 return l
             }
         };
@@ -8689,7 +8758,7 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
             value: !0
         }), Object.defineProperty(i, "getImageProps", {
             enumerable: !0,
-            get: function() {
+            get: function () {
                 return l
             }
         });
@@ -8724,7 +8793,7 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
             value: !0
         }), Object.defineProperty(i, "default", {
             enumerable: !0,
-            get: function() {
+            get: function () {
                 return o
             }
         });
@@ -8752,10 +8821,10 @@ Read more: https://nextjs.org/docs/messages/next-image-missing-loader`)
                         }
                     }
                 }
-            if (e.startsWith("/") && e.includes("?") && t.localPatterns ?.length === 1 && "**" === t.localPatterns[0].pathname && "" === t.localPatterns[0].search) throw Error(`Image with src "${e}" is using a query string which is not configured in images.localPatterns.
+            if (e.startsWith("/") && e.includes("?") && t.localPatterns?.length === 1 && "**" === t.localPatterns[0].pathname && "" === t.localPatterns[0].search) throw Error(`Image with src "${e}" is using a query string which is not configured in images.localPatterns.
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-localpatterns`);
             let l = (0, n.findClosestQuality)(o, t);
-            return `${t.path}?url=${encodeURIComponent(e)}&w=${i}&q=${l}${e.startsWith("/")&&a?`&dpl=${a}`:""}`
+            return `${t.path}?url=${encodeURIComponent(e)}&w=${i}&q=${l}${e.startsWith("/") && a ? `&dpl=${a}` : ""}`
         }
         s.__next_img_default = !0;
         let o = s
@@ -8764,7 +8833,7 @@ Read more: https://nextjs.org/docs/messages/next-image-unconfigured-localpattern
             value: !0
         }), Object.defineProperty(i, "RouterContext", {
             enumerable: !0,
-            get: function() {
+            get: function () {
                 return n
             }
         });
@@ -8774,14 +8843,14 @@ Read more: https://nextjs.org/docs/messages/next-image-unconfigured-localpattern
             value: !0
         }), Object.defineProperty(i, "default", {
             enumerable: !0,
-            get: function() {
+            get: function () {
                 return a
             }
         });
         let n = t.r(71645),
             r = "u" < typeof window,
-            s = r ? () => {} : n.useLayoutEffect,
-            o = r ? () => {} : n.useEffect;
+            s = r ? () => { } : n.useLayoutEffect,
+            o = r ? () => { } : n.useEffect;
 
         function a(t) {
             let {
@@ -8795,8 +8864,8 @@ Read more: https://nextjs.org/docs/messages/next-image-unconfigured-localpattern
                     e.updateHead(i(t))
                 }
             }
-            return r && (e ?.mountedInstances ?.add(t.children), a()), s(() => (e ?.mountedInstances ?.add(t.children), () => {
-                e ?.mountedInstances ?.delete(t.children)
+            return r && (e?.mountedInstances?.add(t.children), a()), s(() => (e?.mountedInstances?.add(t.children), () => {
+                e?.mountedInstances?.delete(t.children)
             })), s(() => (e && (e._pendingUpdate = a), () => {
                 e && (e._pendingUpdate = a)
             })), o(() => (e && e._pendingUpdate && (e._pendingUpdate(), e._pendingUpdate = null), () => {
