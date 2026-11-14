@@ -8027,7 +8027,7 @@
                 }), (0, r.jsxs)("main", {
                     children: [(0, r.jsx)("h1", {
                         className: "sr-only",
-                        children: "Snug Wrld"
+                        children: "Samin Ghaderi"
                     }), (0, r.jsx)(sG.div, {
                         className: "absolute inset-0",
                         initial: !1,
