@@ -4,33 +4,16 @@
   const message = document.querySelector('#message');
   const previews = new Map();
   const settingsMessage = document.querySelector('#settings-message');
-  const defaultRadios = [...document.querySelectorAll('[name="show-defaults"]')];
   function settingsNotify(text, error = false) {
     settingsMessage.textContent = text;
     settingsMessage.dataset.error = String(error);
   }
-  function syncDefaults() {
-    const enabled = ClothingCatalog.showDefaults();
-    for (const radio of defaultRadios) radio.checked = radio.value === (enabled ? 'on' : 'off');
-  }
-  for (const radio of defaultRadios) radio.addEventListener('change', () => {
-    if (!radio.checked) return;
-    try {
-      localStorage.setItem(ClothingCatalog.defaultsKey, String(radio.value === 'on'));
-      settingsNotify(radio.value === 'on' ? 'Default items are visible on the rack.' : 'Default items are hidden from the rack.');
-    } catch {
-      try { syncDefaults(); } catch { /* Keep the last visible state. */ }
-      settingsNotify('Could not save this setting. Browser storage is unavailable.', true);
-    }
-  });
   document.querySelector('#delete-all').addEventListener('click', () => {
-    if (!confirm('Delete all added products and hide the 7 default items? Added products cannot be recovered. You can turn the default items on again.')) return;
+    if (!confirm('Delete all added products? Added products cannot be recovered.')) return;
     try {
-      localStorage.setItem(ClothingCatalog.defaultsKey, 'false');
       localStorage.removeItem(ClothingCatalog.key);
-      syncDefaults();
       render();
-      settingsNotify('All added products deleted. The rack is empty.');
+      settingsNotify('All added products deleted.');
     } catch { settingsNotify('Could not delete all items. Browser storage is unavailable.', true); }
   });
   function notify(text, error = false) {
@@ -133,6 +116,6 @@
       notify(error.name === 'QuotaExceededError' ? 'Browser storage is full. Use smaller images or remove an added product. Your existing products have been kept.' : error.message || 'Could not save this product.', true);
     } finally { submit.disabled = false; }
   });
-  window.addEventListener('storage', event => { if ([ClothingCatalog.key, ClothingCatalog.defaultsKey, null].includes(event.key)) { try { render(); syncDefaults(); } catch { notify('Saved products could not be read.', true); } } });
-  try { render(); syncDefaults(); } catch { notify('Browser storage is unavailable or saved products could not be read. Existing data has not been changed.', true); }
+  window.addEventListener('storage', event => { if ([ClothingCatalog.key, null].includes(event.key)) { try { render(); } catch { notify('Saved products could not be read.', true); } } });
+  try { render(); } catch { notify('Browser storage is unavailable or saved products could not be read. Existing data has not been changed.', true); }
 })();

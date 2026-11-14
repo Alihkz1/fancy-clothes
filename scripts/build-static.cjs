@@ -37,4 +37,10 @@ const matches = [...bundle.matchAll(loader)];
 if (matches.length !== 1) throw new Error('Saved image loader changed; static build needs updating.');
 bundle = bundle.replace(loader, 'return e === "/snug-wrld-logo.png" ? "/products/logo.webp" : e');
 fs.writeFileSync(bundleFile, bundle);
-console.log(`Static site built in dist/ with ${Object.keys(manifest).length * 3 + 1} image files. No Python runtime required.`);
+
+// Friendly /add route: static hosts map a directory index to /add.
+const addRoute = path.join(output, 'add');
+fs.mkdirSync(addRoute, { recursive: true });
+fs.copyFileSync(path.join(output, 'add-product.html'), path.join(addRoute, 'index.html'));
+
+console.log(`Static site built in dist/ with ${fs.readdirSync(products).length} image file(s). No Python runtime required.`);

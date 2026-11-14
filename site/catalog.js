@@ -2,14 +2,12 @@
 (() => {
   'use strict';
   const key = 'fancy-clothes:products:v1';
-  const defaultsKey = 'fancy-clothes:show-defaults:v1';
-  const showDefaults = () => localStorage.getItem(defaultsKey) !== 'false';
   function read() {
     const products = JSON.parse(localStorage.getItem(key) || '[]');
     if (!Array.isArray(products)) throw new Error('Saved products could not be read.');
     return products;
   }
-  window.ClothingCatalog = { key, defaultsKey, read, showDefaults };
+  window.ClothingCatalog = { key, read };
   window.extendClothingRack = (products, metadata, scales) => {
     try {
       // Measure the original collection before appending custom products.
@@ -35,8 +33,7 @@
           }))
         };
       }
-      // Keep the originals as sizing references even when they are hidden.
-      if (!showDefaults()) products.splice(0, products.length);
+      // Keep the originals as sizing references for products added later.
       for (const product of read()) {
         if (typeof product.id !== 'string' || typeof product.name !== 'string' || !product.images?.front || !product.images?.side) continue;
         const valid = image => image?.metadata && ['width', 'height', 'loopCenterX', 'loopInnerTopY', 'loopInnerBottomY', 'neckY', 'garmentTopY', 'garmentBottomY', 'shoulderX0', 'shoulderX1', 'garmentX0', 'garmentX1'].every(key => Number.isFinite(image.metadata[key])) && image.metadata.width > 0 && image.metadata.height > 0 && image.metadata.garmentBottomY > image.metadata.garmentTopY;
@@ -68,7 +65,7 @@
       style.textContent = `.rack{--iw:min(36vh,${width}vw)}`;
       document.head.append(style);
       window.addEventListener('storage', event => {
-        if (event.key === key || event.key === defaultsKey || event.key === null) location.reload();
+        if (event.key === key || event.key === null) location.reload();
       });
     } catch (error) {
       console.error('Unable to load custom clothing products.', error);
