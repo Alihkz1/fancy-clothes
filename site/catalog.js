@@ -71,4 +71,32 @@
       console.error('Unable to load custom clothing products.', error);
     }
   };
+
+  // The saved page is replaced by Next at hydration, so keep the rack header mounted.
+  const brandMarkup = '<p class="brand-header__eyebrow">The Clothing Rack</p>' +
+    '<h1 class="brand-header__name">Samin Ghaderi</h1>' +
+    '<span class="brand-header__line" aria-hidden="true"></span>';
+  let brandHeader = null;
+  function ensureBrandHeader() {
+    if (!document.querySelector('.wall')) return; // Rack page only, never /add.
+    if (!brandHeader) {
+      brandHeader = document.querySelector('.brand-header');
+      if (!brandHeader) {
+        brandHeader = document.createElement('header');
+        brandHeader.className = 'brand-header';
+        brandHeader.innerHTML = brandMarkup;
+      }
+    }
+    if (document.body.contains(brandHeader)) return;
+    // Skip the entrance animation when re-mounting after hydration.
+    brandHeader.classList.add('is-settled');
+    document.body.prepend(brandHeader);
+  }
+  function startBrandHeader() {
+    if (!document.querySelector('.wall')) return;
+    ensureBrandHeader();
+    new MutationObserver(ensureBrandHeader).observe(document.body, { childList: true });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startBrandHeader);
+  else startBrandHeader();
 })();
